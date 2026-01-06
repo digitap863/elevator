@@ -1,26 +1,53 @@
 @import "tailwindcss";
 
-:root {
+
+/* :root {
   --background: #ffffff;
   --foreground: #171717;
-}
+} */
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
-
-body {
+/* body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 1s ease-out forwards;
+}
+
+.animate-fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.3s forwards;
+}
+
+.animate-fade-in-delay-2 {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.6s forwards;
+}
+
+.font-aquire{
+  font-family: 'Aquire', sans-serif;
+}
+
+.font-sathoshi{
+  font-family: 'Satoshi', sans-serif;
+}
+
+.font-dragon{
+  font-family: 'Dragon', sans-serif;
 }
