@@ -19,7 +19,16 @@ export default function Home() {
       <Projects />
       <Testimonials />
       <TestimonialCards />
-      <Contact />
+      <Contact 
+      label="Get Started"
+      heading="Ready to Elevate?"
+      description="Contact us today for a free consultation and quote. Our team is ready to help you find the perfect elevator solution."
+      primaryButtonText="Start a Project"
+      primaryButtonLink="/reachout"
+      secondaryButtonText="View Projects"
+      secondaryButtonLink="/projects"
+      showSecondaryButton={true}
+      />
       </div>
     </main>
   )

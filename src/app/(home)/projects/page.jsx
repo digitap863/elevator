@@ -9,7 +9,16 @@ export default function Projects() {
       <Banner /> 
       <div  style={{ backgroundImage: `url(${bgabout.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <Projectsection />
-      <Contact />
+      <Contact
+            label="Get Started"
+            heading="Ready to Start Your Project?"
+            description="Join hundreds of satisfied clients who have trusted Reliant for their vertical mobility needs. Get a free consultation today."
+            primaryButtonText="Contact Us"
+            primaryButtonLink="/reachout"
+            secondaryButtonText=""
+            secondaryButtonLink=""
+            showSecondaryButton={false}
+            />
       </div>
     </main>
   )

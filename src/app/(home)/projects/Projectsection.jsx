@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from 'react';
-import {  Map, User } from 'lucide-react';
 import Image from 'next/image';
 import proj from "@/assests/home/proj.png"
-
+import { HiOutlineMapPin } from "react-icons/hi2";
 
 
 export default function Projectsection() {
@@ -68,12 +67,12 @@ export default function Projectsection() {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section className="py-16 px-4 ">
+    <section className="pb-16 pt-28 px-4 ">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12">
-          <div className="flex items-start space-x-3 mb-6 font-satoshi">
-                <div className="w-14 h-0.5 bg-[#376378] mt-2"></div>
+        <div className="text-center  mx-auto mb-12">
+          <div className="flex items-start justify-center  space-x-3 mb-6 font-satoshi">
+                <div className="w-14 h-0.5 bg-[#376378] mt-3"></div>
                 <h2 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
                     OUR PROJECTS 
                 </h2>
@@ -131,7 +130,7 @@ export default function Projectsection() {
                 {/* Author */}
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-8 h-8 flex items-center justify-center">
-                    <Map className="w-8 h-8 text-red-700" />
+                    <HiOutlineMapPin className="w-8 h-8 text-red-700" />
                   </div>
                   <span className="text-sm text-gray-600">{project.author}</span>
                 </div>

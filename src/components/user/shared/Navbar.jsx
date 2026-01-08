@@ -13,8 +13,7 @@ const Navbar = () => {
         { name: 'PRODUCTS', href: '/products' },
         { name: 'PROJECTS', href: '/projects' },
         { name: 'SERVICES', href: '/services' },
-        { name: 'GALLERY', href: '/gallery' },
-        { name: 'CONTACT US', href: '/contact' },
+        { name: 'CONTACT US', href: '/reachout' },
     ];
 
     return (

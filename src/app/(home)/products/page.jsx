@@ -9,7 +9,16 @@ export default function About() {
       <Banner /> 
       <div  style={{ backgroundImage: `url(${probg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <ProductSection />
-      <Contact />
+      <Contact 
+      label="Get Started"
+      heading="Can't Find What You Need?"
+      description="We offer customized elevator solutions tailored to your specific requirements. Contact our team to discuss your unique needs."
+      primaryButtonText="Contact Us"
+      primaryButtonLink="/reachout"
+      secondaryButtonText="View Projects"
+      secondaryButtonLink="/projects"
+      showSecondaryButton={true}
+      />
 
       </div>
     </main>

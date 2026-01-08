@@ -13,7 +13,15 @@ export default function Service() {
       <ServiceSection />
       <Chooseus />
       <Proccess />
-      <Contact />
+      <Contact 
+         label="Get Started"
+      heading="Need Elevator Services?"
+      description="Whether you need installation, maintenance, or modernization, our expert team is ready to help. Contact us for a free consultation."
+      primaryButtonText="Start a Project"
+      primaryButtonLink="/reachout"
+      secondaryButtonText="View Projects"
+      secondaryButtonLink="/projects"
+      showSecondaryButton={true} />
       
       </div>
     </main>

@@ -1,10 +1,18 @@
 "use client"
-import React from 'react';
-import Image from 'next/image';
-import contac from '@/assests/home/contac.png'
+import contac from '@/assests/home/contac.png';
+import Link from 'next/link';
 
 
-export default function Contact() {
+export default function Contact({
+  label = "Get Started",
+  heading = "Ready to Elevate?",
+  description = "Contact us today for a free consultation and quote. Our team is ready to help you find the perfect elevator solution.",
+  primaryButtonText = "Start a Project",
+  primaryButtonLink = "/reachout",
+  secondaryButtonText = "View Projects",
+  secondaryButtonLink = "/projects",
+  showSecondaryButton = true
+}) {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8  font-sathoshi">
       <div className="max-w-7xl mx-auto">
@@ -25,28 +33,34 @@ export default function Contact() {
             <div className="flex items- justify-center gap-4 mb-6 pr-10">
               <div className="w-12 h-0.5 bg-red-600 mt-2"></div>
               <span className="text-red-600 text-lg font-medium tracking-widest uppercase">
-                Get Started
+                {label}
               </span>
             </div>
 
             {/* Heading */}
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-6">
-              Ready to Elevate?
+              {heading}
             </h2>
 
             {/* Description */}
             <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-10">
-              Contact us today for a free consultation and quote. Our team is ready to help you find the perfect elevator solution.
+              {description}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-              <button className="px-8 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
-                Start a Project
-              </button>
-              <button className="px-8 py-2 border-2 border-white/50 hover:border-white text-white font-medium rounded-full transition-all duration-300 hover:bg-white/10">
-                View Projects
-              </button>
+              <Link href={primaryButtonLink}>
+                <button className="px-8 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                  {primaryButtonText}
+                </button>
+              </Link>
+              {showSecondaryButton && (
+                <Link href={secondaryButtonLink}>
+                  <button className="px-8 py-2 border-2 border-white/50 hover:border-white text-white font-medium rounded-full transition-all duration-300 hover:bg-white/10">
+                    {secondaryButtonText}
+                  </button>
+                </Link>
+              )}
             </div>
           </div>
 

@@ -1,12 +1,6 @@
 'use client';
 
 import line from "@/assests/home/line.svg";
-import Image from 'next/image';
-import { Autoplay, EffectCoverflow, Pagination } from 'swiper/modules';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import "swiper/css";
-import "swiper/css/effect-coverflow";
-import "swiper/css/pagination";
 import pro1 from "@/assests/home/pro1.svg";
 import pro2 from "@/assests/home/pro2.svg";
 import pro3 from "@/assests/home/pro3.svg";
@@ -14,6 +8,13 @@ import pro4 from "@/assests/home/pro4.svg";
 import pro5 from "@/assests/home/pro5.svg";
 import pro6 from "@/assests/home/pro6.svg";
 import pro7 from "@/assests/home/pro7.svg";
+import Image from 'next/image';
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
+import { Autoplay, EffectCoverflow, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 export default function Projects() {
@@ -75,28 +76,31 @@ export default function Projects() {
       <Image
         src={line}
         alt="Line"
-        className="absolute top-[15%] left-0 w-full opacity-30"
+        className="absolute top-[15%] left-0 w-full opacity-70"
       />
 
       <div className="max-w-7xl mx-auto">
         {/* Section Header */}
-        <div className="flex items-start space-x-3 mb-16 justify-center">
+        <div className="flex items-start space-x-3 mb-16 justify-">
           <div className="w-14 h-0.5 bg-[#376378] mt-3"></div>
           <h2 className="text-[#376378] font-medium text-3xl tracking-wide uppercase">
             Our Projects
           </h2>
-          <div className="w-14 h-0.5 bg-[#376378] mt-3"></div>
         </div>
 
         {/* Swiper Carousel with Coverflow Effect */}
         <div className="relative">
           <Swiper
-            modules={[ Pagination, EffectCoverflow]}
+            modules={[Pagination, EffectCoverflow, Navigation, Autoplay]}
             effect="coverflow"
             grabCursor={true}
             centeredSlides={true}
             slidesPerView="auto"
             loop={true}
+            navigation={{
+              nextEl: '.swiper-button-next-custom',
+              prevEl: '.swiper-button-prev-custom',
+            }}
             coverflowEffect={{
               rotate: 15,
               stretch: 0,
@@ -104,14 +108,14 @@ export default function Projects() {
               modifier: 1,
               slideShadows: true,
             }}
-            // autoplay={{
-            //   delay: 3000,
-            //   disableOnInteraction: false,
-            // }}
-            pagination={{
-              clickable: true,
-              dynamicBullets: true,
+            autoplay={{
+              delay: 5000,
+              disableOnInteraction: false,
             }}
+            // pagination={{
+            //   clickable: true,
+            //   dynamicBullets: true,
+            // }}
             breakpoints={{
               320: {
                 coverflowEffect: {
@@ -137,40 +141,54 @@ export default function Projects() {
             {projects.map((project) => (
               <SwiperSlide
                 key={project.id}
-                className="!w-[280px] md:!w-[330px] lg:!w-[380px]"
+                className="!w-[250px] md:!w-[300px] lg:!w-[350px]"
               >
                 <div className="relative group cursor-pointer">
                   {/* Project Card */}
-                  <div className="relative h-[450px] md:h-[500px] lg:h-[550px] rounded-2xl overflow-hidden shadow-2xl transform transition-all ">
+                  <div className="relative h-[500px] md:h-[550px] lg:h-[600px]  overflow-hidden transform transition-all ">
                     {/* Project Image */}
                     <Image
                       src={project.image}
                       alt={project.title}
                       className="w-full h-full object-cover"
                     />
-                    
+
                     {/* Gradient Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent"></div>
-                    
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent"></div>
+
                     {/* Project Info */}
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300 group-hover:translate-y-0">
-                      <div className="bg-red-600/90 backdrop-blur-sm px-4 py-3 rounded-lg inline-block mb-2">
-                        <h3 className="text-xl font-bold tracking-wide">
+                    <div className="absolute bottom-0 left-0 right-0 h-56 bg-gradient-to-t from-[#C10510]/80 via-red-500/40 to-transparent w-full text-white flex items-center justify-center transform transition-transform duration-300 group-hover:translate-y-0">
+                      <div className="flex flex-col items-center justify-center text-center px-4 pt-10">
+                        <h3 className="text-2xl font-medium tracking-wide">
                           {project.title}
                         </h3>
-                        <p className="text-sm text-white/90 mt-1">
+                        <p className="text-sm text-white mt-1 tracking-wide ">
                           {project.subtitle}
                         </p>
                       </div>
                     </div>
 
                     {/* Hover Border Effect */}
-                    <div className="absolute inset-0 border-4 border-transparent group-hover:border-[#376378] rounded-2xl transition-all duration-300"></div>
+                    <div className="absolute inset-0 border-4 border-black transition-all duration-300"></div>
                   </div>
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
+
+          {/* Custom Navigation Buttons */}
+          <div className="absolute bottom-4 right-4 z-10 flex gap-3">
+            <div className="swiper-button-prev-custom w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 group">
+              <svg className="w-6 h-6 text-[#376378] group-hover:text-red-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+              </svg>
+            </div>
+            <div className="swiper-button-next-custom w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 group">
+              <svg className="w-6 h-6 text-[#376378] group-hover:text-red-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
         </div>
 
         {/* View More Button */}

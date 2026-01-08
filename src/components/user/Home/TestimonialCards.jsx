@@ -168,17 +168,11 @@
 
 import { Star } from 'lucide-react';
 import { useState } from 'react';
-
-// 1. Import Swiper React components
-import { Swiper, SwiperSlide } from 'swiper/react';
-
-// 2. Import Swiper modules
-import { Autoplay, Pagination } from 'swiper/modules';
-
-// 3. Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 export default function TestimonialsCards() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -282,7 +276,7 @@ export default function TestimonialsCards() {
   return (
     <div className="py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        
+
         {/* Swiper Implementation */}
         <Swiper
           modules={[Pagination, Autoplay]}
@@ -315,21 +309,23 @@ export default function TestimonialsCards() {
           className="pb-12 pt-5" // Add padding top/bottom so scaled cards don't get cut off
         >
           {testimonials.map((testimonial, index) => (
-            <SwiperSlide key={index} className="h-auto py-10"> 
-            {/* h-auto ensures all slides stretch to same height if needed */}
+            <SwiperSlide key={index} className="h-auto py-10">
+              {/* h-auto ensures all slides stretch to same height if needed */}
               <div
-                className={`h-full relative transition-transform duration-300 ${
-                  index === activeIndex
-                    ? 'transform lg:scale-105'
-                    : ''
-                }`}
+                className={`h-full relative transition-transform duration-300 ${index === activeIndex
+                  ? 'transform lg:scale-105'
+                  : ''
+                  }`}
               >
                 <div
-                  className={`h-full flex flex-col justify-between rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${
-                    index === activeIndex
-                      ? 'bg-gradient-to-br from-orange-50 to-amber-50 border border-[#376378]'
-                      : 'bg-white'
-                  }`}
+                  className={`h-full flex flex-col justify-between rounded-sm p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${index === activeIndex
+                    ? 'bg-gradient-to-br from-[#D2C5B2]/80 via-white to-[#D2C5B2]/80'
+                    : 'bg-white'
+                    }`}
+                  style={index === activeIndex ? {
+                    border: '1px solid transparent',
+                    borderImage: 'linear-gradient(to bottom, #C10510, transparent) 1'
+                  } : {}}
                 >
                   <div>
                     {/* Star Rating */}
@@ -338,38 +334,33 @@ export default function TestimonialsCards() {
                     </div>
 
                     {/* Title */}
-                    <h3 className={`text-lg font-semibold mb-4 ${
-                      index === activeIndex ? 'text-slate-800' : 'text-slate-800'
-                    }`}>
+                    <h3 className={`text-lg font-semibold mb-4 ${index === activeIndex ? 'text-slate-800' : 'text-slate-800'
+                      }`}>
                       {testimonial.title}
                     </h3>
 
                     {/* Quote */}
-                    <p className={`text-sm leading-relaxed mb-8 italic ${
-                      index === activeIndex ? 'text-slate-600' : 'text-slate-600'
-                    }`}>
+                    <p className={`text-sm leading-relaxed mb-8 italic ${index === activeIndex ? 'text-slate-600' : 'text-slate-600'
+                      }`}>
                       {testimonial.quote}
                     </p>
                   </div>
 
                   {/* Author Info */}
-                  <div className={`flex items-center gap-4 pt-6 border-t mt-auto ${
-                    index === activeIndex ? 'border-slate-200' : 'border-slate-200'
-                  }`}>
+                  <div className={`flex items-center gap-4 pt-8 mt-auto ${index === activeIndex ? 'border-slate-200' : 'border-slate-200'
+                    }`}>
                     <img
                       src={testimonial.author.image}
                       alt={testimonial.author.name}
                       className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md"
                     />
                     <div>
-                      <h4 className={`font-semibold text-sm ${
-                        index === activeIndex ? 'text-slate-800' : 'text-slate-800'
-                      }`}>
+                      <h4 className={`font-semibold text-sm ${index === activeIndex ? 'text-slate-800' : 'text-slate-800'
+                        }`}>
                         {testimonial.author.name}
                       </h4>
-                      <p className={`text-xs ${
-                        index === activeIndex ? 'text-slate-500' : 'text-slate-500'
-                      }`}>
+                      <p className={`text-xs ${index === activeIndex ? 'text-slate-500' : 'text-slate-500'
+                        }`}>
                         {testimonial.author.role}
                       </p>
                     </div>
