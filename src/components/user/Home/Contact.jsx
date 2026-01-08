@@ -6,7 +6,7 @@ import contac from '@/assests/home/contac.png'
 
 export default function Contact() {
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-50 font-sathoshi">
+    <div className="py-16 px-4 sm:px-6 lg:px-8  font-sathoshi">
       <div className="max-w-7xl mx-auto">
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
           {/* Background Image with Overlay */}
