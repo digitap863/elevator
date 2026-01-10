@@ -1,6 +1,7 @@
 "use client"
-import line from "@/assests/home/line.svg"
-import Image from "next/image"
+import line from "@/assests/home/line.svg";
+import { motion } from 'framer-motion';
+import Image from "next/image";
 
 const timelineItems = [
   {
@@ -43,17 +44,29 @@ export default function Home() {
         <Image src={line} alt="line" className="absolute top-[30%] left-0" />
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
-          <div className="flex items-start space-x-3 mb-6 font-satoshi">
+          <motion.div
+            className="flex items-start space-x-3 mb-6 font-satoshi"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
             <div className="md:w-14 w-14 h-0.5 bg-[#376378] mt-2"></div>
             <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
               Our Journey
             </h2>
-          </div>
+          </motion.div>
 
           {/* Title */}
-          <h2 className="text-3xl md:text-5xl font-medium mb-20 tracking-tight">
+          <motion.h2
+            className="text-3xl md:text-5xl font-medium mb-20 tracking-tight"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             Milestones We're <span className="text-[#376378]">Proud Of</span>
-          </h2>
+          </motion.h2>
 
           {/* Timeline Container */}
           <div className="relative">
@@ -61,7 +74,14 @@ export default function Home() {
             {/* Timeline Items */}
             <div className="relative space-y-8">
               {timelineItems.map((item, index) => (
-                <div key={index} className="flex items-start gap-8 min-h-32">
+                <motion.div
+                  key={index}
+                  className="flex items-start gap-8 min-h-32"
+                  initial={{ opacity: 0, y: 40 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: index * 0.15 }}
+                >
                   {/* Dot Indicator */}
                   <div className="flex justify-center w-full ">
                     <div className="absolute w-6 h-6 bg-[#376378] rounded-[90px] shadow-md left-1/2 transform md:-translate-x-[50%] translate-x-[60%] relative -top-7"></div>
@@ -99,7 +119,7 @@ export default function Home() {
                       </div>
                     )}
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>

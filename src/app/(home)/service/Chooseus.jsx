@@ -1,6 +1,7 @@
 'use client';
 
 import mech from "@/assests/home/mech.svg";
+import { motion } from 'framer-motion';
 import { Award, Clock, Shield, Zap } from 'lucide-react';
 import Image from 'next/image';
 
@@ -38,15 +39,27 @@ const Chooseus = () => {
 
                 {/* Header */}
                 <div className="md:mb-16 mb-8">
-                    <div className="flex items-start space-x-3 mb-6">
+                    <motion.div
+                        className="flex items-start space-x-3 mb-6"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                    >
                         <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
                         <h2 className="text-[#376378] font-medium text-xl tracking-widest uppercase">
                             WHY CHOOSE US
                         </h2>
-                    </div>
-                    <h2 className="text-3xl lg:text-5xl font-medium text-gray-900">
+                    </motion.div>
+                    <motion.h2
+                        className="text-3xl lg:text-5xl font-medium text-gray-900"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                    >
                         Service Excellence Guaranteed
-                    </h2>
+                    </motion.h2>
                 </div>
 
                 {/* Content Grid */}
@@ -54,12 +67,16 @@ const Chooseus = () => {
 
                     {/* Left Side - Feature Cards */}
                     <div className="grid grid-cols-2 md:grid-cols-2 md:gap-6 gap-4">
-                        {features.map((feature) => {
+                        {features.map((feature, index) => {
                             const Icon = feature.icon;
                             return (
-                                <div
+                                <motion.div
                                     key={feature.id}
                                     className="bg-white border border-gray-200 shadow-lg rounded-lg md:p-6 p-4 hover:shadow-xl transition-all duration-300 group flex  gap-5 items-center "
+                                    initial={{ opacity: 0, y: 40 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
+                                    viewport={{ once: true, amount: 0.3 }}
+                                    transition={{ duration: 0.6, delay: index * 0.1 }}
                                 >
                                     {/* Icon */}
                                     <div className="mb-4 md:block hidden">
@@ -79,20 +96,26 @@ const Chooseus = () => {
                                             {feature.description}
                                         </p>
                                     </div>
-                                </div>
+                                </motion.div>
                             );
                         })}
                     </div>
 
                     {/* Right Side - Image */}
-                    <div className="relative min-h-[300px] lg:h-full rounded-2xl overflow-hidden shadow-xl p-2 ">
+                    <motion.div
+                        className="relative min-h-[300px] lg:h-full rounded-2xl overflow-hidden shadow-xl p-2 "
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.7, delay: 0.2 }}
+                    >
                         <Image
                             src={mech}
                             alt="Technician working on elevator control panel"
                             fill
                             className="object-cover "
                         />
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>

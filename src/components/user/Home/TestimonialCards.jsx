@@ -162,20 +162,23 @@
 
 
 
-
-
-'use client'; // Required for Swiper in Next.js
+'use client';
 
 import { Star } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Autoplay, Pagination } from 'swiper/modules';
+import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { motion } from 'framer-motion';
+import { useInView } from 'framer-motion';
 
 export default function TestimonialsCards() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+
   const testimonials = [
     {
       rating: 4.5,
@@ -274,24 +277,27 @@ export default function TestimonialsCards() {
   };
 
   return (
-    <div className="md:py-16 py-6 px-4 sm:px-6 lg:px-8">
+    <motion.div
+      ref={sectionRef}
+      initial={{ opacity: 0, y: 60 }}
+      animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="md:py-16 py-6 px-4 sm:px-6 lg:px-8"
+    >
       <div className="max-w-7xl mx-auto">
-
         {/* Swiper Implementation */}
         <Swiper
-          modules={[ Autoplay]}
-          spaceBetween={30} // Gap between slides
-          slidesPerView={1.2} // Default mobile view
+          modules={[Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1.2}
           loop={true}
-          centeredSlides={true} // Center the active slide
-          // pagination={{ clickable: true }}
+          centeredSlides={true}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
           }}
           onSlideChange={(swiper) => setActiveIndex(swiper.realIndex)}
           onSwiper={(swiper) => setActiveIndex(swiper.realIndex)}
-          // Responsive breakpoints to mimic your original grid
           breakpoints={{
             640: {
               slidesPerView: 1.2,
@@ -306,26 +312,30 @@ export default function TestimonialsCards() {
               centeredSlides: true,
             },
           }}
-          className="pb-12 pt-5" // Add padding top/bottom so scaled cards don't get cut off
+          className="pb-12 pt-5"
         >
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index} className="h-auto py-10">
-              {/* h-auto ensures all slides stretch to same height if needed */}
               <div
-                className={`h-full relative transition-transform duration-300 ${index === activeIndex
-                  ? 'transform lg:scale-105'
-                  : ''
-                  }`}
+                className={`h-full relative transition-transform duration-300 ${
+                  index === activeIndex ? 'transform lg:scale-105' : ''
+                }`}
               >
                 <div
-                  className={`h-full flex flex-col justify-between rounded-sm p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${index === activeIndex
-                    ? 'bg-gradient-to-br from-[#D2C5B2]/80 via-white to-[#D2C5B2]/80'
-                    : 'bg-white'
-                    }`}
-                  style={index === activeIndex ? {
-                    border: '1px solid transparent',
-                    borderImage: 'linear-gradient(to bottom, #C10510, transparent) 1'
-                  } : {}}
+                  className={`h-full flex flex-col justify-between rounded-sm p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${
+                    index === activeIndex
+                      ? 'bg-gradient-to-br from-[#D2C5B2]/80 via-white to-[#D2C5B2]/80'
+                      : 'bg-white'
+                  }`}
+                  style={
+                    index === activeIndex
+                      ? {
+                          border: '1px solid transparent',
+                          borderImage:
+                            'linear-gradient(to bottom, #C10510, transparent) 1',
+                        }
+                      : {}
+                  }
                 >
                   <div>
                     {/* Star Rating */}
@@ -334,33 +344,58 @@ export default function TestimonialsCards() {
                     </div>
 
                     {/* Title */}
-                    <h3 className={`text-lg font-semibold mb-4 ${index === activeIndex ? 'text-slate-800' : 'text-slate-800'
-                      }`}>
+                    <h3
+                      className={`text-lg font-semibold mb-4 ${
+                        index === activeIndex
+                          ? 'text-slate-800'
+                          : 'text-slate-800'
+                      }`}
+                    >
                       {testimonial.title}
                     </h3>
 
                     {/* Quote */}
-                    <p className={`text-sm leading-relaxed mb-8 italic ${index === activeIndex ? 'text-slate-600' : 'text-slate-600'
-                      }`}>
+                    <p
+                      className={`text-sm leading-relaxed mb-8 italic ${
+                        index === activeIndex
+                          ? 'text-slate-600'
+                          : 'text-slate-600'
+                      }`}
+                    >
                       {testimonial.quote}
                     </p>
                   </div>
 
                   {/* Author Info */}
-                  <div className={`flex items-center gap-4 pt-12 mt-auto ${index === activeIndex ? 'border-[#C10510]' : 'border-[#C10510]'
-                    }`}>
+                  <div
+                    className={`flex items-center gap-4 pt-12 mt-auto ${
+                      index === activeIndex
+                        ? 'border-[#C10510]'
+                        : 'border-[#C10510]'
+                    }`}
+                  >
                     <img
                       src={testimonial.author.image}
                       alt={testimonial.author.name}
                       className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C10510] shadow-md"
                     />
                     <div>
-                      <h4 className={`font-semibold text-sm ${index === activeIndex ? 'text-slate-800' : 'text-slate-800'
-                        }`}>
+                      <h4
+                        className={`font-semibold text-sm ${
+                          index === activeIndex
+                            ? 'text-slate-800'
+                            : 'text-slate-800'
+                        }`}
+                      >
                         {testimonial.author.name}
                       </h4>
-                      <p className={`text-xs ${index === activeIndex ? 'text-slate-500' : 'text-slate-500'
-                        }`}>
+                      <p
+                        className={`text-xs ${
+                          index === activeIndex
+                            ? 'text-slate-500'
+                            : 'text-slate-500'
+                        }`}
+                      >
                         {testimonial.author.role}
                       </p>
                     </div>
@@ -371,6 +406,6 @@ export default function TestimonialsCards() {
           ))}
         </Swiper>
       </div>
-    </div>
+    </motion.div>
   );
 }

@@ -1,7 +1,8 @@
 'use client';
-import { useState } from 'react';
+import line from '@/assests/home/line.svg';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import line from '@/assests/home/line.svg'
+import { useState } from 'react';
 
 export default function ContactSection() {
     const [formData, setFormData] = useState({
@@ -37,7 +38,13 @@ export default function ContactSection() {
             <div className="max-w-7xl mx-auto">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 items-start">
                     {/* Contact Form */}
-                    <div className=" px-8 pb-8 z-10 lg:pr-18">
+                    <motion.div
+                        className=" px-8 pb-8 z-10 lg:pr-18"
+                        initial={{ opacity: 0, x: -40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
+                    >
                         <div className="space-y-4">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-base tracking-wide text-black  mb-2">
@@ -109,7 +116,7 @@ export default function ContactSection() {
                                     name="location"
                                     value={formData.location}
                                     onChange={handleChange}
-                                className="w-full px-4 py-1.5 placeholder:text-gray-400 placeholder:text-sm text-sm shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
+                                    className="w-full px-4 py-1.5 placeholder:text-gray-400 placeholder:text-sm text-sm shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 >
                                     <option value="">Enter location</option>
                                     <option value="new-york">New York</option>
@@ -140,10 +147,16 @@ export default function ContactSection() {
                                 Submit
                             </button>
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Map Card */}
-                    <div className="bg-white rounded-lg shadow-sm overflow-hidden lg:sticky lg:top-8">
+                    <motion.div
+                        className="bg-white rounded-lg shadow-sm overflow-hidden lg:sticky lg:top-8"
+                        initial={{ opacity: 0, x: 40 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true, amount: 0.2 }}
+                        transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+                    >
                         <div className="relative h-96 lg:h-full md:min-h-[620px]">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6558.56682467695!2d76.33312639199333!3d9.942353488010083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0872ce624469a5%3A0x9b54c28bebb18fd1!2sReliant%20Elevators%20%26%20Escalators%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1767852280347!5m2!1sen!2sin"
@@ -156,7 +169,7 @@ export default function ContactSection() {
                                 className="absolute inset-0"
                             ></iframe>
                         </div>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 "use client"
 import footerlogo from '@/assests/home/footerlogo.svg';
+import { motion } from 'framer-motion';
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react';
 import Image from 'next/image';
 
@@ -10,7 +11,13 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {/* Logo and Social Media Section */}
-          <div className="flex flex-col justify-center items-center space-y-6">
+          <motion.div
+            className="flex flex-col justify-center items-center space-y-6"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
             <div className="p-4 rounded-lg">
               {/* Replace the src with your logo image path */}
               <Image
@@ -30,10 +37,16 @@ export default function Footer() {
                 <Instagram size={20} />
               </a>
             </div>
-          </div>
+          </motion.div>
 
           {/* Navigation Section */}
-          <div className="pl-32">
+          <motion.div
+            className="pl-32"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             <h3 className="text-xl font-medium mb-4">Navigation</h3>
             <nav className="flex flex-col space-y-2">
               <a href="#" className="hover:text-gray-300 transition">Home</a>
@@ -43,10 +56,16 @@ export default function Footer() {
               <a href="#" className="hover:text-gray-300 transition">Contact Us</a>
               <a href="#" className="hover:text-gray-300 transition">About Us</a>
             </nav>
-          </div>
+          </motion.div>
 
           {/* Contact Information Section */}
-          <div className="space-y-6 md:pl-0 pl-16">
+          <motion.div
+            className="space-y-6 md:pl-0 pl-16"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
             <div>
               <div className="flex items-start space-x-3 mb-2">
                 <div className="bg-white text-teal-900 p-2 rounded-full">
@@ -86,20 +105,26 @@ export default function Footer() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* Bottom Bar */}
       <div className="border-t border-teal-700">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex flex-row justify-center items-center md:space-x-6 space-x-5 text-sm">
+          <motion.div
+            className="flex flex-row justify-center items-center md:space-x-6 space-x-5 text-sm"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.3 }}
+          >
             <a href="#" className="hover:text-gray-300 transition">Privacy Policy</a>
             <span className="hidden md:inline">|</span>
             <a href="#" className="hover:text-gray-300 transition">Terms of Use</a>
             <span className="hidden md:inline">|</span>
             <span>Copyright © Tapdone</span>
-          </div>
+          </motion.div>
         </div>
       </div>
     </footer>

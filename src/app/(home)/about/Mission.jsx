@@ -1,7 +1,7 @@
 "use client"
 
 // import line from "@/assests/home/line.svg";
-import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 export default function Mission() {
     return (
@@ -25,7 +25,13 @@ export default function Mission() {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
 
                     {/* Mission Card */}
-                    <div className="relative group">
+                    <motion.div
+                        className="relative group"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6 }}
+                    >
                         <div className="bg-white/50  rounded-lg md:p-14 p-6 md:pb-20 pb-8 shadow-xl hover:shadow-2xl transition-all duration-500 h-full border border-white/50 relative text-justify">
 
                             {/* Diagonal stripe from top-left to bottom-right */}
@@ -52,10 +58,16 @@ export default function Mission() {
                             </p>
 
                         </div>
-                    </div>
+                    </motion.div>
 
                     {/* Vision Card */}
-                    <div className="relative group">
+                    <motion.div
+                        className="relative group"
+                        initial={{ opacity: 0, y: 40 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true, amount: 0.3 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
                         <div className="bg-white/50 rounded-lg md:p-14 p-6 md:pb-20 pb-8 shadow-xl hover:shadow-2xl shadow-lg transition-all duration-500 h-full border border-white/50 ">
 
                             <div className="absolute top-1 -left-10  w-[106%] h-10 blur-lg bg-gradient-to-r from-white/90  via-white to-white/90 -rotate-[23deg] origin-top-right"></div>
@@ -79,7 +91,7 @@ export default function Mission() {
                                 centric solutions that transform vertical mobility experiences.
                             </p>
                         </div>
-                    </div>
+                    </motion.div>
 
                 </div>
             </div>

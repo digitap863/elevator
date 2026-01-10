@@ -1,5 +1,6 @@
 'use client';
- 
+import { motion } from 'framer-motion';
+
 
 const Banner = () => {
     return (
@@ -16,12 +17,20 @@ const Banner = () => {
             </video>
 
             <div className="relative max-w-7xl mx-auto h-[67vh] md:h-screen">
-            <div className="relative z-10 flex flex-row items-center justify-start h-full  px-4 font-aquire md:text-6xl text-2xl ">
-                <p>
-                Kerala’s<span className="text-red-500"> Vertical</span><br/>
-                Mobility Experts
-                </p>
-            </div>
+                <div className="relative z-10 flex flex-row items-center justify-start h-full  px-4 font-aquire md:text-6xl text-2xl ">
+                    <motion.p
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{
+                            duration: 1,
+                            ease: "easeOut",
+                            delay: 0.3
+                        }}
+                    >
+                        Kerala’s<span className="text-red-500"> Vertical</span><br />
+                        Mobility Experts
+                    </motion.p>
+                </div>
             </div>
 
             {/* i want blur effect in the bottom of the video full width  */}

@@ -1,11 +1,14 @@
 'use client';
 import logo from '@/assests/home/logo.svg';
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const pathname = usePathname();
 
     const navItems = [
         { name: 'HOME', href: '/' },
@@ -18,7 +21,16 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="fixed md:top-2  top-2 md:left-0 left-2 md:right-0 right-2 z-50 max-w-7xl mx-auto rounded-2xl">
+            <motion.nav
+                className="fixed md:top-2 top-2 md:left-0 left-2 md:right-0 right-2 z-50 max-w-7xl mx-auto rounded-2xl"
+                initial={{ y: -100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                    delay: 0.2
+                }}
+            >
                 <div className="bg-black/50 backdrop-blur-md rounded-lg">
                     <div className="max-w-7xl mx-auto px-4 lg:px-10">
                         <div className="flex items-center justify-between h-16">
@@ -32,15 +44,22 @@ const Navbar = () => {
                             {/* Desktop Navigation */}
                             <div className="hidden md:block">
                                 <div className="ml-10 flex items-baseline space-x-1 ">
-                                    {navItems.map((item) => (
-                                        <Link
-                                            key={item.name}
-                                            href={item.href}
-                                            className="text-white font-light hover:bg-gray-800 hover:text-gray-200 px-3 py-2 rounded-md text-sm font-medium transition-all duration-200 ease-in-out"
-                                        >
-                                            {item.name}
-                                        </Link>
-                                    ))}
+                                    {navItems.map((item) => {
+                                        const isActive = pathname === item.href;
+                                        return (
+                                            <Link
+                                                key={item.name}
+                                                href={item.href}
+                                                className="relative text-white font-light px-3 py-2 text-sm font-medium transition-all duration-200 ease-in-out group"
+                                            >
+                                                <span className="relative">
+                                                    {item.name}
+                                                    <span className={`absolute -bottom-0.5 left-0 h-0.5 bg-white/70 transition-all duration-300 ease-out ${isActive ? 'w-full' : 'w-0 group-hover:w-full'
+                                                        }`}></span>
+                                                </span>
+                                            </Link>
+                                        );
+                                    })}
                                 </div>
                             </div>
 
@@ -88,7 +107,7 @@ const Navbar = () => {
                         </div>
                     </div>
                 </div>
-            </nav>
+            </motion.nav>
 
             {/* Full-Screen Mobile Menu Overlay */}
             <div

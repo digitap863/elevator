@@ -2,6 +2,8 @@
 
 import serban from '@/assests/home/serban.svg';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
+
 
 const Banner = () => {
     return (
@@ -19,7 +21,16 @@ const Banner = () => {
                 {/* Content */}
                 <div className="relative z-10 flex flex-row items-center justify-start h-full  px-4  ">
 
-                    <div className='lg:pb-20'>
+                    <motion.div
+                        className='lg:pb-20'
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{
+                            duration: 1,
+                            ease: "easeOut",
+                            delay: 0.3
+                        }}
+                    >
                         <div className="flex items-start space-x-3 mb-6 font-satoshi">
                             <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
                             <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
@@ -29,7 +40,7 @@ const Banner = () => {
                         <p className="font-aquire md:text-6xl text-4xl">
                             FEATURED<br /> <span className="text-red-500"> INSTALLATIONS </span>
                         </p>
-                    </div>
+                    </motion.div>
                 </div>
             </div>
 

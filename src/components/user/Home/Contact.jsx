@@ -1,6 +1,7 @@
 "use client"
 import contac from '@/assests/home/contac.png';
 import contamob from '@/assests/home/contamob.png';
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 
 
@@ -36,25 +37,49 @@ export default function Contact({
           {/* Content */}
           <div className="relative z-10 py-10 px-4  md:py-20 text-center">
             {/* Label */}
-            <div className="flex items- justify-center gap-4 md:mb-6 mb-4 pr-10">
+            <motion.div
+              className="flex items- justify-center gap-4 md:mb-6 mb-4 pr-10"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5 }}
+            >
               <div className="w-12 h-0.5 bg-red-600 mt-2"></div>
               <span className="text-red-600 text-lg font-medium tracking-widest uppercase">
                 {label}
               </span>
-            </div>
+            </motion.div>
 
             {/* Heading */}
-            <h2 className="text-4xl sm:text-4xl lg:text-5xl font-medium text-white md:mb-6 mb-5">
+            <motion.h2
+              className="text-4xl sm:text-4xl lg:text-5xl font-medium text-white md:mb-6 mb-5"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+            >
               {heading}
-            </h2>
+            </motion.h2>
 
             {/* Description */}
-            <p className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto md:mb-10 mb-5">
+            <motion.p
+              className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto md:mb-10 mb-5"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+            >
               {description}
-            </p>
+            </motion.p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-row items-center justify-center md:gap-4 gap-2">
+            <motion.div
+              className="flex flex-row items-center justify-center md:gap-4 gap-2"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.3 }}
+            >
               <Link href={primaryButtonLink}>
                 <button className=" md:text-base text-sm px-8 py-2 md:tracking-normal  tracking-tight bg-red-600 hover:bg-red-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                   {primaryButtonText}
@@ -67,7 +92,7 @@ export default function Contact({
                   </button>
                 </Link>
               )}
-            </div>
+            </motion.div>
           </div>
 
         </div>

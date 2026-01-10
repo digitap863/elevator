@@ -1,5 +1,6 @@
 "use client"
 import line from "@/assests/home/line.svg";
+import { motion } from 'framer-motion';
 import Image from 'next/image';
 
 
@@ -64,15 +65,27 @@ export default function Values() {
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
                 <div className="md:text-center mb-16">
-                    <div className="flex items-start md:justify-center space-x-3 mb-4">
+                    <motion.div
+                        className="flex items-start md:justify-center space-x-3 mb-4"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5 }}
+                    >
                         <div className="w-16 h-0.5 bg-[#376378] mt-2"></div>
                         <h3 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
                             Our Values
                         </h3>
-                    </div>
-                    <h2 className="text-3xl md:text-5xl font-medium text-gray-900">
+                    </motion.div>
+                    <motion.h2
+                        className="text-3xl md:text-5xl font-medium text-gray-900"
+                        initial={{ opacity: 0, y: 30 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.6, delay: 0.1 }}
+                    >
                         What Drives <span className="text-[#376378]">Us Forward</span>
-                    </h2>
+                    </motion.h2>
                 </div>
 
                 {/* Values Grid */}
@@ -81,7 +94,14 @@ export default function Values() {
 
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 lg:gap-6">
                         {values.map((value, index) => (
-                            <div key={index} className="relative group bg-blur-sm">
+                            <motion.div
+                                key={index}
+                                className="relative group bg-blur-sm"
+                                initial={{ opacity: 0, y: 40 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, amount: 0.3 }}
+                                transition={{ duration: 0.6, delay: index * 0.15 }}
+                            >
 
                                 {/* Value Card */}
                                 <div className="text-center md:p-6 hover:shadow-xl transition-all duration-300 h-full">
@@ -101,7 +121,7 @@ export default function Values() {
                                         {value.description}
                                     </p>
                                 </div>
-                            </div>
+                            </motion.div>
                         ))}
                     </div>
                 </div>

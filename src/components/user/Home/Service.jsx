@@ -4,6 +4,8 @@ import s2 from '@/assests/home/s2.svg';
 import s3 from '@/assests/home/s3.svg';
 import { ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
+import { motion } from "framer-motion";
+
 
 export default function Service() {
   const services = [
@@ -64,20 +66,41 @@ export default function Service() {
 
       <div className="max-w-7xl mx-auto relative z-10">
         {/* Header */}
-        <div className="flex items-start space-x-3 md:mb-7 mb-5">
+        <motion.div
+          className="flex items-start space-x-3 md:mb-7 mb-5"
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div className="md:w-14 w-14 h-0.5 bg-[#376378] mt-2"></div>
           <h2 className="text-[#376378] font-medium md:text-2xl text-2xl tracking-wide uppercase">
             Services
           </h2>
-        </div>
+        </motion.div>
 
-        <h1 className="md:text-4xl text-3xl font-medium font-satoshi text-[#000] md:pb-14 pb-8">Elevators & <span className="text-gray-700">Escalators Solutions</span></h1>
+        <motion.h1
+          className="md:text-4xl text-3xl font-medium font-satoshi text-[#000] md:pb-14 pb-8"
+          initial={{ opacity: 0, x: -30 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          Elevators & <span className="text-gray-700">Escalators Solutions</span>
+        </motion.h1>
 
 
         {/* Services Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
           {services.map((service, index) => (
-            <div key={index} className="group">
+            <motion.div
+              key={index}
+              className="group"
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: index * 0.15 }}
+            >
               {/* Service Header */}
 
               <div className="flex items-start gap-6">
@@ -129,7 +152,7 @@ export default function Service() {
               </div>
 
 
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

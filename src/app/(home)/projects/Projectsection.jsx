@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import proj from "@/assests/home/proj.png";
+import { motion } from 'framer-motion';
 import Image from 'next/image';
-import proj from "@/assests/home/proj.png"
+import { useState } from 'react';
 import { HiOutlineMapPin } from "react-icons/hi2";
 
 
@@ -62,8 +63,8 @@ export default function Projectsection() {
     }
   ];
 
-  const filteredProjects = activeFilter === 'All' 
-    ? projects 
+  const filteredProjects = activeFilter === 'All'
+    ? projects
     : projects.filter(project => project.category === activeFilter);
 
   return (
@@ -71,40 +72,65 @@ export default function Projectsection() {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="md:text-center text-left  mx-auto mb-12">
-          <div className="flex items-start md:justify-center  space-x-3 mb-6 font-satoshi">
-                <div className="w-14 h-0.5 bg-[#376378] mt-3"></div>
-                <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
-                    OUR PROJECTS 
-                </h2>
-            </div>
-          <h2 className="text-4xl md:text-5xl font-medium text-gray-900">
+          <motion.div
+            className="flex items-start md:justify-center  space-x-3 mb-6 font-satoshi"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <div className="w-14 h-0.5 bg-[#376378] mt-3"></div>
+            <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
+              OUR PROJECTS
+            </h2>
+          </motion.div>
+          <motion.h2
+            className="text-4xl md:text-5xl font-medium text-gray-900"
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
             RECENT PROJECTS
-          </h2>
+          </motion.h2>
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center md:gap-3 gap-2 mb-12">
+        <motion.div
+          className="flex flex-wrap justify-center md:gap-3 gap-2 mb-12"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`md:px-6 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
-                activeFilter === filter
+              className={`md:px-6 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter
                   ? 'bg-slate-700 text-white shadow-lg'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-              }`}
+                }`}
             >
               {filter}
             </button>
           ))}
-        </div>
+        </motion.div>
 
         {/* Projects Grid */}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-9 gap-3">
-          {filteredProjects.map((project) => (
-            <div
+          {filteredProjects.map((project, index) => (
+            <motion.div
               key={project.id}
               className="group  rounded-lg overflow-hidden"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.6,
+                delay: index * 0.1,
+                ease: "easeOut"
+              }}
             >
               {/* Image Container */}
               <div className="relative md:h-64 h-auto overflow-hidden">
@@ -126,7 +152,7 @@ export default function Projectsection() {
                 <h3 className="md:text-lg text-base font-medium text-gray-900 mb-3">
                   {project.title}
                 </h3>
-                
+
                 {/* Author */}
                 <div className="flex items-center gap-2 mb-3">
                   <div className=" flex items-center justify-center">
@@ -140,7 +166,7 @@ export default function Projectsection() {
                   {project.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
