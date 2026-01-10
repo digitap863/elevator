@@ -24,7 +24,7 @@ export default function AboutSection() {
           <div className="relative">
 
             {/* About Us heading */}
-            <div className="mb-20 relative ">
+            <div className="md:mb-10 mb-20 relative ">
               <div className="flex items-start space-x-3 mb-6">
                 <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
                 <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
@@ -33,12 +33,13 @@ export default function AboutSection() {
               </div>
 
               {/* Large "10" with video inside text */}
-              <div className="relative hidden md:inline-block mb-4 ">
-                <div className="relative w-80 h-64 flex items-center justify-center overflow-hidden ">
+              {/* Desktop Version */}
+              <div className="relative hidden md:inline-block mb-4">
+                <div className="relative w-80 h-64 flex items-center justify-center overflow-hidden">
                   {/* SVG mask that defines the text shape */}
                   <svg width="320" height="256" className="absolute top-3 left-3" viewBox="0 0 320 256">
                     <defs>
-                      <mask id="text-mask-10" className="">
+                      <mask id="text-mask-10-desktop">
                         <rect width="320" height="256" fill="black" />
                         <text
                           x="160"
@@ -64,8 +65,8 @@ export default function AboutSection() {
                     playsInline
                     className="absolute top-0 left-0 w-full h-full object-cover"
                     style={{
-                      maskImage: 'url(#text-mask-10)',
-                      WebkitMaskImage: 'url(#text-mask-10)',
+                      mask: 'url(#text-mask-10-desktop)',
+                      WebkitMask: 'url(#text-mask-10-desktop)',
                     }}
                   >
                     <source src="/videos/vdo.mp4" type="video/mp4" />
@@ -73,21 +74,21 @@ export default function AboutSection() {
                 </div>
               </div>
 
-
-               <div className="relative md:hidden inline-block  mb-4 ">
-                <div className="relative w-80 h-64 flex items-center justify-center overflow-hidden ">
-                  {/* SVG mask that defines the text shape */}
-                  <svg width="320" height="256" className="absolute top-3 left-3" viewBox="0 0 320 256">
+              {/* Mobile Version */}
+              <div className="relative md:hidden block mb-4 w-full max-w-[280px]">
+                <div className="relative w-full aspect-[4/3] flex items-center justify-center overflow-hidden">
+                  {/* SVG mask that defines the text shape - positioned absolutely */}
+                  <svg width="280" height="210" className="absolute top-0 left-0" viewBox="0 0 280 210" style={{ pointerEvents: 'none' }}>
                     <defs>
-                      <mask id="text-mask-10" className="">
-                        <rect width="320" height="256" fill="black" />
+                      <mask id="text-mask-10-mobile">
+                        <rect width="280" height="210" fill="black" />
                         <text
-                          x="160"
-                          y="140"
+                          x="140"
+                          y="115"
                           textAnchor="middle"
                           dominantBaseline="middle"
                           fill="white"
-                          fontSize="290"
+                          fontSize="240"
                           fontWeight="500"
                           fontFamily="Satoshi"
                         >
@@ -105,8 +106,8 @@ export default function AboutSection() {
                     playsInline
                     className="absolute top-0 left-0 w-full h-full object-cover"
                     style={{
-                      maskImage: 'url(#text-mask-10)',
-                      WebkitMaskImage: 'url(#text-mask-10)',
+                      mask: 'url(#text-mask-10-mobile)',
+                      WebkitMask: 'url(#text-mask-10-mobile)',
                     }}
                   >
                     <source src="/videos/vdo.mp4" type="video/mp4" />
@@ -115,12 +116,12 @@ export default function AboutSection() {
               </div>
 
 
-              <div className="absolute md:bottom-15 md:-right-14">
+              <div className="absolute md:bottom-15 md:-right-14 right-5 -bottom-14">
                 <div className="space-y-1">
-                  <p className="text-2xl font-medium text-gray-800  whitespace-nowrap">
+                  <p className="md:text-2xl text-xl font-medium text-gray-800  whitespace-nowrap">
                     YEARS OF SUCCESSFUL WORK
                   </p>
-                  <p className="text-2xl font-medium text-gray-600 whitespace-nowrap">
+                  <p className="md:text-2xl text-xl font-medium text-gray-600 whitespace-nowrap">
                     IN THE MARKET
                   </p>
                 </div>
@@ -143,8 +144,6 @@ export default function AboutSection() {
 
           {/* Right Image */}
           <div className="relative">
-
-
             {/* Elevator image container */}
             <div className="relative z-10 mx-auto">
               <div className="relative mx-auto overflow-hidden flex items-center justify-center h-full">
@@ -154,10 +153,8 @@ export default function AboutSection() {
                   alt="Modern Elevator"
                   className="w-auto md:h-[500px] h-[300px] object-contain"
                 />
-                {/* Gradient overlay */}
               </div>
 
-              {/* Decorative circle */}
               <div className="md:absolute hidden -bottom-8 -right-8 w-32 h-32 border-4 border-teal-700 rounded-full opacity-20"></div>
             </div>
           </div>

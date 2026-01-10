@@ -81,7 +81,7 @@ export default function ContactSection() {
                                 />
                             </div>
 
-                            <div>
+                            <div className="mb-6 md:mb-0">
                                 <label htmlFor="service" className="block text-sm font-base tracking-wide text-black  mb-2">
                                     What service are you interested in
                                 </label>
@@ -100,7 +100,7 @@ export default function ContactSection() {
                                 </select>
                             </div>
 
-                            <div>
+                            <div className="mb-6 md:mb-0">
                                 <label htmlFor="location" className="block text-sm font-base tracking-wide text-black  mb-2">
                                     Location
                                 </label>
@@ -144,7 +144,7 @@ export default function ContactSection() {
 
                     {/* Map Card */}
                     <div className="bg-white rounded-lg shadow-sm overflow-hidden lg:sticky lg:top-8">
-                        <div className="relative h-96 lg:h-full min-h-[620px]">
+                        <div className="relative h-96 lg:h-full md:min-h-[620px]">
                             <iframe
                                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6558.56682467695!2d76.33312639199333!3d9.942353488010083!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0872ce624469a5%3A0x9b54c28bebb18fd1!2sReliant%20Elevators%20%26%20Escalators%20Pvt%20Ltd!5e0!3m2!1sen!2sin!4v1767852280347!5m2!1sen!2sin"
                                 width="100%"

@@ -117,7 +117,7 @@ export default function Products() {
                   <Image
                     src={product.image}
                     alt={`${product.title} ${product.subtitle}`}
-                    className="w-full h-full object-contain opacity-100"
+                    className="w-auto h-full object-contain opacity-100"
                   />
                 </div>
               </div>

@@ -63,15 +63,15 @@ export default function Proccess() {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
-                <div className="text-center mb-16">
-                    <div className="flex items-start justify-center space-x-3 mb-4">
+                <div className="md:text-center mb-16">
+                    <div className="flex items-start md:justify-center space-x-3 mb-4">
                         <div className="w-16 h-0.5 bg-[#376378] mt-2"></div>
                         <h3 className="text-[#376378] font-medium text-xl tracking-wide uppercase">
                             Our Proccess
                         </h3>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-medium text-gray-900">
-                        How We Work <span className="text-[#376378]"></span>
+                    <h2 className="text-3xl md:text-5xl font-medium text-gray-900">
+                        How We  <span className="text-gray-700">Work</span>
                     </h2>
                 </div>
 
@@ -84,15 +84,15 @@ export default function Proccess() {
                             <div key={index} className="relative group bg-blur-sm">
 
                                 {/* Value Card */}
-                                <div className="text-center p-6   transition-all duration-300 h-full">
+                                <div className="text-center md:p-6  p-3    transition-all duration-300 h-full">
 
-                                   <h3 className="text-7xl font-bold text-[#376378] font-dragon" style={{
+                                   <h3 className="md:text-7xl text-6xl font-bold text-[#376378] font-dragon" style={{
                                         WebkitTextStroke: '2px #6B8FA3',
                                         WebkitTextFillColor: 'transparent',
                                         color: 'transparent'
                                     }}>{value.num}</h3>
                                     {/* Title with accent color */}
-                                    <h3 className={`text-xl font-medium mb-3 text-black uppercase tracking-wide`}>
+                                    <h3 className={`text-xl font-medium md:mb-3 mb-1 text-black uppercase tracking-wide`}>
                                         {value.title} 
                                     </h3>
 

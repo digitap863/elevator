@@ -70,9 +70,6 @@ export default function Contact({
             </div>
           </div>
 
-          {/* Decorative Elements */}
-          {/* <div className="absolute top-10 left-10 w-20 h-20 border-t-2 border-l-2 border-white/20 rounded-tl-3xl"></div> */}
-          {/* <div className="absolute bottom-10 right-10 w-20 h-20 border-b-2 border-r-2 border-white/20 rounded-br-3xl"></div> */}
         </div>
       </div>
     </div>

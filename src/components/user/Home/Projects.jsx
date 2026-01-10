@@ -193,7 +193,7 @@ export default function Projects() {
 
         {/* View More Button */}
         <div className="flex justify-center mt-12">
-          <button className="md:px-8 px-6 md:py-3 py-2 md:text-base text-sm  border-2 border-[#376378] text-[#376378]  rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full  font-semibold hover:bg-[#376378] hover:text-white transition duration-300 shadow-lg text-lg">
+          <button className="md:px-8 px-6 md:py-3 py-2 md:text-base text-base  border-2 border-[#376378] text-[#376378]  rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full  font-semibold hover:bg-[#376378] hover:text-white transition duration-300 shadow-lg text-lg">
             View More
           </button>
         </div>

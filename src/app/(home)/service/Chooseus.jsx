@@ -33,18 +33,18 @@ const Chooseus = () => {
     ];
 
     return (
-        <div className="w-full py-20 px-6 font-sathoshi ">
+        <div className="w-full md:py-20 py-10 px-4 font-sathoshi ">
             <div className="max-w-7xl mx-auto">
 
                 {/* Header */}
-                <div className="mb-16">
+                <div className="md:mb-16 mb-8">
                     <div className="flex items-start space-x-3 mb-6">
                         <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
                         <h2 className="text-[#376378] font-medium text-xl tracking-widest uppercase">
                             WHY CHOOSE US
                         </h2>
                     </div>
-                    <h2 className="text-4xl lg:text-5xl font-medium text-gray-900">
+                    <h2 className="text-3xl lg:text-5xl font-medium text-gray-900">
                         Service Excellence Guaranteed
                     </h2>
                 </div>
@@ -53,29 +53,29 @@ const Chooseus = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
                     {/* Left Side - Feature Cards */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-2 md:grid-cols-2 md:gap-6 gap-4">
                         {features.map((feature) => {
                             const Icon = feature.icon;
                             return (
                                 <div
                                     key={feature.id}
-                                    className="bg-white border border-gray-200 shadow-lg rounded-lg p-6 hover:shadow-xl transition-all duration-300 group flex  gap-5 items-center "
+                                    className="bg-white border border-gray-200 shadow-lg rounded-lg md:p-6 p-4 hover:shadow-xl transition-all duration-300 group flex  gap-5 items-center "
                                 >
                                     {/* Icon */}
-                                    <div className="mb-4">
-                                        <div className="w-12 h-12 bg-[#376378]/10 rounded-lg flex items-center justify-center group-hover:bg-[#376378] transition-colors duration-300">
-                                            <Icon className="w-6 h-6 text-[#376378] group-hover:text-white transition-colors duration-300" />
+                                    <div className="mb-4 md:block hidden">
+                                        <div className="md:w-12 w-6 md:h-12 h-6 bg-[#376378]/10 rounded-lg flex items-center justify-center group-hover:bg-[#376378] transition-colors duration-300">
+                                            <Icon className="md:w-6 md:h-6 w-4 h-4 text-[#376378] group-hover:text-white transition-colors duration-300" />
                                         </div>
                                     </div>
 
 
                                     <div>
                                         {/* Title */}
-                                        <h3 className="text-xl font-medium text-[#376378] mb-2">
+                                        <h3 className="md:text-xl text-lg font-medium text-[#376378] mb-2">
                                             {feature.title}
                                         </h3>
                                         {/* Description */}
-                                        <p className="text-sm text-gray-600 leading-relaxed">
+                                        <p className="md:text-sm text-xs text-gray-600 leading-relaxed ">
                                             {feature.description}
                                         </p>
                                     </div>
@@ -85,12 +85,12 @@ const Chooseus = () => {
                     </div>
 
                     {/* Right Side - Image */}
-                    <div className="relative h-full rounded-2xl overflow-hidden shadow-xl">
+                    <div className="relative min-h-[300px] lg:h-full rounded-2xl overflow-hidden shadow-xl p-2 ">
                         <Image
                             src={mech}
                             alt="Technician working on elevator control panel"
                             fill
-                            className="object-cover"
+                            className="object-cover "
                         />
                     </div>
 

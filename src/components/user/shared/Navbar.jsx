@@ -12,13 +12,13 @@ const Navbar = () => {
         { name: 'ABOUT US', href: '/about' },
         { name: 'PRODUCTS', href: '/products' },
         { name: 'PROJECTS', href: '/projects' },
-        { name: 'SERVICES', href: '/services' },
+        { name: 'SERVICES', href: '/service' },
         { name: 'CONTACT US', href: '/reachout' },
     ];
 
     return (
         <>
-            <nav className="fixed md:top-0 top-2 md:left-0 left-2 md:right-0 right-2 z-50 max-w-7xl mx-auto rounded-2xl">
+            <nav className="fixed md:top-2  top-2 md:left-0 left-2 md:right-0 right-2 z-50 max-w-7xl mx-auto rounded-2xl">
                 <div className="bg-black/50 backdrop-blur-md rounded-lg">
                     <div className="max-w-7xl mx-auto px-4 lg:px-10">
                         <div className="flex items-center justify-between h-16">
