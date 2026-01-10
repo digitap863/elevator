@@ -104,25 +104,36 @@ const ElevatorSections = () => {
     <div className="w-full font-sathoshi relative">
         <Image src={line} alt="line" className="absolute top-0 left-0 w-full h-full" />
       {sections.map((section, index) => (
-        <section key={index} className={` py-16 px-6 md:px-12 lg:px-20`}>
+        <section key={index} className={` py-8 md:py-16 px-4 md:px-12 lg:px-20`}>
           <div className="max-w-7xl mx-auto">
-            <div className={`flex flex-col ${section.imagePosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center gap-12`}>
+            <div className={`flex flex-col ${section.imagePosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center md:gap-12 gap-6`}>
               
               {/* Content Side */}
-              <div className="flex-1 space-y-6">
+              <div className="flex-1 md:space-y-6 space-y-4">
                 <div>
-                  <div className="flex flex-col items-left gap-0  relative ">
+                  <div className={`flex flex-col items-left gap-0  relative ${section.imagePosition === 'left' ? 'pl-30' : ''}`}>
                     <h3 className="text-7xl font-bold text-[#376378] font-dragon" style={{
                             WebkitTextStroke: '2px #6B8FA3',
                             WebkitTextFillColor: 'transparent',
                             color: 'transparent'
                           }}>{section.number}</h3>
-                    <h2 className="text-base font-medium pl-1  text-[#C10510] tracking-widest relative bottom-8">{section.tag}</h2>
+                    <h2 className="text-base font-medium pl-1  text-[#C10510] tracking-widest relative md:bottom-8">{section.tag}</h2>
                   </div>
-                  <h2 className="text-4xl lg:text-5xl font-base text-gray-900 mb-2 relative bottom-3 ">
+                  <h2 className={`text-4xl lg:text-5xl font-base text-gray-900 mb-1 relative md:bottom-3 ${section.imagePosition === 'left' ? 'pl-30' : ''}`}>
                     {section.title}
                   </h2>
-                  <p className="text-gray-800 leading-relaxed text-lg">
+
+                  <div className="md:hidden flex-1  ">
+                    <div className="relative overflow-hidden ">
+                      <Image 
+                        src={section.image} 
+                        alt={section.title}
+                        className={`w-full h-[400px] object-contain ${section.imagePosition === 'left' ? 'pr-16' : 'pl-30'}`}
+                      />
+                    </div>
+                  </div>
+
+                  <p className="text-gray-800 leading-relaxed text-lg ">
                     {section.description}
                   </p>
                 </div>
@@ -149,7 +160,7 @@ const ElevatorSections = () => {
               </div>
 
               {/* Image Side */}
-              <div className="flex-1">
+              <div className="md:flex-1 hidden ">
                 <div className="relative overflow-hidden ">
                   <Image 
                     src={section.image} 

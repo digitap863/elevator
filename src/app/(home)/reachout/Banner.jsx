@@ -22,12 +22,12 @@ const Banner = () => {
 
                     <div className='lg:pb-20'>
                         <div className="flex items-start space-x-3 mb-6 font-satoshi">
-                            <div className="w-14 h-0.5 bg-[#376378] mt-2"></div>
-                            <h2 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
+                            <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
+                            <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
                                 CONTACT US
                             </h2>
                         </div>
-                        <p className="font-aquire text-6xl">
+                        <p className="font-aquire md:text-6xl text-4xl">
                             LET'S <span className="text-red-500"> START </span> A  <br />
                             CONVERSATION
                         </p>

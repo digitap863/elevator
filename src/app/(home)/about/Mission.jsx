@@ -5,7 +5,7 @@ import Image from 'next/image';
 
 export default function Mission() {
     return (
-        <section className="relative py-20 px-6 overflow-hidden font-sathoshi bg-[#376378]/10 ">
+        <section className="relative py-20 px-4 overflow-hidden font-sathoshi bg-[#376378]/10 ">
             {/* Decorative dots pattern - top left */}
             <div className="absolute top-8 left-12 grid grid-cols-6 gap-6 opacity-20">
                 {[...Array(24)].map((_, i) => (
@@ -26,7 +26,7 @@ export default function Mission() {
 
                     {/* Mission Card */}
                     <div className="relative group">
-                        <div className="bg-white/50  rounded-lg p-14 pb-20 shadow-xl hover:shadow-2xl transition-all duration-500 h-full border border-white/50 relative">
+                        <div className="bg-white/50  rounded-lg md:p-14 p-6 md:pb-20 pb-8 shadow-xl hover:shadow-2xl transition-all duration-500 h-full border border-white/50 relative text-justify">
 
                             {/* Diagonal stripe from top-left to bottom-right */}
                             <div className="absolute top-1 -left-10  w-[106%] h-10 blur-lg bg-gradient-to-r from-white/90  via-white to-white/90 -rotate-[23deg] origin-top-right"></div>
@@ -40,7 +40,7 @@ export default function Mission() {
                             </div>
 
                             {/* Mission Title */}
-                            <h2 className="text-4xl font-medium text-gray-900 mb-6 relative z-10">
+                            <h2 className="md:text-4xl text-3xl font-medium text-gray-900 md:mb-6 mb-6 relative z-10">
                                 Mission
                             </h2>
 
@@ -56,7 +56,7 @@ export default function Mission() {
 
                     {/* Vision Card */}
                     <div className="relative group">
-                        <div className="bg-white/50 rounded-lg p-14 pb-20 shadow-xl hover:shadow-2xl shadow-lg transition-all duration-500 h-full border border-white/50 ">
+                        <div className="bg-white/50 rounded-lg md:p-14 p-6 md:pb-20 pb-8 shadow-xl hover:shadow-2xl shadow-lg transition-all duration-500 h-full border border-white/50 ">
 
                             <div className="absolute top-1 -left-10  w-[106%] h-10 blur-lg bg-gradient-to-r from-white/90  via-white to-white/90 -rotate-[23deg] origin-top-right"></div>
 
@@ -68,12 +68,12 @@ export default function Mission() {
                             </div>
 
                             {/* Vision Title */}
-                            <h2 className="text-4xl font-medium text-gray-900 mb-6 relative z-10">
+                            <h2 className="md:text-4xl text-3xl font-medium text-gray-900 md:mb-6 mb-6 relative z-10">
                                 Vision
                             </h2>
 
                             {/* Vision Description */}
-                            <p className="text-gray-800 leading-relaxed text-lg relative z-10">
+                            <p className="text-gray-800 leading-relaxed text-lg relative z-10  text-justify ">
                                 To be the most trusted and innovative elevator company in India,
                                 recognized for our commitment to safety, quality, and customer-
                                 centric solutions that transform vertical mobility experiences.

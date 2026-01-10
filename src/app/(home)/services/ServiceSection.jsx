@@ -1,7 +1,7 @@
 'use client';
 
+import line from "@/assests/home/line.svg";
 import { ArrowRight, Building2, Check, Sparkles, Wrench } from 'lucide-react';
-import line from "@/assests/home/line.svg"
 import Image from "next/image";
 
 
@@ -69,7 +69,7 @@ const ElevatorServices = () => {
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex items- justify-center space-x-3 mb-6">
-            <div className="w-14 h-0.5 bg-[#376378] mt-2"></div>
+            <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
             <h2 className="text-[#376378] font-medium text-xl tracking-widest uppercase">
               WHAT WE OFFER
             </h2>
@@ -93,8 +93,8 @@ const ElevatorServices = () => {
               >
                 <div
                   className={`h-full rounded-lg p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${isMiddle
-                      ? 'bg-[#376378] text-white'
-                      : 'bg-white text-gray-900 border border-[#376378]'
+                    ? 'bg-[#376378] text-white'
+                    : 'bg-white text-gray-900 border border-[#376378]'
                     }`}
                 >
 
@@ -138,8 +138,8 @@ const ElevatorServices = () => {
 
                   {/* CTA Button */}
                   <button className={`flex items-center gap-2 font-medium text-sm transition-all duration-300 group-hover:gap-4 ${isMiddle
-                      ? 'text-white'
-                      : 'text-gray-800'
+                    ? 'text-white'
+                    : 'text-gray-800'
                     }`}>
                     Get Started
                     <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />

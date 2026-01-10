@@ -21,15 +21,15 @@ export default function Values() {
             color: "text-[#376378]"
         },
         {
-            title: "INNOVATION",
+            title: "INNOVATION\n\n",
             description: "Continuously improving our solutions with the latest technological advancements.",
             color: "text-[#376378]"
         }
     ];
 
     return (
-        <section className="relative md:pb-24 pb-10 md:pt-36 pt-10 px-6 overflow-hidden font-sathoshi">
-        
+        <section className="relative md:pb-24 pb-10 md:pt-36 pt-10 px-4 overflow-hidden font-sathoshi">
+
 
             {/* Decorative line curves */}
             <svg className="absolute top-0 left-0 w-full h-full opacity-20" xmlns="http://www.w3.org/2000/svg">
@@ -63,35 +63,41 @@ export default function Values() {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
-                <div className="text-center mb-16">
-                    <div className="flex items-start justify-center space-x-3 mb-4">
+                <div className="md:text-center mb-16">
+                    <div className="flex items-start md:justify-center space-x-3 mb-4">
                         <div className="w-16 h-0.5 bg-[#376378] mt-2"></div>
-                        <h3 className="text-[#376378] font-medium text-xl tracking-wide uppercase">
+                        <h3 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
                             Our Values
                         </h3>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-medium text-gray-900">
+                    <h2 className="text-3xl md:text-5xl font-medium text-gray-900">
                         What Drives <span className="text-[#376378]">Us Forward</span>
                     </h2>
                 </div>
 
                 {/* Values Grid */}
                 <div className="relative">
-                    
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
+
+                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 lg:gap-6">
                         {values.map((value, index) => (
                             <div key={index} className="relative group bg-blur-sm">
 
                                 {/* Value Card */}
-                                <div className="text-center p-6  hover:shadow-xl transition-all duration-300 h-full">
+                                <div className="text-center md:p-6 hover:shadow-xl transition-all duration-300 h-full">
                                     {/* Title with accent color */}
-                                    <h3 className={`text-xl font-medium mb-4 ${value.color} uppercase tracking-wide`}>
+
+                                    <h3 className={`hidden md:block text-xl font-medium mb-4 ${value.color} uppercase tracking-wide`}>
                                         {value.title.split(' ')[0]} <span className="text-gray-900">{value.title.split(' ').slice(1).join(' ')}</span>
                                     </h3>
 
+                                    <h3
+                                        className={`md:hidden block text-xl font-medium mb-4 ${value.color} uppercase tracking-wide`}
+                                        dangerouslySetInnerHTML={{ __html: value.title }}
+                                    />
+
                                     {/* Description */}
-                                    <p className="text-gray-700  leading-relaxed">
+                                    <p className="text-gray-700  leading-relaxed text-justify">
                                         {value.description}
                                     </p>
                                 </div>

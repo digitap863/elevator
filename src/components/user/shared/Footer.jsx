@@ -1,7 +1,6 @@
 "use client"
-import React from 'react';
-import { Facebook, Youtube, Instagram, MapPin, Phone, Mail } from 'lucide-react';
 import footerlogo from '@/assests/home/footerlogo.svg';
+import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react';
 import Image from 'next/image';
 
 
@@ -14,9 +13,9 @@ export default function Footer() {
           <div className="flex flex-col justify-center items-center space-y-6">
             <div className="p-4 rounded-lg">
               {/* Replace the src with your logo image path */}
-              <Image 
-                src={footerlogo} 
-                alt="Reliant Elevators & Escalators" 
+              <Image
+                src={footerlogo}
+                alt="Reliant Elevators & Escalators"
                 className="h-auto w-auto"
               />
             </div>
@@ -34,7 +33,7 @@ export default function Footer() {
           </div>
 
           {/* Navigation Section */}
-          <div className="lg:pl-32">
+          <div className="pl-32">
             <h3 className="text-xl font-medium mb-4">Navigation</h3>
             <nav className="flex flex-col space-y-2">
               <a href="#" className="hover:text-gray-300 transition">Home</a>
@@ -47,7 +46,7 @@ export default function Footer() {
           </div>
 
           {/* Contact Information Section */}
-          <div className="space-y-6">
+          <div className="space-y-6 md:pl-0 pl-16">
             <div>
               <div className="flex items-start space-x-3 mb-2">
                 <div className="bg-white text-teal-900 p-2 rounded-full">
@@ -94,7 +93,7 @@ export default function Footer() {
       {/* Bottom Bar */}
       <div className="border-t border-teal-700">
         <div className="max-w-7xl mx-auto px-6 py-4">
-          <div className="flex flex-col md:flex-row justify-center items-center space-y-2 md:space-y-0 md:space-x-6 text-sm">
+          <div className="flex flex-row justify-center items-center md:space-x-6 space-x-5 text-sm">
             <a href="#" className="hover:text-gray-300 transition">Privacy Policy</a>
             <span className="hidden md:inline">|</span>
             <a href="#" className="hover:text-gray-300 transition">Terms of Use</a>

@@ -1,5 +1,6 @@
 "use client"
 import contac from '@/assests/home/contac.png';
+import contamob from '@/assests/home/contamob.png';
 import Link from 'next/link';
 
 
@@ -14,7 +15,7 @@ export default function Contact({
   showSecondaryButton = true
 }) {
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8  font-sathoshi">
+    <div className="py-16 px-2 sm:px-6 lg:px-8  font-sathoshi">
       <div className="max-w-7xl mx-auto">
         <div className="relative rounded-3xl overflow-hidden shadow-2xl">
           {/* Background Image with Overlay */}
@@ -22,15 +23,20 @@ export default function Contact({
             <img
               src={contac.src}
               alt="Modern Elevator"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover md:block hidden "
+            />
+            <img
+              src={contamob.src}
+              alt="Modern Elevator"
+              className="w-full h-full object-cover md:hidden block "
             />
             {/* <div className="absolute inset-0 bg-black/70"></div> */}
           </div>
 
           {/* Content */}
-          <div className="relative z-10 py-20  sm:py-20 text-center">
+          <div className="relative z-10 py-10 px-4  md:py-20 text-center">
             {/* Label */}
-            <div className="flex items- justify-center gap-4 mb-6 pr-10">
+            <div className="flex items- justify-center gap-4 md:mb-6 mb-4 pr-10">
               <div className="w-12 h-0.5 bg-red-600 mt-2"></div>
               <span className="text-red-600 text-lg font-medium tracking-widest uppercase">
                 {label}
@@ -38,25 +44,25 @@ export default function Contact({
             </div>
 
             {/* Heading */}
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-medium text-white mb-6">
+            <h2 className="text-4xl sm:text-4xl lg:text-5xl font-medium text-white md:mb-6 mb-5">
               {heading}
             </h2>
 
             {/* Description */}
-            <p className="text-gray-300 text-base sm:text-lg max-w-2xl mx-auto mb-10">
+            <p className="text-gray-300 text-sm md:text-lg max-w-2xl mx-auto md:mb-10 mb-5">
               {description}
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <div className="flex flex-row items-center justify-center md:gap-4 gap-2">
               <Link href={primaryButtonLink}>
-                <button className="px-8 py-2 bg-red-600 hover:bg-red-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
+                <button className=" md:text-base text-sm px-8 py-2 md:tracking-normal  tracking-tight bg-red-600 hover:bg-red-700 text-white font-medium rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-105">
                   {primaryButtonText}
                 </button>
               </Link>
               {showSecondaryButton && (
                 <Link href={secondaryButtonLink}>
-                  <button className="px-8 py-2 border-2 border-white/50 hover:border-white text-white font-medium rounded-full transition-all duration-300 hover:bg-white/10">
+                  <button className="md:text-base text-sm px-8 py-2  md:tracking-normal  tracking-tight border-2 border-white/50 hover:border-white text-white font-medium rounded-full transition-all duration-300 hover:bg-white/10">
                     {secondaryButtonText}
                   </button>
                 </Link>

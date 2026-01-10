@@ -274,17 +274,17 @@ export default function TestimonialsCards() {
   };
 
   return (
-    <div className="py-16 px-4 sm:px-6 lg:px-8">
+    <div className="md:py-16 py-6 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
 
         {/* Swiper Implementation */}
         <Swiper
-          modules={[Pagination, Autoplay]}
+          modules={[ Autoplay]}
           spaceBetween={30} // Gap between slides
-          slidesPerView={1} // Default mobile view
+          slidesPerView={1.2} // Default mobile view
           loop={true}
           centeredSlides={true} // Center the active slide
-          pagination={{ clickable: true }}
+          // pagination={{ clickable: true }}
           autoplay={{
             delay: 3000,
             disableOnInteraction: false,
@@ -294,7 +294,7 @@ export default function TestimonialsCards() {
           // Responsive breakpoints to mimic your original grid
           breakpoints={{
             640: {
-              slidesPerView: 1,
+              slidesPerView: 1.2,
               centeredSlides: true,
             },
             768: {
@@ -347,12 +347,12 @@ export default function TestimonialsCards() {
                   </div>
 
                   {/* Author Info */}
-                  <div className={`flex items-center gap-4 pt-8 mt-auto ${index === activeIndex ? 'border-slate-200' : 'border-slate-200'
+                  <div className={`flex items-center gap-4 pt-12 mt-auto ${index === activeIndex ? 'border-[#C10510]' : 'border-[#C10510]'
                     }`}>
                     <img
                       src={testimonial.author.image}
                       alt={testimonial.author.name}
-                      className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md"
+                      className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C10510] shadow-md"
                     />
                     <div>
                       <h4 className={`font-semibold text-sm ${index === activeIndex ? 'text-slate-800' : 'text-slate-800'

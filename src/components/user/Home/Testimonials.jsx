@@ -1,27 +1,26 @@
 "use client"
-import React from 'react';
-import Image from 'next/image';
+import rect from "@/assests/home/rect.svg";
 import { Play } from 'lucide-react';
-import rect from "@/assests/home/rect.svg"
+import Image from 'next/image';
 
 export default function Testimonials() {
   return (
     <div className="relative  py-16 px-4 sm:px-6 lg:px-8 overflow-hidden font-sathoshi">
-      
+
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 ">
           {/* Left Content */}
           <div>
             {/* Header */}
-            <div className="flex items-start space-x-3 mb-6">
-                <div className="w-14 h-0.5 bg-[#376378] mt-2"></div>
-                <h2 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
-                  Client Testimonials
-                </h2>
-              </div>
+            <div className="flex items-start space-x-3 md:mb-6">
+              <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
+              <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
+                Client Testimonials
+              </h2>
+            </div>
 
             {/* Title */}
-            <h1 className="text-4xl lg:text-5xl font-medium text-black mb-6 leading-tight pt-20">
+            <h1 className="text-3xl lg:text-5xl font-medium text-black mb-6 leading-tight md:pt-20 pt-4 ">
               What Our Happy <span className="text-[#545454]">Clients Say About Reliant </span>
             </h1>
 
@@ -31,7 +30,7 @@ export default function Testimonials() {
             </p>
 
             {/* View More Button */}
-            <button className="px-8 py-3 border-2 border-[#376378] text-[#376378] font-semibold rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full hover:bg-[#376378] hover:text-white transition-all duration-300">
+            <button className="md:px-8 px-6 md:py-3 py-2 md:text-base text-sm border-2 border-[#376378] text-[#376378] font-semibold rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full hover:bg-[#376378] hover:text-white transition-all duration-300">
               View More
             </button>
           </div>
@@ -42,11 +41,11 @@ export default function Testimonials() {
             <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
               {/* Video Thumbnail */}
               <Image
-                src= {rect}
+                src={rect}
                 alt="Modern Elevator"
                 className="w-full h-80 md:h-110 object-cover"
               />
-              
+
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors duration-300"></div>
 
@@ -83,7 +82,7 @@ export default function Testimonials() {
       {/* Bottom decorative wave */}
       <div className="absolute bottom-0 left-0 w-full h-24">
         <svg className="w-full h-full" viewBox="0 0 1000 100" preserveAspectRatio="none">
-          <path d="M0,50 Q250,100 500,50 T1000,50 L1000,100 L0,100 Z" fill="white" opacity="0.3"/>
+          <path d="M0,50 Q250,100 500,50 T1000,50 L1000,100 L0,100 Z" fill="white" opacity="0.3" />
         </svg>
       </div>
     </div>

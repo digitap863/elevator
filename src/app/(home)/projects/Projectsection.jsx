@@ -67,13 +67,13 @@ export default function Projectsection() {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section className="pb-16 pt-28 px-4 ">
+    <section className="pb-16 pt-28 px-3 ">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
-        <div className="text-center  mx-auto mb-12">
-          <div className="flex items-start justify-center  space-x-3 mb-6 font-satoshi">
+        <div className="md:text-center text-left  mx-auto mb-12">
+          <div className="flex items-start md:justify-center  space-x-3 mb-6 font-satoshi">
                 <div className="w-14 h-0.5 bg-[#376378] mt-3"></div>
-                <h2 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
+                <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
                     OUR PROJECTS 
                 </h2>
             </div>
@@ -83,12 +83,12 @@ export default function Projectsection() {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center md:gap-3 gap-2 mb-12">
           {filters.map((filter) => (
             <button
               key={filter}
               onClick={() => setActiveFilter(filter)}
-              className={`px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
+              className={`md:px-6 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${
                 activeFilter === filter
                   ? 'bg-slate-700 text-white shadow-lg'
                   : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
@@ -100,21 +100,21 @@ export default function Projectsection() {
         </div>
 
         {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-9">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 md:gap-9 gap-3">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
               className="group  rounded-lg overflow-hidden"
             >
               {/* Image Container */}
-              <div className="relative h-64 overflow-hidden">
+              <div className="relative md:h-64 h-auto overflow-hidden">
                 <Image
                   src={project.image}
                   alt={project.title}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500 rounded-xl overflow-hidden"
                 />
                 {/* Category Badge */}
-                <div className="absolute top-4 left-4">
+                <div className="absolute md:top-4 top-2 md:left-4 left-2">
                   <span className="bg-orange-500 text-white text-xs font-semibold px-3 py-1 rounded-full">
                     {project.category}
                   </span>
@@ -123,14 +123,14 @@ export default function Projectsection() {
 
               {/* Content */}
               <div className="p-2">
-                <h3 className="text-lg font-medium text-gray-900 mb-3">
+                <h3 className="md:text-lg text-base font-medium text-gray-900 mb-3">
                   {project.title}
                 </h3>
                 
                 {/* Author */}
                 <div className="flex items-center gap-2 mb-3">
-                  <div className="w-8 h-8 flex items-center justify-center">
-                    <HiOutlineMapPin className="w-8 h-8 text-red-700" />
+                  <div className=" flex items-center justify-center">
+                    <HiOutlineMapPin className="md:w-8 md:h-8 w-6 h-6 text-red-700" />
                   </div>
                   <span className="text-sm text-gray-600">{project.author}</span>
                 </div>

@@ -1,7 +1,7 @@
 'use client';
 
+import serban from '@/assests/home/serban.svg';
 import Image from 'next/image';
-import serban from '@/assests/home/serban.svg'
 
 const Banner = () => {
     return (
@@ -21,17 +21,17 @@ const Banner = () => {
                 <div className="relative z-10 flex flex-row items-center justify-start h-full  px-4  ">
 
                     <div className='lg:pb-20'>
-                    <div className="flex items-start space-x-3 mb-6 font-satoshi">
-                        <div className="w-14 h-0.5 bg-[#376378] mt-2"></div>
-                        <h2 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
-                            OUR SERVICES
-                        </h2>
+                        <div className="flex items-start space-x-3 mb-6 font-satoshi">
+                            <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
+                            <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
+                                OUR SERVICES
+                            </h2>
+                        </div>
+                        <p className="font-aquire md:text-6xl text-4xl">
+                            COMPLETE<br /> <span className="text-red-500"> ELEVATOR </span> SINCE <br />
+                            SOLUTIONS
+                        </p>
                     </div>
-                     <p className="font-aquire text-6xl">
-                        COMPLETE<br/> <span className="text-red-500"> ELEVATOR </span> SINCE <br />
-                        SOLUTIONS
-                    </p>
-                    </div> 
                 </div>
             </div>
 

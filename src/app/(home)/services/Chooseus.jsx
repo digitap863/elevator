@@ -1,8 +1,8 @@
 'use client';
 
+import mech from "@/assests/home/mech.svg";
 import { Award, Clock, Shield, Zap } from 'lucide-react';
 import Image from 'next/image';
-import mech from "@/assests/home/mech.svg"
 
 const Chooseus = () => {
     const features = [
@@ -39,7 +39,7 @@ const Chooseus = () => {
                 {/* Header */}
                 <div className="mb-16">
                     <div className="flex items-start space-x-3 mb-6">
-                        <div className="w-14 h-0.5 bg-[#376378] mt-2"></div>
+                        <div className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"></div>
                         <h2 className="text-[#376378] font-medium text-xl tracking-widest uppercase">
                             WHY CHOOSE US
                         </h2>
@@ -69,15 +69,15 @@ const Chooseus = () => {
                                     </div>
 
 
-                                <div>
-                                    {/* Title */}
-                                    <h3 className="text-xl font-medium text-[#376378] mb-2">
-                                        {feature.title}
-                                    </h3>
-                                    {/* Description */}
-                                    <p className="text-sm text-gray-600 leading-relaxed">
-                                        {feature.description}
-                                    </p>
+                                    <div>
+                                        {/* Title */}
+                                        <h3 className="text-xl font-medium text-[#376378] mb-2">
+                                            {feature.title}
+                                        </h3>
+                                        {/* Description */}
+                                        <p className="text-sm text-gray-600 leading-relaxed">
+                                            {feature.description}
+                                        </p>
                                     </div>
                                 </div>
                             );

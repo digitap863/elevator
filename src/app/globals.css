@@ -51,3 +51,28 @@
 .font-dragon{
   font-family: 'Dragon', sans-serif;
 }
+
+.bg-container {
+  position: relative;
+}
+
+.bg-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('../assests/home/bgimg.png');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Apply opacity only on mobile */
+@media (max-width: 768px) {
+  .bg-container::before {
+    opacity: 0.5;
+  }
+}

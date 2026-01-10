@@ -64,7 +64,7 @@ export default function Projects() {
   ];
 
   return (
-    <section className="relative py-20 px-6 overflow-hidden font-sathoshi">
+    <section className="relative py-20 px-4 overflow-hidden font-sathoshi">
       {/* Decorative dots pattern - top left */}
       <div className="absolute top-8 left-12 grid grid-cols-6 gap-6 opacity-20">
         {[...Array(24)].map((_, i) => (
@@ -83,7 +83,7 @@ export default function Projects() {
         {/* Section Header */}
         <div className="flex items-start space-x-3 mb-16 justify-">
           <div className="w-14 h-0.5 bg-[#376378] mt-3"></div>
-          <h2 className="text-[#376378] font-medium text-3xl tracking-wide uppercase">
+          <h2 className="text-[#376378] font-medium md:text-3xl text-2xl tracking-wide uppercase">
             Our Projects
           </h2>
         </div>
@@ -119,14 +119,14 @@ export default function Projects() {
             breakpoints={{
               320: {
                 coverflowEffect: {
-                  rotate: 10,
+                  rotate: 15,
                   depth: 150,
                 },
               },
               768: {
                 coverflowEffect: {
                   rotate: 15,
-                  depth: 200,
+                  depth: 250,
                 },
               },
               1024: {
@@ -177,7 +177,7 @@ export default function Projects() {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          <div className="absolute bottom-4 right-4 z-10 flex gap-3">
+          <div className="absolute md:bottom-0 -bottom-12 md:right-4 right-1 z-10 flex gap-3">
             <div className="swiper-button-prev-custom w-12 h-12 bg-white/90 hover:bg-white rounded-full shadow-lg flex items-center justify-center cursor-pointer transition-all duration-300 hover:scale-110 group">
               <svg className="w-6 h-6 text-[#376378] group-hover:text-red-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -193,7 +193,7 @@ export default function Projects() {
 
         {/* View More Button */}
         <div className="flex justify-center mt-12">
-          <button className="px-10 py-3 border-2 border-[#376378] text-[#376378]  rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full  font-semibold hover:bg-[#376378] hover:text-white transition duration-300 shadow-lg text-lg">
+          <button className="md:px-8 px-6 md:py-3 py-2 md:text-base text-sm  border-2 border-[#376378] text-[#376378]  rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full  font-semibold hover:bg-[#376378] hover:text-white transition duration-300 shadow-lg text-lg">
             View More
           </button>
         </div>

@@ -37,48 +37,48 @@ const timelineItems = [
 
 export default function Home() {
   return (
-    <section className="">
+    <section id="milestones" className="">
       <div className="w-full py-16 md:py-20 relative">
 
         <Image src={line} alt="line" className="absolute top-[30%] left-0" />
         <div className="max-w-6xl mx-auto px-4">
           {/* Header */}
           <div className="flex items-start space-x-3 mb-6 font-satoshi">
-            <div className="w-14 h-0.5 bg-[#376378] mt-2"></div>
-            <h2 className="text-[#376378] font-medium text-2xl tracking-wide uppercase">
+            <div className="md:w-14 w-14 h-0.5 bg-[#376378] mt-2"></div>
+            <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
               Our Journey
             </h2>
           </div>
 
           {/* Title */}
-          <h2 className="text-4xl md:text-5xl font-medium mb-20">
+          <h2 className="text-3xl md:text-5xl font-medium mb-20 tracking-tight">
             Milestones We're <span className="text-[#376378]">Proud Of</span>
           </h2>
 
           {/* Timeline Container */}
           <div className="relative">
-          
+
             {/* Timeline Items */}
             <div className="relative space-y-8">
               {timelineItems.map((item, index) => (
                 <div key={index} className="flex items-start gap-8 min-h-32">
                   {/* Dot Indicator */}
                   <div className="flex justify-center w-full ">
-                    <div className="absolute w-7 h-6 bg-[#376378] rounded-[90px] shadow-md left-1/2 transform -translate-x-[50%] relative -top-7"></div>
+                    <div className="absolute w-6 h-6 bg-[#376378] rounded-[90px] shadow-md left-1/2 transform md:-translate-x-[50%] translate-x-[60%] relative -top-7"></div>
                   </div>
 
                   {/* Content Container */}
                   <div className="w-full ">
                     {item.position === "left" ? (
                       // Left Side Content
-                      <div className="flex justify-end max-w-xs relative -left-[70%] top-[12%]">
+                      <div className="flex justify-end max-w-xs relative md:-left-[70%] -left-[110%] top-[12%]">
                         <div className="text-left">
                           <h3 className="text-5xl font-bold text-[#376378] font-dragon" style={{
                             WebkitTextStroke: '2px #6B8FA3',
                             WebkitTextFillColor: 'transparent',
                             color: 'transparent'
                           }}>{item.year}</h3>
-                          <p className="text- font-semibold text-gray-700 uppercase tracking-wide  pb-4">
+                          <p className="text- font-semibold text-gray-700 uppercase tracking-wide  md:pb-4">
                             {item.subtitle}
                           </p>
                           <p className="text-sm text-gray-800 mt-3 leading-relaxed pb-2 tracking-wide lg:pr-10">{item.description}</p>
@@ -92,7 +92,7 @@ export default function Home() {
                           WebkitTextFillColor: 'transparent',
                           color: 'transparent'
                         }}>{item.year}</h3>
-                        <p className="text font-semibold text-gray-700 uppercase tracking-wide  pb-4">
+                        <p className="text font-semibold text-gray-700 uppercase tracking-wide  md:pb-4">
                           {item.subtitle}
                         </p>
                         <p className="text-sm text-gray-800 mt-3 leading-relaxed pb-2 tracking-wide ">{item.description}</p>
