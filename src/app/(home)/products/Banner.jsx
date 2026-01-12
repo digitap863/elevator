@@ -1,8 +1,9 @@
 'use client';
 
 import proban from '@/assests/home/proban.svg';
-import Image from 'next/image';
+import prodmob from '@/assests/home/prodmob.svg';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 
 const Banner = () => {
@@ -10,17 +11,23 @@ const Banner = () => {
         <div className="relative w-full h-screen ">
             {/* Image Background */}
             <Image
+                src={prodmob}
+                alt="Banner"
+                fill
+                className="object-cover h-screen w-full md:hidden"
+            />
+            <Image
                 src={proban}
                 alt="Banner"
                 fill
-                className="object-cover h-screen w-full"
+                className="object-cover h-screen w-full hidden md:block"
             />
 
 
             {/* Overlay for better text readability */}
             <div className="relative max-w-7xl mx-auto h-screen">
                 {/* Content */}
-                <div className="relative z-10 flex flex-row items-center md:justify-end h-full  px-4  ">
+                <div className="relative z-10 flex flex-row items-center justify-end h-full  px-4  ">
 
                     <motion.div
                         className='lg:pb-20'
@@ -48,6 +55,9 @@ const Banner = () => {
 
             {/* i want blur effect in the bottom of the video full width  */}
             <div className="absolute -bottom-12 left-0 w-full h-24 bg-[#FFFFFF] blur-lg"></div>
+            <div className="absolute -bottom-12 -left-20 w-[25%] h-24 bg-[#FFFFFF] blur-lg "></div>
+            <div className="absolute -bottom-12 -right-20 w-[25%] h-24 bg-[#FFFFFF] blur-lg "></div>
+
         </div>
     );
 };

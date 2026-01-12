@@ -1,19 +1,28 @@
 'use client';
 
 import serban from '@/assests/home/serban.svg';
-import Image from 'next/image';
+import serbanmob from '@/assests/home/serbanmob.svg';
 import { motion } from 'framer-motion';
+import Image from 'next/image';
+
 
 
 const Banner = () => {
     return (
         <div className="relative w-full h-screen ">
-            {/* Image Background */}
+            {/* Image Background - Mobile */}
+            <Image
+                src={serbanmob}
+                alt="Banner"
+                fill
+                className="object-cover h-screen w-full md:hidden"
+            />
+            {/* Image Background - Desktop */}
             <Image
                 src={serban}
                 alt="Banner"
                 fill
-                className="object-cover h-screen w-full"
+                className="object-cover h-screen w-full hidden md:block"
             />
 
 

@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 const Banner = () => {
     return (
-        <div className="relative w-full md:h-screen h-[67vh] ">
+        <div className="relative w-full md:h-screen h-[70vh] ">
             <video
                 autoPlay
                 loop
