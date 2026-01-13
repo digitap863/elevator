@@ -4,8 +4,8 @@ import "./globals.css";
 
 
 export const metadata = {
-  title: "Elevators",
-  description: "Elevators Website",
+  title: "Reliant Elevators",
+  description: "Reliant Elevators Website",
 };
 
 const roboto = Roboto({
