@@ -21,7 +21,7 @@ const Banner = () => {
                 playsInline
                 preload="metadata"
                 loading="lazy"
-                poster="/images/video-poster.svg"
+                poster="/images/video-posteri.svg"
                 className="absolute w-full h-full object-cover"
             >
                 <source src="/videos/banvdo.mp4" type="video/mp4" />
