@@ -70,7 +70,7 @@ export default function AboutSection() {
                           fontWeight="500"
                           fontFamily="Satoshi"
                         >
-                          10
+                          15
                         </text>
                       </mask>
                     </defs>
@@ -117,7 +117,7 @@ export default function AboutSection() {
                           fontWeight="500"
                           fontFamily="Satoshi"
                         >
-                          10
+                          15
                         </text>
                       </mask>
                     </defs>

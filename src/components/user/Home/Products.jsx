@@ -1,15 +1,19 @@
 "use client"
 import L1 from "@/assests/home/L1.png";
 import L2 from "@/assests/home/L2.png";
-import L3 from "@/assests/home/L3.png";
+import L3 from "@/assests/home/L6.png";
 import L4 from "@/assests/home/L4.png";
 import L5 from "@/assests/home/L5.png";
+import L7 from "@/assests/home/L7.png";
+
 import line from "@/assests/home/line.svg";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
+
+
 
 function ProductCard({ product, index }) {
   const ref = useRef(null);
@@ -115,7 +119,7 @@ export default function Products() {
       subtitle: "ELEVATORS",
       description:
         "Home Elevators offer convenient and comfortable vertical movement within residences, enhancing accessibility and lifestyle with compact design and smooth operation.",
-      image: L1,
+      image: L2,
     },
     {
       id: 2,
@@ -124,7 +128,7 @@ export default function Products() {
       subtitle: "ELEVATORS",
       description:
         "Commercial Elevators are designed to meet the vertical mobility needs of business environments, offering smooth, safe, and efficient transportation for passengers across multi-floor commercial spaces",
-      image: L2,
+      image: L1,
     },
     {
       id: 3,
@@ -151,7 +155,7 @@ export default function Products() {
       subtitle: "ELEVATORS",
       description:
         "Escalators provide continuous, efficient movement of people in high-traffic spaces such as malls, metro stations, airports, and commercial buildings.",
-      image: L5,
+      image: L7,
     },
   ]
 

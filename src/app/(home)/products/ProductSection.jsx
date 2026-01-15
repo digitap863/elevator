@@ -3,9 +3,12 @@
 import line from '@/assests/home/line.svg';
 import pr1 from '@/assests/home/pr1.svg';
 import pr2 from '@/assests/home/pr2.svg';
-import pr3 from '@/assests/home/pr3.svg';
+// import pr3 from '@/assests/home/pr3.svg';
 import pr4 from '@/assests/home/pr4.svg';
-import pr5 from '@/assests/home/pr5.svg';
+// import pr5 from '@/assests/home/pr5.svg';
+import L6 from "@/assests/home/L6.png";
+import L7 from "@/assests/home/L7.png";
+
 import { ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
 import { motion } from "framer-motion";
@@ -18,7 +21,7 @@ const ElevatorSections = () => {
       tag: "LUXURY WITHIN REACH",
       title: "HOME ELEVATORS",
       description: "Home Elevators offer convenient and comfortable vertical movement within residences, enhancing accessibility and adding value with compact design and smooth operation.",
-      image: pr1,
+      image: pr2,
       features: [
         "Compact cabin designs",
         "Whisper-quiet operation",
@@ -35,7 +38,7 @@ const ElevatorSections = () => {
       tag: "FOR BUSINESS",
       title: "COMMERCIAL ELEVATORS",
       description: "Commercial Elevators are designed to meet the vertical mobility needs of business environments, offering smooth, safe, and efficient transportation across multi-floor commercial spaces.",
-      image: pr2,
+      image: pr1,
       features: [
         "High-speed operation",
         "Heavy-duty capacity",
@@ -52,7 +55,7 @@ const ElevatorSections = () => {
       tag: "ENGINEERED FOR CARE",
       title: "HOSPITAL ELEVATORS",
       description: "Hospital Elevators are specially engineered for medical environments, ensuring smooth, safe, and swift transportation of patients, stretchers, medical staff, and equipment between floors.",
-      image: pr3,
+      image: L6,
       features: [
         "Stretcher-compatible size",
         "Smooth ride technology",
@@ -87,7 +90,7 @@ const ElevatorSections = () => {
       tag: "ENGINEERED FOR COMMERCIAL",
       title: "STRUCTURAL ELEVATORS",
       description: "Escalators provide continuous, efficient movement of people in high-traffic spaces such as malls, metro stations, airports, and commercial buildings.",
-      image: pr5,
+      image: L7,
       features: [
         "Stretcher-compatible size",
         "Smooth ride technology",
@@ -131,7 +134,7 @@ const ElevatorSections = () => {
                   </h2>
 
                   <div className="md:hidden flex-1  ">
-                    <div className="relative overflow-hidden ">
+                    <div className="relative overflow-hidden z-10 ">
                       <Image
                         src={section.image}
                         alt={section.title}

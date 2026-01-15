@@ -1,178 +1,13 @@
-// import { Star } from 'lucide-react';
-
-// export default function TestimonialsCards() {
-//   const testimonials = [
-//     {
-//       rating: 4.5,
-//       title: 'Lorem ipsum dolor sit amet, consectetur',
-//       quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
-//       author: {
-//         name: 'Brandon Kiel',
-//         role: 'CEO',
-//         image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces'
-//       }
-//     },
-//     {
-//       rating: 4.5,
-//       title: 'Lorem ipsum dolor sit amet, consectetur',
-//       quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
-//       author: {
-//         name: 'Sarah Jeans',
-//         role: 'MD',
-//         image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces'
-//       },
-//       highlighted: true
-//     },
-//     {
-//       rating: 5,
-//       title: 'Lorem ipsum dolor sit amet, consectetur',
-//       quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
-//       author: {
-//         name: 'Annete Geas',
-//         role: 'MD',
-//         image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces'
-//       }
-//     },
-//      {
-//       rating: 4.5,
-//       title: 'Lorem ipsum dolor sit amet, consectetur',
-//       quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
-//       author: {
-//         name: 'Brandon Kiel',
-//         role: 'CEO',
-//         image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces'
-//       }
-//     },
-//     {
-//       rating: 4.5,
-//       title: 'Lorem ipsum dolor sit amet, consectetur',
-//       quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
-//       author: {
-//         name: 'Sarah Jeans',
-//         role: 'MD',
-//         image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces'
-//       },
-//       highlighted: true
-//     },
-//     {
-//       rating: 5,
-//       title: 'Lorem ipsum dolor sit amet, consectetur',
-//       quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
-//       author: {
-//         name: 'Annete Geas',
-//         role: 'MD',
-//         image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces'
-//       }
-//     }
-//   ];
-
-//   const renderStars = (rating) => {
-//     const stars = [];
-//     const fullStars = Math.floor(rating);
-//     const hasHalfStar = rating % 1 !== 0;
-
-//     for (let i = 0; i < fullStars; i++) {
-//       stars.push(
-//         <Star key={i} className="w-5 h-5 fill-orange-500 text-orange-500" />
-//       );
-//     }
-
-//     if (hasHalfStar) {
-//       stars.push(
-//         <div key="half" className="relative">
-//           <Star className="w-5 h-5 text-orange-500" />
-//           <div className="absolute inset-0 overflow-hidden w-1/2">
-//             <Star className="w-5 h-5 fill-orange-500 text-orange-500" />
-//           </div>
-//         </div>
-//       );
-//     }
-
-//     const emptyStars = 5 - Math.ceil(rating);
-//     for (let i = 0; i < emptyStars; i++) {
-//       stars.push(
-//         <Star key={`empty-${i}`} className="w-5 h-5 text-orange-500" />
-//       );
-//     }
-
-//     return stars;
-//   };
-
-//   return (
-//     <div className="py-16 px-4 sm:px-6 lg:px-8">
-//       <div className="max-w-7xl mx-auto">
-//         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-//           {testimonials.map((testimonial, index) => (
-//             <div
-//               key={index}
-//               className={`relative ${
-//                 testimonial.highlighted
-//                   ? 'transform lg:scale-105 lg:-translate-y-4'
-//                   : ''
-//               }`}
-//             >
-//               <div
-//                 className={`rounded-2xl p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${
-//                   testimonial.highlighted
-//                     ? 'bg-gradient-to-br from-orange-50 to-amber-50 border-2 border-orange-200'
-//                     : 'bg-white'
-//                 }`}
-//               >
-//                 {/* Star Rating */}
-//                 <div className="flex gap-1 mb-6">
-//                   {renderStars(testimonial.rating)}
-//                 </div>
-
-//                 {/* Title */}
-//                 <h3 className="text-lg font-semibold text-slate-800 mb-4">
-//                   {testimonial.title}
-//                 </h3>
-
-//                 {/* Quote */}
-//                 <p className="text-slate-600 text-sm leading-relaxed mb-8 italic">
-//                   {testimonial.quote}
-//                 </p>
-
-//                 {/* Author Info */}
-//                 <div className="flex items-center gap-4 pt-6 border-t border-slate-200">
-//                   <img
-//                     src={testimonial.author.image}
-//                     alt={testimonial.author.name}
-//                     className="w-12 h-12 rounded-full object-cover ring-2 ring-white shadow-md"
-//                   />
-//                   <div>
-//                     <h4 className="font-semibold text-slate-800 text-sm">
-//                       {testimonial.author.name}
-//                     </h4>
-//                     <p className="text-slate-500 text-xs">
-//                       {testimonial.author.role}
-//                     </p>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
-
-
-
-
-
 'use client';
 
+import { motion, useInView } from 'framer-motion';
 import { Star } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useRef, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
 
 export default function TestimonialsCards() {
   const [activeIndex, setActiveIndex] = useState(0);
@@ -181,65 +16,65 @@ export default function TestimonialsCards() {
 
   const testimonials = [
     {
-      rating: 4.5,
-      title: 'Lorem ipsum dolor sit amet, consectetur',
-      quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
+      rating: 5,
+      title: 'Exceptional Service & Quality Installation',
+      quote: '"We installed a passenger elevator in our 5-story commercial building in Kochi. The team was professional, completed the work on time, and the elevator runs smoothly. Their after-sales service is outstanding!"',
       author: {
-        name: 'Brandon Kiel',
-        role: 'CEO',
+        name: 'Rajesh Kumar',
+        role: 'Building Manager, Kochi',
         image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces'
       }
     },
     {
-      rating: 4.5,
-      title: 'Lorem ipsum dolor sit amet, consectetur',
-      quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
+      rating: 5,
+      title: 'Best Home Lift Solution in Kerala',
+      quote: '"As a senior citizen, climbing stairs was becoming difficult. They installed a beautiful home lift in our residence. The design is elegant, operation is whisper-quiet, and it has truly improved our quality of life."',
       author: {
-        name: 'Sarah Jeans',
-        role: 'MD',
+        name: 'Meera Nair',
+        role: 'Homeowner, Trivandrum',
         image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces'
       },
       highlighted: true
     },
     {
-      rating: 5,
-      title: 'Lorem ipsum dolor sit amet, consectetur',
-      quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
+      rating: 4.5,
+      title: 'Reliable Maintenance & Quick Response',
+      quote: '"We have been using their AMC services for our hospital elevators for 3 years. Their maintenance team is prompt, professional, and ensures zero downtime. Highly recommended for healthcare facilities."',
       author: {
-        name: 'Annete Geas',
-        role: 'MD',
+        name: 'Dr. Anitha Menon',
+        role: 'Administrator, Calicut',
         image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces'
       }
     },
     {
-      rating: 4.5,
-      title: 'Lorem ipsum dolor sit amet, consectetur',
-      quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
+      rating: 5,
+      title: 'Perfect for Our Luxury Apartments',
+      quote: '"We chose them for our premium residential project in Kakkanad. They delivered high-speed elevators with modern aesthetics. The installation was seamless and residents are extremely satisfied with the performance."',
       author: {
-        name: 'Brandon Kiel',
-        role: 'CEO',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces'
+        name: 'Suresh Pillai',
+        role: 'Developer, Ernakulam',
+        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces'
       }
     },
     {
       rating: 4.5,
-      title: 'Lorem ipsum dolor sit amet, consectetur',
-      quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
+      title: 'Cost-Effective and Energy Efficient',
+      quote: '"The modernization of our old elevator was done efficiently. The new system is energy-efficient, reducing our electricity costs significantly. Great value for money and excellent technical support."',
       author: {
-        name: 'Sarah Jeans',
-        role: 'MD',
-        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces'
+        name: 'Thomas Joseph',
+        role: 'Facility Head, Thrissur',
+        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces'
       },
       highlighted: true
     },
     {
       rating: 5,
-      title: 'Lorem ipsum dolor sit amet, consectetur',
-      quote: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec at massa sit amet nisi blandit vehicula ad piscing elit."',
+      title: 'Outstanding Elevator Performance',
+      quote: '"Our warehouse needed a heavy-duty freight elevator. They designed and installed a robust system that handles our daily operations flawlessly. The safety features are top-notch "',
       author: {
-        name: 'Annete Geas',
-        role: 'MD',
-        image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces'
+        name: 'Priya Krishnan',
+        role: 'Operations Manager, Kottayam',
+        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=faces'
       }
     }
   ];
@@ -317,23 +152,21 @@ export default function TestimonialsCards() {
           {testimonials.map((testimonial, index) => (
             <SwiperSlide key={index} className="h-auto py-10">
               <div
-                className={`h-full relative transition-transform duration-300 ${
-                  index === activeIndex ? 'transform lg:scale-105' : ''
-                }`}
+                className={`h-full relative transition-transform duration-300 ${index === activeIndex ? 'transform lg:scale-105' : ''
+                  }`}
               >
                 <div
-                  className={`h-full flex flex-col justify-between rounded-sm p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${
-                    index === activeIndex
+                  className={`h-full flex flex-col justify-between rounded-sm p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${index === activeIndex
                       ? 'bg-gradient-to-br from-[#D2C5B2]/80 via-white to-[#D2C5B2]/80'
                       : 'bg-white'
-                  }`}
+                    }`}
                   style={
                     index === activeIndex
                       ? {
-                          border: '1px solid transparent',
-                          borderImage:
-                            'linear-gradient(to bottom, #C10510, transparent) 1',
-                        }
+                        border: '1px solid transparent',
+                        borderImage:
+                          'linear-gradient(to bottom, #C10510, transparent) 1',
+                      }
                       : {}
                   }
                 >
@@ -345,22 +178,20 @@ export default function TestimonialsCards() {
 
                     {/* Title */}
                     <h3
-                      className={`text-lg font-semibold mb-4 ${
-                        index === activeIndex
+                      className={`text-lg font-semibold mb-4 ${index === activeIndex
                           ? 'text-slate-800'
                           : 'text-slate-800'
-                      }`}
+                        }`}
                     >
                       {testimonial.title}
                     </h3>
 
                     {/* Quote */}
                     <p
-                      className={`text-sm leading-relaxed mb-8 italic ${
-                        index === activeIndex
+                      className={`text-sm leading-relaxed mb-8 italic ${index === activeIndex
                           ? 'text-slate-600'
                           : 'text-slate-600'
-                      }`}
+                        }`}
                     >
                       {testimonial.quote}
                     </p>
@@ -368,11 +199,10 @@ export default function TestimonialsCards() {
 
                   {/* Author Info */}
                   <div
-                    className={`flex items-center gap-4 pt-12 mt-auto ${
-                      index === activeIndex
+                    className={`flex items-center gap-4 pt-12 mt-auto ${index === activeIndex
                         ? 'border-[#C10510]'
                         : 'border-[#C10510]'
-                    }`}
+                      }`}
                   >
                     <img
                       src={testimonial.author.image}
@@ -381,20 +211,18 @@ export default function TestimonialsCards() {
                     />
                     <div>
                       <h4
-                        className={`font-semibold text-sm ${
-                          index === activeIndex
+                        className={`font-semibold text-sm ${index === activeIndex
                             ? 'text-slate-800'
                             : 'text-slate-800'
-                        }`}
+                          }`}
                       >
                         {testimonial.author.name}
                       </h4>
                       <p
-                        className={`text-xs ${
-                          index === activeIndex
+                        className={`text-xs ${index === activeIndex
                             ? 'text-slate-500'
                             : 'text-slate-500'
-                        }`}
+                          }`}
                       >
                         {testimonial.author.role}
                       </p>
