@@ -5,6 +5,7 @@ import Mission from './Mission.jsx'
 import Values from './Values.jsx'
 import Milestones from './Milestones.jsx'
 import Project from './Project.jsx'
+import Numbers from './Numbers.jsx'
   
 export default function About() {
   return (
@@ -14,6 +15,7 @@ export default function About() {
       <AboutSection />
       <Mission />
       <Values />
+      <Numbers />
       <Milestones />
       </div>
       <Project />

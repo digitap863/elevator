@@ -58,7 +58,8 @@ const ElevatorServices = () => {
         "Elevator selection guidance",
         "Traffic analysis & capacity planning",
         "Compliance & safety consultation",
-        "Budget estimation & project planning"
+        "Budget estimation & project planning",
+        "Elevator project Consultation"
       ],
       color: "from-gray-50 to-white",
       iconColor: "text-slate-600",

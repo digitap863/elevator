@@ -104,7 +104,7 @@ export default function Values() {
                             >
 
                                 {/* Value Card */}
-                                <div className="text-center md:p-2 hover:shadow-xl transition-all duration-300 h-full">
+                                <div className="text-center md:p-2 transition-all duration-300 h-full">
                                     {/* Title with accent color */}
 
                                     <h3 className={`hidden md:block text-lg font-medium md:mb-4 mb-2 ${value.color} uppercase text-black `}>

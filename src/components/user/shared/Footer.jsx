@@ -9,7 +9,7 @@ export default function Footer() {
   return (
     <footer className="bg-[#033A55] text-white font-sathoshi">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-4 md:gap-8 gap-0 items-start">
           {/* Logo and Social Media Section */}
           <motion.div
             className="flex flex-col justify-center items-center space-y-6"
@@ -58,7 +58,7 @@ export default function Footer() {
             </nav>
           </motion.div>
 
-          {/* Contact Information Section */}
+          
           <motion.div
             className="space-y-6 md:pl-0 pl-16"
             initial={{ opacity: 0, y: 40 }}
@@ -66,24 +66,10 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
+      
+            {/* Phone */}
             <div>
-              <div className="flex items-start space-x-3 mb-2">
-                <div className="bg-white text-teal-900 p-2 rounded-full">
-                  <MapPin size={20} />
-                </div>
-                <div>
-                  <h4 className="font-medium mb-1">Address</h4>
-                  <p className="text-sm leading-relaxed">
-                    Building No.M.P, V-319,<br />
-                    Martinpuram, Maradu,<br />
-                    Cochin- 682304
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div>
-              <div className="flex items-start space-x-3 mb-2">
+              <div className="flex items-start space-x-3 mb-2 md:pt-0 pt-4">
                 <div className="bg-white text-teal-900 p-2 rounded-full">
                   <Phone size={20} />
                 </div>
@@ -94,6 +80,7 @@ export default function Footer() {
               </div>
             </div>
 
+            {/* Email */}
             <div>
               <div className="flex items-start space-x-3">
                 <div className="bg-white text-teal-900 p-2 rounded-full">
@@ -106,6 +93,68 @@ export default function Footer() {
               </div>
             </div>
           </motion.div>
+
+          {/* Contact Information Section */}
+          <motion.div
+            className="space-y-6 md:pl-0 pl-16 md:pt-0 pt-4 relative"
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {/* Addresses Section */}
+            <div>
+              <div className="flex items-start space-x-3 mb-3">
+                <div className="bg-white text-teal-900 p-2 rounded-full flex-shrink-0 md:absolute md:-top-0 md:-left-11">
+                  <MapPin size={20} />
+                </div>
+                <div className="flex-1">
+                  <h4 className="font-medium mb-3">Our Locations</h4>
+                  <div className="grid grid-cols-1 gap-3 text-sm">
+                    {/* Admin Office */}
+                    <div>
+                      <p className="font-semibold text-gray-200">Admin Office:</p>
+                      <p className="text-xs leading-relaxed text-gray-300">
+                        MPV 319,320, Martinpuram,<br />
+                        Maradu PO, Cochin - 682304
+                      </p>
+                    </div>
+                    {/* Branch Office */}
+                    <div>
+                      <p className="font-semibold text-gray-200">Branch Office:</p>
+                      <p className="text-xs leading-relaxed text-gray-300">
+                        2nd Floor, Court view Arcade,<br />
+                        Court road, Calicut - 673001
+                      </p>
+                    </div>
+                    {/* Showroom */}
+                    <div>
+                      <p className="font-semibold text-gray-200">Showroom:</p>
+                      <p className="text-xs leading-relaxed text-gray-300">
+                        50-1617/A, Near Gandhi square,<br />
+                        Mini bypass Jn, Maradu, Poonithura - 682038
+                      </p>
+                    </div>
+                    {/* Trivandrum */}
+                    <div>
+                      <p className="font-semibold text-gray-200">Trivandrum:</p>
+                      <p className="text-xs leading-relaxed text-gray-300">
+                        Shine tower, Near GG Hospital,<br />
+                        Marappalam, Trivandrum
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+           
+          </motion.div>
+
+
+
+
         </div>
       </div>
 
