@@ -52,14 +52,14 @@ export default function Logos() {
                     className="text-center mb-12"
                 >
                     <motion.div
-                        className="flex items-center justify-center space-x-3 md:mb-5 mb-5"
+                        className="flex md:items-center justify-center space-x-3 md:mb-5 mb-5"
                         initial={{ opacity: 0, y: -20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.5 }}
                     >
-                        <div className="md:w-14 w-14 h-0.5 bg-[#376378] mt-2"></div>
-                        <h2 className="text-[#376378] font-medium md:text-2xl text-2xl tracking-widest uppercase">
+                        <div className="md:w-14 w-14 h-0.5 bg-[#376378] md:mt-2 mt-3"></div>
+                        <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-widest uppercase">
                             OUR ASSOCIATE VENDORS IN MOTOR & CONTROLLER
                         </h2>
                     </motion.div>
@@ -67,7 +67,7 @@ export default function Logos() {
                     <h3 className="text-3xl md:text-4xl font-medium text-gray-900 mb-6">
                         Partnering With <span className="text-[#1e3a5f]">Trusted Global Brands</span>
                     </h3>
-                    <p className="text-gray-600 max-w-3xl mx-auto text-lg">
+                    <p className="text-gray-600 max-w-3xl mx-auto md:text-lg">
                         We collaborate with world-class manufacturers and technology partners to deliver reliable, safe, and future-ready vertical mobility solutions.
                     </p>
                 </motion.div>

@@ -29,7 +29,7 @@ export default function Values() {
     ];
 
     return (
-        <section className="relative md:pb-24 pb-10 md:pt-36 pt-10 px-4 overflow-hidden font-sathoshi">
+        <section className="relative md:pb-24 pb-10 md:pt-36 pt-10 px-6 overflow-hidden font-sathoshi">
 
 
             {/* Decorative line curves */}
@@ -64,7 +64,7 @@ export default function Values() {
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Section Header */}
-                <div className="md:text-center mb-16">
+                <div className="md:text-center md:mb-16 mb-10">
                     <motion.div
                         className="flex items-start md:justify-center space-x-3 mb-4"
                         initial={{ opacity: 0, y: 30 }}
@@ -92,7 +92,7 @@ export default function Values() {
                 <div className="relative">
 
 
-                    <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-5 gap-y-6 lg:gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-4 gap-x-5 gap-y-8 lg:gap-6">
                         {values.map((value, index) => (
                             <motion.div
                                 key={index}
@@ -107,12 +107,12 @@ export default function Values() {
                                 <div className="text-center md:p-2 hover:shadow-xl transition-all duration-300 h-full">
                                     {/* Title with accent color */}
 
-                                    <h3 className={`hidden md:block text-lg font-medium mb-4 ${value.color} uppercase text-black `}>
+                                    <h3 className={`hidden md:block text-lg font-medium md:mb-4 mb-2 ${value.color} uppercase text-black `}>
                                         {value.title.split(' ')[0]} <span className="">{value.title.split(' ').slice(1).join(' ')}</span>
                                     </h3>
 
                                     <h3
-                                        className={`md:hidden block text-xl font-medium mb-4 ${value.color} uppercase `}
+                                        className={`md:hidden block text-xl font-medium md:mb-4 mb-2 ${value.color} uppercase `}
                                         dangerouslySetInnerHTML={{ __html: value.title }}
                                     />
 
