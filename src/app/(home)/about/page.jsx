@@ -4,6 +4,7 @@ import Banner from './Banner.jsx'
 import Mission from './Mission.jsx'
 import Values from './Values.jsx'
 import Milestones from './Milestones.jsx'
+import Project from './Project.jsx'
   
 export default function About() {
   return (
@@ -15,6 +16,7 @@ export default function About() {
       <Values />
       <Milestones />
       </div>
+      <Project />
     </main>
   )
 }

@@ -20,9 +20,9 @@ export default function AboutSection() {
       />
 
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="flex md:flex-row flex-col w-full gap-12 items-center">
           {/* Left Content */}
-          <div className="relative">
+          <div className="relative md:w-[52%] w-full ">
 
             {/* About Us heading */}
             <div className="md:mb-12 mb-8 relative ">
@@ -73,7 +73,7 @@ export default function AboutSection() {
 
             {/* Description text */}
             <motion.p
-              className=" leading-relaxed mb-8 max-w-3xl font-sathoshi text-lg text-gray-900 "
+              className=" leading-relaxed mb-8 max-w-4xl font-sathoshi text-lg text-gray-900 tracking-wide "
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -81,8 +81,10 @@ export default function AboutSection() {
             >
               Founded in 2015, Reliant Elevators began with a simple mission: to provide Kerala with world-class elevator solutions that prioritize safety, reliability, and innovation.
               <br />
+              <br/>
               What started as a small team of passionate engineers has grown into the region's most trusted elevator company, serving residential, commercial, healthcare, and hospitality sectors.
               <br />
+              <br/>
               Today, with over 500 successful installations and a team of 50+ experts, we continue to set new standards in the industry while maintaining our commitment to personalized service.
             </motion.p>
 
@@ -109,7 +111,7 @@ export default function AboutSection() {
 
           {/* Right Image */}
           <motion.div
-            className="relative"
+            className="relative md:w-[45%] w-full"
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -124,7 +126,7 @@ export default function AboutSection() {
                 <Image
                   src={lift1}
                   alt="Modern Elevator"
-                  className="w-auto h-[500px] object-contain"
+                  className="w-auto md:h-[620px] h-[500px] object-contain"
                 />
                 {/* Gradient overlay */}
               </div>

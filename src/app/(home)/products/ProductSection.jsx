@@ -1,10 +1,10 @@
 "use client"
 
 import line from '@/assests/home/line.svg';
-import pr1 from '@/assests/home/pr1.svg';
-import pr2 from '@/assests/home/pr2.svg';
+import pr1 from '@/assests/home/pr1.png';
+import pr2 from '@/assests/home/pr2.png';
 // import pr3 from '@/assests/home/pr3.svg';
-import pr4 from '@/assests/home/pr4.svg';
+import pr4 from '@/assests/home/pr4.png';
 // import pr5 from '@/assests/home/pr5.svg';
 import L6 from "@/assests/home/L6.png";
 import L7 from "@/assests/home/L7.png";
@@ -21,7 +21,7 @@ const ElevatorSections = () => {
       tag: "LUXURY WITHIN REACH",
       title: "HOME ELEVATORS",
       description: "Home Elevators offer convenient and comfortable vertical movement within residences, enhancing accessibility and adding value with compact design and smooth operation.",
-      image: pr2,
+      image: pr1,
       features: [
         "Compact cabin designs",
         "Whisper-quiet operation",
@@ -38,7 +38,7 @@ const ElevatorSections = () => {
       tag: "FOR BUSINESS",
       title: "COMMERCIAL ELEVATORS",
       description: "Commercial Elevators are designed to meet the vertical mobility needs of business environments, offering smooth, safe, and efficient transportation across multi-floor commercial spaces.",
-      image: pr1,
+      image: pr2,
       features: [
         "High-speed operation",
         "Heavy-duty capacity",

@@ -3,6 +3,7 @@
 import line from "@/assests/home/line.svg";
 import { ArrowRight, Building2, Check, Sparkles, Wrench } from 'lucide-react';
 import Image from "next/image";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
@@ -50,14 +51,14 @@ const ElevatorServices = () => {
     {
       id: 3,
       icon: Sparkles,
-      title: "Modernization",
-      description: "Upgrade your existing elevator systems with the latest technology, improving safety & efficiency.",
+      title: "Consultation",
+      description: "Expert guidance to plan the right elevator solution from day one",
       features: [
-        "Control system upgrades",
-        "Cabin renovation",
-        "Energy efficiency improvements",
-        "Safety feature additions",
-        "Code compliance updates"
+        "Site evaluation & feasibility study",
+        "Elevator selection guidance",
+        "Traffic analysis & capacity planning",
+        "Compliance & safety consultation",
+        "Budget estimation & project planning"
       ],
       color: "from-gray-50 to-white",
       iconColor: "text-slate-600",
@@ -68,7 +69,7 @@ const ElevatorServices = () => {
   return (
     <div className="w-full md:py-20 py-10 px-6 font-sathoshi relative ">
 
-      <Image src={line} alt="line" className="absolute top-0 left-0 w-full h-full" />
+      <Image src={line} alt="line" className="absolute top-0 left-0 w-full h-full z-0 opacity-50" />
 
       <div className="max-w-7xl mx-auto">
 
@@ -93,7 +94,7 @@ const ElevatorServices = () => {
             slidesPerView={1.2}
             // pagination={{ clickable: true }}
             // navigation
-            loop={true} 
+            loop={true}
             autoplay={{
               delay: 5000,
               disableOnInteraction: false,
@@ -108,7 +109,7 @@ const ElevatorServices = () => {
                 <SwiperSlide key={service.id}>
                   <div className="group transition-all duration-300">
                     <div
-                      className={`h-full rounded-lg md:p-8 p-6 shadow-lg transition-all duration-300 hover:shadow-xl ${isMiddle
+                      className={`h-full rounded-lg md:p-8 p-6 shadow-lg transition-all duration-300 hover:shadow-xl z-10 ${isMiddle
                         ? 'bg-[#376378] text-white'
                         : 'bg-white text-gray-900 border border-[#376378]'
                         }`}
@@ -122,12 +123,12 @@ const ElevatorServices = () => {
                       </div>
 
                       {/* Title */}
-                      <h3 className="text-3xl font-medium mb-4">
+                      <h3 className="text-3xl font-medium mb-4 z-10">
                         {service.title}
                       </h3>
 
                       {/* Description */}
-                      <p className={`mb-6 leading-relaxed text-base font-light ${isMiddle ? 'text-gray-100' : 'text-gray-600'
+                      <p className={`mb-6 leading-relaxed text-base font-light z-10 ${isMiddle ? 'text-gray-100' : 'text-gray-600'
                         }`}>
                         {service.description}
                       </p>
@@ -152,13 +153,15 @@ const ElevatorServices = () => {
                       </ul>
 
                       {/* CTA Button */}
-                      <button className={`flex items-center gap-2 font-medium text-sm transition-all duration-300 group-hover:gap-4 ${isMiddle
-                        ? 'text-white'
-                        : 'text-gray-800'
-                        }`}>
-                        Get Started
-                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                      </button>
+                      <Link href="/reachout">
+                        <button className={`flex items-center gap-2 font-medium text-sm transition-all duration-300 group-hover:gap-4 ${isMiddle
+                          ? 'text-white'
+                          : 'text-gray-800'
+                          }`}>
+                          Get Started
+                          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                        </button>
+                      </Link>
                     </div>
                   </div>
                 </SwiperSlide>
@@ -225,13 +228,15 @@ const ElevatorServices = () => {
                   </ul>
 
                   {/* CTA Button */}
-                  <button className={`flex items-center gap-2 font-medium text-sm transition-all duration-300 group-hover:gap-4 ${isMiddle
-                    ? 'text-white'
-                    : 'text-gray-800'
-                    }`}>
-                    Get Started
-                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-                  </button>
+                  <Link href="/reachout">
+                    <button className={`flex items-center gap-2 font-medium text-sm transition-all duration-300 group-hover:gap-4 ${isMiddle
+                      ? 'text-white'
+                      : 'text-gray-800'
+                      }`}>
+                      Get Started
+                      <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    </button>
+                  </Link>
 
                 </div>
               </div>

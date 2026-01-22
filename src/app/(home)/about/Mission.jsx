@@ -32,7 +32,7 @@ export default function Mission() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6 }}
                     >
-                        <div className="bg-white/50  rounded-lg md:p-14 p-6 md:pb-20 pb-8 shadow-xl hover:shadow-2xl transition-all duration-500 h-full border border-white/50 relative text-justify">
+                        <div className="bg-white/50  rounded-lg md:p-10 p-6 md:pb-20 pb-8 shadow-xl hover:shadow-2xl transition-all duration-500 h-full border border-white/50 relative text-justify">
 
                             {/* Diagonal stripe from top-left to bottom-right */}
                             <div className="absolute top-1 -left-10  w-[106%] h-10 blur-lg bg-gradient-to-r from-white/90  via-white to-white/90 -rotate-[23deg] origin-top-right"></div>
@@ -47,14 +47,12 @@ export default function Mission() {
 
                             {/* Mission Title */}
                             <h2 className="md:text-4xl text-3xl font-medium text-gray-900 md:mb-6 mb-6 relative z-10">
-                                Mission
+                                Vision
                             </h2>
 
                             {/* Mission Description */}
                             <p className="text-gray-800 leading-relaxed text-lg relative z-10">
-                                To provide innovative, safe, and reliable vertical mobility solutions
-                                that enhance the quality of life for our clients while setting new
-                                industry standards for excellence and customer satisfaction.
+                                To become the most preferred vertical transportation  solution partner.
                             </p>
 
                         </div>
@@ -68,7 +66,7 @@ export default function Mission() {
                         viewport={{ once: true, amount: 0.3 }}
                         transition={{ duration: 0.6, delay: 0.2 }}
                     >
-                        <div className="bg-white/50 rounded-lg md:p-14 p-6 md:pb-20 pb-8 shadow-xl hover:shadow-2xl shadow-lg transition-all duration-500 h-full border border-white/50 ">
+                        <div className="bg-white/50 rounded-lg md:p-10 p-6 md:pb-10 pb-8 shadow-xl hover:shadow-2xl shadow-lg transition-all duration-500 h-full border border-white/50 ">
 
                             <div className="absolute top-1 -left-10  w-[106%] h-10 blur-lg bg-gradient-to-r from-white/90  via-white to-white/90 -rotate-[23deg] origin-top-right"></div>
 
@@ -81,15 +79,16 @@ export default function Mission() {
 
                             {/* Vision Title */}
                             <h2 className="md:text-4xl text-3xl font-medium text-gray-900 md:mb-6 mb-6 relative z-10">
-                                Vision
+                                Mission
                             </h2>
 
-                            {/* Vision Description */}
-                            <p className="text-gray-800 leading-relaxed text-lg relative z-10  text-justify ">
-                                To be the most trusted and innovative elevator company in India,
-                                recognized for our commitment to safety, quality, and customer-
-                                centric solutions that transform vertical mobility experiences.
-                            </p>
+                            {/* Mission Description */}
+                            <ul className="text-gray-800 leading-relaxed text-lg relative z-10 space-y-2 list-disc pl-5">
+                                <li>Grow customer base by building mutual beneficial relationships with honest communications and proactive actions.</li>
+                                <li>Approach with open mindedness towards customer special needs and demands to offer optimum solutions.</li>
+                                <li>All operations driven by commitment to integrity, transparency, and ethical business practices.</li>
+                                <li>Continually improve company product and services by adapting to latest technology and upgrading skill levels of employees through trainings.</li>
+                            </ul>
                         </div>
                     </motion.div>
 

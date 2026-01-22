@@ -6,6 +6,9 @@ import Banner from '../../components/user/Home/Banner.jsx'
 import Contact from '../../components/user/Home/Contact.jsx'
 import Products from '../../components/user/Home/Products.jsx'
 import Projects from '../../components/user/Home/Projects.jsx'
+import Specilization from "../../components/user/Home/Specilization.jsx"
+import Logos from '@/components/user/Home/Logos.jsx'
+
 
 export default function Home() {
   return (
@@ -16,8 +19,10 @@ export default function Home() {
         <Products />
         <Service />
         <Projects />
+        <Specilization />
         <Testimonials />
         <TestimonialCards />
+        <Logos />
         <Contact
           label="Get Started"
           heading="Ready to Elevate?"

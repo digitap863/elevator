@@ -7,23 +7,23 @@ import Image from 'next/image';
 export default function Values() {
     const values = [
         {
-            title: "SAFETY FIRST",
-            description: "Every elevator we install meets the highest safety standards and undergoes rigorous testing.",
+            title: "Integrity",
+            description: "Building trust with customers, communities, suppliers & one another  by doing what is right, working safely, keeping our promises, complying with regulations and laws, and honouring rules.",
             color: "text-[#376378]"
         },
         {
-            title: "QUALITY EXCELLENCE",
-            description: "We use only premium materials and cutting-edge technology in all our products.",
+            title: "Ownership and Team work",
+            description: "Taking personal responsibility for the outcome of our actions by acting safely and anticipating further requirements, being resourceful and  following throughout. It contributes to success in work as a s a team. ",
             color: "text-[#376378]"
         },
         {
-            title: "CUSTOMER FOCUS",
-            description: "We use only premium materials and cutting-edge technology in all our products.",
+            title: "Transparency",
+            description: "Being upfront and  giving visibility about the actions and ensuring consistency with working across organization and cultural boundaries to achieve extraordinary performance and deliver personal service to  customers.",
             color: "text-[#376378]"
         },
         {
-            title: "INNOVATION\n\n",
-            description: "Continuously improving our solutions with the latest technological advancements.",
+            title: "Excellence",
+            description: "Building a culture based on excellence in thought and in execution  to better serve customers being a team.  Demonstrate excellence in safety to  protect our staff and  the communities we serve.",
             color: "text-[#376378]"
         }
     ];
@@ -104,20 +104,20 @@ export default function Values() {
                             >
 
                                 {/* Value Card */}
-                                <div className="text-center md:p-6 hover:shadow-xl transition-all duration-300 h-full">
+                                <div className="text-center md:p-2 hover:shadow-xl transition-all duration-300 h-full">
                                     {/* Title with accent color */}
 
-                                    <h3 className={`hidden md:block text-xl font-medium mb-4 ${value.color} uppercase tracking-wide`}>
-                                        {value.title.split(' ')[0]} <span className="text-gray-900">{value.title.split(' ').slice(1).join(' ')}</span>
+                                    <h3 className={`hidden md:block text-lg font-medium mb-4 ${value.color} uppercase text-black `}>
+                                        {value.title.split(' ')[0]} <span className="">{value.title.split(' ').slice(1).join(' ')}</span>
                                     </h3>
 
                                     <h3
-                                        className={`md:hidden block text-xl font-medium mb-4 ${value.color} uppercase tracking-wide`}
+                                        className={`md:hidden block text-xl font-medium mb-4 ${value.color} uppercase `}
                                         dangerouslySetInnerHTML={{ __html: value.title }}
                                     />
 
                                     {/* Description */}
-                                    <p className="text-gray-700  leading-relaxed text-justify">
+                                    <p className="text-gray-700  leading-relaxed ">
                                         {value.description}
                                     </p>
                                 </div>
