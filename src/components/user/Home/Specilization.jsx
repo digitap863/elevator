@@ -3,7 +3,7 @@ import { motion, useInView } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import Image from 'next/image';
 import { useRef } from 'react';
-import liff from '../../../assests/home/liff.png';
+import liff from '../../../assests/home/liff.jpeg';
 import specbg from '../../../assests/home/specbg.png';
 import Link from 'next/link';
 
