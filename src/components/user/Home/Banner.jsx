@@ -7,13 +7,11 @@ const Banner = () => {
     return (
         <div className="relative w-full md:h-[105vh] h-[70vh] overflow-hidden ">
 
-            {/* Background Image Layer */}
             <div
                 className="absolute inset-0 w-full h-full bg-cover bg-center"
                 style={{ backgroundImage: `url(${imgg.src})` }}
             />
 
-            {/* Video Layer */}
             <video
                 autoPlay
                 loop
@@ -45,7 +43,6 @@ const Banner = () => {
                 </div>
             </div>
 
-            {/* i want blur effect in the bottom of the video full width  */}
             <div className="absolute -bottom-12 left-0 w-full h-24 bg-[#EBEBEB] blur-lg"></div>
             <div className="absolute -bottom-12 -left-20 w-[25%] h-24 bg-[#EBEBEB] blur-lg "></div>
             <div className="absolute -bottom-12 -right-20 w-[25%] h-24 bg-[#EBEBEB] blur-lg "></div>

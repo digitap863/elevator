@@ -20,7 +20,8 @@ const ElevatorSections = () => {
       number: "01",
       tag: "LUXURY WITHIN REACH",
       title: "HOME ELEVATORS",
-      description: "Home Elevators offer convenient and comfortable vertical movement within residences, enhancing accessibility and adding value with compact design and smooth operation.",
+      description:
+        " Reliant Elevators offers premium Home Elevators in Kerala, designed to provide smooth, quiet, and comfortable vertical mobility within modern residences. With compact designs that fit seamlessly into villas and independent homes, our home elevators enhance accessibility, safety, and everyday convenience. Engineered for energy efficiency and compliant with Indian safety standards, Reliant Home Elevators add lasting value, elegance, and comfort to homes across Kerala and South India.",
       image: pr1,
       features: [
         "Compact cabin designs",
@@ -37,7 +38,8 @@ const ElevatorSections = () => {
       number: "02",
       tag: "FOR BUSINESS",
       title: "COMMERCIAL ELEVATORS",
-      description: "Commercial Elevators are designed to meet the vertical mobility needs of business environments, offering smooth, safe, and efficient transportation across multi-floor commercial spaces.",
+       description:
+        "Reliant Elevators provides reliable Commercial Elevators in Kerala, engineered to support the demanding vertical mobility needs of offices, malls, hotels, hospitals, and commercial complexes. Designed for smooth, safe, and energy-efficient operation, our commercial elevators ensure seamless movement across multi-floor buildings. Built to Indian safety standards and optimized for high-traffic use, Reliant Commercial Elevators deliver long-lasting performance and dependable mobility solutions for businesses across Kerala and South India.",
       image: pr2,
       features: [
         "High-speed operation",
@@ -54,7 +56,8 @@ const ElevatorSections = () => {
       number: "03",
       tag: "ENGINEERED FOR CARE",
       title: "HOSPITAL ELEVATORS",
-      description: "Hospital Elevators are specially engineered for medical environments, ensuring smooth, safe, and swift transportation of patients, stretchers, medical staff, and equipment between floors.",
+       description:
+        "Reliant Elevators designs and installs high-performance Hospital Elevators in Kerala, purpose-built for medical environments where safety, hygiene, and reliability are critical. Engineered for smooth, quiet, and swift operation, our hospital elevators efficiently transport patients, stretchers, medical staff, and equipment across multiple floors. Compliant with Indian healthcare and safety standards, Reliant Hospital Elevators ensure uninterrupted vertical mobility for hospitals, clinics, and healthcare facilities across Kerala and South India.",
       image: L6,
       features: [
         "Stretcher-compatible size",
@@ -71,8 +74,8 @@ const ElevatorSections = () => {
       number: "04",
       tag: "ELEGANCE IN MOTION",
       title: "HOSPITALITY ELEVATORS",
-      description: "",
-      description: "Commercial Elevators are designed to meet the vertical mobility needs of business environments, offering smooth, safe, and efficient transportation across multi-floor commercial spaces.",
+      description:
+        "Reliant Elevators provides reliable Commercial Elevators in Kerala, engineered to support the demanding vertical mobility needs of offices, malls, hotels, hospitals, and commercial complexes. Designed for smooth, safe, and energy-efficient operation, our commercial elevators ensure seamless movement across multi-floor buildings. Built to Indian safety standards and optimized for high-traffic use, Reliant Commercial Elevators deliver long-lasting performance and dependable mobility solutions for businesses across Kerala and South India.",
       image: pr4,
       features: [
         "Premium interior finishes",
@@ -89,7 +92,8 @@ const ElevatorSections = () => {
       number: "05",
       tag: "ENGINEERED FOR COMMERCIAL",
       title: "STRUCTURAL ELEVATORS",
-      description: "Escalators provide continuous, efficient movement of people in high-traffic spaces such as malls, metro stations, airports, and commercial buildings.",
+      description:
+        " Reliant Elevators offers premium Home Elevators in Kerala, designed to provide smooth, quiet, and comfortable vertical mobility within modern residences. With compact designs that fit seamlessly into villas and independent homes, our home elevators enhance accessibility, safety, and everyday convenience. Engineered for energy efficiency and compliant with Indian safety standards, Reliant Home Elevators add lasting value, elegance, and comfort to homes across Kerala and South India.",
       image: L7,
       features: [
         "Stretcher-compatible size",
@@ -129,7 +133,7 @@ const ElevatorSections = () => {
                     }}>{section.number}</h3>
                     <h2 className="text-base font-medium pl-1  text-[#C10510] tracking-widest relative md:bottom-8">{section.tag}</h2>
                   </div>
-                  <h2 className={`text-4xl lg:text-5xl font-base text-gray-900 mb-1 relative md:bottom-3 ${section.imagePosition === 'left' ? 'pl-30' : ''}`}>
+                  <h2 className={`text-4xl lg:text-5xl font-base text-gray-900  relative md:bottom-3 ${section.imagePosition === 'left' ? 'pl-30' : ''}`}>
                     {section.title}
                   </h2>
 
@@ -143,7 +147,7 @@ const ElevatorSections = () => {
                     </div>
                   </div>
 
-                  <p className="text-gray-800 leading-relaxed text-lg ">
+                  <p className="text-gray-800 leading- text-lg tracking-tight">
                     {section.description}
                   </p>
                 </div>
