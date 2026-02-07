@@ -8,6 +8,7 @@ import Products from '../../components/user/Home/Products.jsx'
 import Projects from '../../components/user/Home/Projects.jsx'
 import Specilization from "../../components/user/Home/Specilization.jsx"
 import Logos from '@/components/user/Home/Logos.jsx'
+import Numbers from '@/components/user/Home/Numbers.jsx'
 
 
 export default function Home() {
@@ -16,6 +17,7 @@ export default function Home() {
       <Banner />
       <div className='bg-container relative'>
         <About />
+        <Numbers />
         <Products />
         <Service />
         <Projects />

@@ -2,6 +2,7 @@ import probg from '@/assests/home/probg.png'
 import Banner from './Banner.jsx'
 import ProductSection from './ProductSection.jsx'  
 import Contact from '@/components/user/Home/Contact.jsx'
+import Usp from './Usp.jsx'
 
 export default function About() {
   return (
@@ -9,6 +10,7 @@ export default function About() {
       <Banner /> 
       <div  style={{ backgroundImage: `url(${probg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <ProductSection />
+      <Usp />
       <Contact 
       label="Get Started"
       heading="Can't Find What You Need?"

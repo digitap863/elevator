@@ -2,9 +2,14 @@
 import s1 from '@/assests/home/s1.svg';
 import s2 from '@/assests/home/s2.svg';
 import s3 from '@/assests/home/s3.svg';
+import s4 from '@/assests/home/s4.svg';
+import { motion } from "framer-motion";
 import { ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
-import { motion } from "framer-motion";
+import 'swiper/css';
+import 'swiper/css/autoplay';
+import { Autoplay } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 
 export default function Service() {
@@ -34,6 +39,15 @@ export default function Service() {
         'Control systems & drives',
         'Cabin interiors',
         'Safety + efficiency enhancement'
+      ]
+    },
+    {
+      title: 'CONSULTATION',
+      icon: s4,
+      items: [
+        'Paid expert consultation (new & existing)',
+        'Performance, safety & efficiency evaluation',
+        'Modernization & improvement strategy'
       ]
     }
   ];
@@ -90,71 +104,96 @@ export default function Service() {
         </motion.h1>
 
 
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
+        {/* Services Swiper */}
+        <Swiper
+          modules={[Autoplay]}
+          spaceBetween={30}
+          slidesPerView={1}
+          loop={true}
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1.5,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 25,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 30,
+            },
+          }}
+          className="pb-8"
+        >
           {services.map((service, index) => (
-            <motion.div
-              key={index}
-              className="group"
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.5, delay: index * 0.15 }}
-            >
-              {/* Service Header */}
+            <SwiperSlide key={index} className="h-auto">
+              <motion.div
+                className="group h-full"
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: index * 0.15 }}
+              >
+                {/* Service Header */}
 
-              <div className="flex items-start gap-6">
-                {/* Icon Circle */}
-                <div className="mb-8 pt-14">
-                  <div className="flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Image src={service.icon} alt={service.title} className="w-auto h-auto object-contain" />
-                  </div>
-                </div>
-
-                <div>
-                  <div className="flex items-center gap-4 mdmb-6">
-                    <div className="w-14 h-0.5 bg-[#376378]"></div>
-                    <h3 className="text-base font-semibold text-slate-700 tracking-wider">
-                      {service.title}
-                    </h3>
+                <div className="flex items-start gap-6">
+                  {/* Icon Circle */}
+                  <div className="mb-8 pt-14">
+                    <div className="flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <Image src={service.icon} alt={service.title} className="w-auto h-auto object-contain" />
+                    </div>
                   </div>
 
-                  {/* Service Items List */}
-                  <ul className="space-y-3 md:mb-8 mb-5">
-                    {service.items.map((item, itemIndex) => (
-                      <li key={itemIndex} className="flex items-start gap-3">
-                        <div className="flex-shrink-0 mt-0.5">
-                          <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
-                            <Check className="w-3 h-3 text-slate-600" />
+                  <div>
+                    <div className="flex items-center gap-4 mb-6">
+                      <div className="w-14 h-0.5 bg-[#376378]"></div>
+                      <h3 className="text-base font-semibold text-slate-700 tracking-wider">
+                        {service.title}
+                      </h3>
+                    </div>
+
+                    {/* Service Items List */}
+                    <ul className="space-y-3 md:mb-8 mb-5">
+                      {service.items.map((item, itemIndex) => (
+                        <li key={itemIndex} className="flex items-start gap-3">
+                          <div className="flex-shrink-0 mt-0.5">
+                            <div className="w-5 h-5 rounded-full bg-slate-200 flex items-center justify-center">
+                              <Check className="w-3 h-3 text-slate-600" />
+                            </div>
                           </div>
-                        </div>
-                        <span className="text-slate-600 text-base leading-relaxed">
-                          {item}
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
+                          <span className="text-slate-600 text-sm leading-relaxed">
+                            {item}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
 
-                  {/* Get Started Link */}
-                  <button className="inline-flex pl-20 items-center gap-2 text-red-600 hover:text-red-700 font-semibold text-sm group/btn transition-colors">
-                    Get Started
-                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                  </button>
+                    {/* Get Started Link */}
+                    <button className="inline-flex pl-20 items-center gap-2 text-red-600 hover:text-red-700 font-semibold text-sm group/btn transition-colors">
+                      Get Started
+                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                    </button>
 
-                  {/* Decorative dots */}
-                  <div className="mt-8  gap-1 md:flex  hidden">
-                    {[...Array(8)].map((_, i) => (
-                      <div key={i} className="w-1.5 h-1.5 rounded-full bg-slate-300"></div>
-                    ))}
+                    {/* Decorative dots */}
+                    <div className="mt-8 gap-1 md:flex hidden">
+                      {[...Array(8)].map((_, i) => (
+                        <div key={i} className="w-1.5 h-1.5 rounded-full bg-slate-300"></div>
+                      ))}
+                    </div>
                   </div>
+
                 </div>
 
-              </div>
 
-
-            </motion.div>
+              </motion.div>
+            </SwiperSlide>
           ))}
-        </div>
+        </Swiper>
       </div>
 
       {/* Bottom decorative element */}

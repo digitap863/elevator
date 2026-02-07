@@ -167,7 +167,7 @@ const ElevatorSections = () => {
                 {/* CTA Button */}
                 <div className="pt-6">
                   <button className="bg-[#376378] hover:bg-slate-800 text-white px-6 py-3 rounded-full flex items-center gap-2 transition-colors">
-                    Get a Quote
+                    View Works
                     <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>

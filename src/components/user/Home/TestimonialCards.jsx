@@ -9,6 +9,15 @@ import 'swiper/css/pagination';
 import { Autoplay } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
+import c1 from '@/assests/home/c1.png';
+import c2 from '@/assests/home/c2.png';
+import c3 from '@/assests/home/c3.png';
+import c4 from '@/assests/home/c4.png';
+import c5 from '@/assests/home/c5.png';
+import c6 from '@/assests/home/c6.png';
+import Image from 'next/image';
+
+
 export default function TestimonialsCards() {
   const [activeIndex, setActiveIndex] = useState(0);
   const sectionRef = useRef(null);
@@ -17,64 +26,63 @@ export default function TestimonialsCards() {
   const testimonials = [
     {
       rating: 5,
-      title: 'Exceptional Service & Quality Installation',
-      quote: '"We installed a passenger elevator in our 5-story commercial building in Kochi. The team was professional, completed the work on time, and the elevator runs smoothly. Their after-sales service is outstanding!"',
+      title: 'Reliable and Professional Services',
+      quote: '"Reliant Elevator\'s team is knowledgeable, and focused on safety and quality. From consultation to maintenance, everything was handled smoothly and efficiently."',
       author: {
-        name: 'Rajesh Kumar',
-        role: 'Building Manager, Kochi',
-        image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=faces'
+        name: 'Padmasree CK Menon',
+        role: 'Thrissur, Kerala',
+        image: c1
       }
     },
     {
       rating: 5,
-      title: 'Best Home Lift Solution in Kerala',
-      quote: '"As a senior citizen, climbing stairs was becoming difficult. They installed a beautiful home lift in our residence. The design is elegant, operation is whisper-quiet, and it has truly improved our quality of life."',
+      title: 'Precision and Professionalism',
+      quote: '"Reliant Elevator\'s modernization service significantly improved the efficiency and safety of our lift system. Their team handled the project with precision and professionalism."',
       author: {
-        name: 'Meera Nair',
-        role: 'Homeowner, Trivandrum',
-        image: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=faces'
-      },
-      highlighted: true
-    },
-    {
-      rating: 4.5,
-      title: 'Reliable Maintenance & Quick Response',
-      quote: '"We have been using their AMC services for our hospital elevators for 3 years. Their maintenance team is prompt, professional, and ensures zero downtime. Highly recommended for healthcare facilities."',
-      author: {
-        name: 'Dr. Anitha Menon',
-        role: 'Administrator, Calicut',
-        image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=faces'
+        name: 'K P Aliyar',
+        role: 'Director, Seemas Wedding Collection, Perumbavoor, Cochin',
+        image: c3
       }
     },
     {
       rating: 5,
-      title: 'Perfect for Our Luxury Apartments',
-      quote: '"We chose them for our premium residential project in Kakkanad. They delivered high-speed elevators with modern aesthetics. The installation was seamless and residents are extremely satisfied with the performance."',
+      title: 'Excellent Technical Expertise',
+      quote: '"Excellent service and technical expertise. Reliant Elevator guided us from the initial consultation through installation with complete transparency. The elevator performance has been flawless."',
       author: {
-        name: 'Suresh Pillai',
-        role: 'Developer, Ernakulam',
-        image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=faces'
+        name: 'P M Abdul Aazeez',
+        role: 'Director, Euro Locks Pvt Ltd, Vazhakkala, Cochin',
+        image: c4
       }
     },
     {
-      rating: 4.5,
-      title: 'Cost-Effective and Energy Efficient',
-      quote: '"The modernization of our old elevator was done efficiently. The new system is energy-efficient, reducing our electricity costs significantly. Great value for money and excellent technical support."',
+      rating: 5,
+      title: 'Practical and Cost-Effective',
+      quote: '"We approached Reliant Elevator for an existing lift improvement consultation. Their assessment was detailed, practical, and cost-effective. Highly satisfied with their professional approach."',
       author: {
-        name: 'Thomas Joseph',
-        role: 'Facility Head, Thrissur',
-        image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=faces'
+        name: 'Rajani Chaandi',
+        role: 'Film Actress',
+        image: c5
       },
       highlighted: true
     },
     {
       rating: 5,
-      title: 'Outstanding Elevator Performance',
-      quote: '"Our warehouse needed a heavy-duty freight elevator. They designed and installed a robust system that handles our daily operations flawlessly. The safety features are top-notch "',
+      title: 'Dependable Elevator Solutions',
+      quote: '"Reliant Elevator\'s team is  responsive, and focused on safety and quality. From consultation to maintenance, everything was handled smoothly. Highly recommended for dependable elevator solutions."',
       author: {
-        name: 'Priya Krishnan',
-        role: 'Operations Manager, Kottayam',
-        image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=100&h=100&fit=crop&crop=faces'
+        name: 'Padmasree Dr Devassy Joseph',
+        role: 'Maradu, Cochin',
+        image: c2
+      },
+    },
+    {
+      rating: 5,
+      title: 'Enhanced Safety and Performance',
+      quote: '"Reliant Elevator\'s modernization service greatly enhanced the safety and performance of our lift system. The project was executed with precision and a high level of professionalism."',
+      author: {
+        name: 'Nadarsha',
+        role: 'Film Actor',
+        image: c6
       }
     }
   ];
@@ -157,8 +165,8 @@ export default function TestimonialsCards() {
               >
                 <div
                   className={`h-full flex flex-col justify-between rounded-sm p-8 shadow-lg transition-all duration-300 hover:shadow-xl ${index === activeIndex
-                      ? 'bg-gradient-to-br from-[#D2C5B2]/80 via-white to-[#D2C5B2]/80'
-                      : 'bg-white'
+                    ? 'bg-gradient-to-br from-[#D2C5B2]/80 via-white to-[#D2C5B2]/80'
+                    : 'bg-white'
                     }`}
                   style={
                     index === activeIndex
@@ -177,20 +185,20 @@ export default function TestimonialsCards() {
                     </div>
 
                     {/* Title */}
-                    <h3
+                    {/* <h3
                       className={`text-lg font-semibold mb-4 ${index === activeIndex
                           ? 'text-slate-800'
                           : 'text-slate-800'
                         }`}
                     >
                       {testimonial.title}
-                    </h3>
+                    </h3> */}
 
                     {/* Quote */}
                     <p
                       className={`text-sm leading-relaxed mb-8 italic ${index === activeIndex
-                          ? 'text-slate-600'
-                          : 'text-slate-600'
+                        ? 'text-slate-600'
+                        : 'text-slate-600'
                         }`}
                     >
                       {testimonial.quote}
@@ -200,28 +208,28 @@ export default function TestimonialsCards() {
                   {/* Author Info */}
                   <div
                     className={`flex items-center gap-4 pt-12 mt-auto ${index === activeIndex
-                        ? 'border-[#C10510]'
-                        : 'border-[#C10510]'
+                      ? 'border-[#C10510]'
+                      : 'border-[#C10510]'
                       }`}
                   >
-                    <img
+                    <Image
                       src={testimonial.author.image}
                       alt={testimonial.author.name}
-                      className="w-12 h-12 rounded-full object-cover ring-2 ring-[#C10510] shadow-md"
+                      className="w-12 h-12 rounded-full object-cover  shadow-md"
                     />
                     <div>
                       <h4
                         className={`font-semibold text-sm ${index === activeIndex
-                            ? 'text-slate-800'
-                            : 'text-slate-800'
+                          ? 'text-slate-800'
+                          : 'text-slate-800'
                           }`}
                       >
                         {testimonial.author.name}
                       </h4>
                       <p
                         className={`text-xs ${index === activeIndex
-                            ? 'text-slate-500'
-                            : 'text-slate-500'
+                          ? 'text-slate-500'
+                          : 'text-slate-500'
                           }`}
                       >
                         {testimonial.author.role}
