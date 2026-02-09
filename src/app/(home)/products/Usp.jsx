@@ -78,7 +78,7 @@ export default function Usp() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.2 }}
-                            className="text-[#222222] text-lg md:text-4xl leading-relaxed mb-12 max-w-sm pr-4"
+                            className="mdmd:text-[#222222] text-black text-lg md:text-4xl leading-relaxed mb-12 max-w-sm pr-4"
                         >
                             Smart stylish home elevators designed for comfort, safety and seamless integration
                         </motion.p>
@@ -88,19 +88,19 @@ export default function Usp() {
                 {/* Bottom Section */}
                 <div className="mt-8 md:mt-40 max-w-5xl mx-auto ">
                     <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-8 relative">
-                        {/* Left Side - Bring Your Home */}
+                        {/* - Bring Your Home */}
                         <motion.div
                             initial={{ opacity: 0, x: -30 }}
                             whileInView={{ opacity: 1, x: 0 }}
                             viewport={{ once: true }}
                             transition={{ duration: 0.6, delay: 0.3 }}
-                            className="md:w-1/4"
+                            className="md:w-1/4 ml-auto md:ml-0 text-right md:text-left"
                         >
-                            <h3 className="text-2xl md:text-5xl  text-black leading- mb-3 font-medium">
-                                Bring Your<br />Home to<br />
-                                <span className="text-[#376378] ">New Levels</span>
+                            <h3 className="text-2xl md:text-5xl text-black leading- mb-3 font-medium">
+                                Bring Your<br className='md:block hidden' /> {" "}Home to<br />
+                                <span className="md:text-[#376378] text-black">New Levels</span>
                             </h3>
-                            <p className="text-gray-800 text-base leading-relaxed">
+                            <p className="md:text-gray-800 text-black text-base leading-relaxed">
                                 Reliant brings Comfort and<br />style to every step.
                             </p>
 
@@ -110,7 +110,7 @@ export default function Usp() {
                         </motion.div>
 
                         <div
-                            className="w-1 h-full absolute top-0 left-[35%]"
+                            className="w-1 h-full absolute top-0 left-[35%] md:block hidden "
                             style={{
                                 background: 'linear-gradient(to bottom, rgba(3, 58, 85, 0) 0%, rgba(3, 58, 85, 1) 50%, rgba(3, 58, 85, 0) 100%)'
                             }}

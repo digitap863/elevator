@@ -3,6 +3,7 @@ import lift1 from "@/assests/home/liift1.png";
 import line from "@/assests/home/line.svg";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutSection() {
   return (
@@ -174,17 +175,19 @@ export default function AboutSection() {
             </motion.p>
 
             {/* Learn More button */}
-            <motion.button
-              className="px-8 py-3 border-2 border-teal-800 text-[#376378] rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full font-semibold hover:bg-teal-800 hover:text-white transition duration-300 shadow-lg"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.5 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              Learn More
-            </motion.button>
+            <Link href="/about">
+              <motion.button
+                className="px-8 py-3 border-2 border-teal-800 text-[#376378] rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full font-semibold hover:bg-teal-800 hover:text-white transition duration-300 shadow-lg"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.5 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                Learn More
+              </motion.button>
+            </Link>
           </motion.div>
 
           {/* Right Image */}

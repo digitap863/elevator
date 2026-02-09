@@ -3,12 +3,22 @@
 import proj from "@/assests/home/proj.png";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useSearchParams } from 'next/navigation';
+import { useEffect, useState } from 'react';
 import { HiOutlineMapPin } from "react-icons/hi2";
 
 
 export default function Projectsection() {
+  const searchParams = useSearchParams();
+  const categoryParam = searchParams.get('category');
   const [activeFilter, setActiveFilter] = useState('All');
+
+  // Update filter when URL category param changes
+  useEffect(() => {
+    if (categoryParam && ['Commercial', 'Home', 'Hospital', 'Structural', 'Hospitality'].includes(categoryParam)) {
+      setActiveFilter(categoryParam);
+    }
+  }, [categoryParam]);
 
   const filters = ['All', 'Commercial', 'Home', 'Hospital', 'Structural', 'Hospitality'];
 
@@ -68,7 +78,7 @@ export default function Projectsection() {
     : projects.filter(project => project.category === activeFilter);
 
   return (
-    <section className="pb-16 pt-28 px-3 ">
+    <section id="our-projects" className="pb-16 pt-28 px-3 scroll-mt-20">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="md:text-center text-left  mx-auto mb-12">
@@ -108,8 +118,8 @@ export default function Projectsection() {
               key={filter}
               onClick={() => setActiveFilter(filter)}
               className={`md:px-6 px-6 py-2 rounded-full text-sm font-medium transition-all duration-300 ${activeFilter === filter
-                  ? 'bg-slate-700 text-white shadow-lg'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                ? 'bg-slate-700 text-white shadow-lg'
+                : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
                 }`}
             >
               {filter}

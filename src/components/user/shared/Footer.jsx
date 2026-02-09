@@ -3,6 +3,7 @@ import footerlogo from '@/assests/home/footerlogo.svg';
 import { motion } from 'framer-motion';
 import { Facebook, Instagram, Mail, MapPin, Phone, Youtube } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 
 export default function Footer() {
@@ -49,16 +50,16 @@ export default function Footer() {
           >
             <h3 className="text-xl font-medium mb-4">Navigation</h3>
             <nav className="flex flex-col space-y-2">
-              <a href="#" className="hover:text-gray-300 transition">Home</a>
-              <a href="#" className="hover:text-gray-300 transition">Products</a>
-              <a href="#" className="hover:text-gray-300 transition">Services</a>
-              <a href="#" className="hover:text-gray-300 transition">Projects</a>
-              <a href="#" className="hover:text-gray-300 transition">Contact Us</a>
-              <a href="#" className="hover:text-gray-300 transition">About Us</a>
+              <Link href="/" className="hover:text-gray-300 transition">Home</Link>
+              <Link href="/products" className="hover:text-gray-300 transition">Products</Link>
+              <Link href="/service" className="hover:text-gray-300 transition">Services</Link>
+              <Link href="/projects" className="hover:text-gray-300 transition">Projects</Link>
+              <Link href="/reachout" className="hover:text-gray-300 transition">Contact Us</Link>
+              <Link href="/about" className="hover:text-gray-300 transition">About Us</Link>
             </nav>
           </motion.div>
 
-          
+
           <motion.div
             className="space-y-6 md:pl-0 pl-16"
             initial={{ opacity: 0, y: 40 }}
@@ -66,7 +67,7 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-      
+
             {/* Phone */}
             <div>
               <div className="flex items-start space-x-3 mb-2 md:pt-0 pt-4">
@@ -149,7 +150,7 @@ export default function Footer() {
             </div>
 
 
-           
+
           </motion.div>
 
 

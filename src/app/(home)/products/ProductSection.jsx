@@ -9,17 +9,20 @@ import pr4 from '@/assests/home/pr4.png';
 import L6 from "@/assests/home/L6.png";
 import L7 from "@/assests/home/L7.png";
 
+import { motion } from "framer-motion";
 import { ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
-import { motion } from "framer-motion";
+import Link from 'next/link';
 
 
 const ElevatorSections = () => {
   const sections = [
     {
+      id: "home-elevators",
       number: "01",
       tag: "LUXURY WITHIN REACH",
       title: "HOME ELEVATORS",
+      projectCategory: "Home",
       description:
         " Reliant Elevators offers premium Home Elevators in Kerala, designed to provide smooth, quiet, and comfortable vertical mobility within modern residences. With compact designs that fit seamlessly into villas and independent homes, our home elevators enhance accessibility, safety, and everyday convenience. Engineered for energy efficiency and compliant with Indian safety standards, Reliant Home Elevators add lasting value, elegance, and comfort to homes across Kerala and South India.",
       image: pr1,
@@ -35,10 +38,12 @@ const ElevatorSections = () => {
       imagePosition: "right"
     },
     {
+      id: "commercial-elevators",
       number: "02",
       tag: "FOR BUSINESS",
       title: "COMMERCIAL ELEVATORS",
-       description:
+      projectCategory: "Commercial",
+      description:
         "Reliant Elevators provides reliable Commercial Elevators in Kerala, engineered to support the demanding vertical mobility needs of offices, malls, hotels, hospitals, and commercial complexes. Designed for smooth, safe, and energy-efficient operation, our commercial elevators ensure seamless movement across multi-floor buildings. Built to Indian safety standards and optimized for high-traffic use, Reliant Commercial Elevators deliver long-lasting performance and dependable mobility solutions for businesses across Kerala and South India.",
       image: pr2,
       features: [
@@ -53,10 +58,12 @@ const ElevatorSections = () => {
       imagePosition: "left"
     },
     {
+      id: "hospital-elevators",
       number: "03",
       tag: "ENGINEERED FOR CARE",
       title: "HOSPITAL ELEVATORS",
-       description:
+      projectCategory: "Hospital",
+      description:
         "Reliant Elevators designs and installs high-performance Hospital Elevators in Kerala, purpose-built for medical environments where safety, hygiene, and reliability are critical. Engineered for smooth, quiet, and swift operation, our hospital elevators efficiently transport patients, stretchers, medical staff, and equipment across multiple floors. Compliant with Indian healthcare and safety standards, Reliant Hospital Elevators ensure uninterrupted vertical mobility for hospitals, clinics, and healthcare facilities across Kerala and South India.",
       image: L6,
       features: [
@@ -71,9 +78,11 @@ const ElevatorSections = () => {
       imagePosition: "right"
     },
     {
+      id: "hospitality-elevators",
       number: "04",
       tag: "ELEGANCE IN MOTION",
       title: "HOSPITALITY ELEVATORS",
+      projectCategory: "Hospitality",
       description:
         "Reliant Elevators provides reliable Commercial Elevators in Kerala, engineered to support the demanding vertical mobility needs of offices, malls, hotels, hospitals, and commercial complexes. Designed for smooth, safe, and energy-efficient operation, our commercial elevators ensure seamless movement across multi-floor buildings. Built to Indian safety standards and optimized for high-traffic use, Reliant Commercial Elevators deliver long-lasting performance and dependable mobility solutions for businesses across Kerala and South India.",
       image: pr4,
@@ -89,9 +98,11 @@ const ElevatorSections = () => {
       imagePosition: "left"
     },
     {
+      id: "structural-elevators",
       number: "05",
       tag: "ENGINEERED FOR COMMERCIAL",
       title: "STRUCTURAL ELEVATORS",
+      projectCategory: "Structural",
       description:
         " Reliant Elevators offers premium Home Elevators in Kerala, designed to provide smooth, quiet, and comfortable vertical mobility within modern residences. With compact designs that fit seamlessly into villas and independent homes, our home elevators enhance accessibility, safety, and everyday convenience. Engineered for energy efficiency and compliant with Indian safety standards, Reliant Home Elevators add lasting value, elegance, and comfort to homes across Kerala and South India.",
       image: L7,
@@ -110,9 +121,9 @@ const ElevatorSections = () => {
 
   return (
     <div className="w-full font-sathoshi relative">
-      <Image src={line} alt="line" className="absolute top-0 left-0 w-full h-full" />
+      <Image src={line} alt="line" className="absolute top-0 left-0 w-full h-full pointer-events-none" />
       {sections.map((section, index) => (
-        <section key={index} className={` py-8 md:py-16 px-4 md:px-12 lg:px-20`}>
+        <section key={index} id={section.id} className={` py-8 md:py-16 px-4 md:px-12 lg:px-20 scroll-mt-20`}>
           <div className="max-w-7xl mx-auto">
             <div className={`flex flex-col ${section.imagePosition === 'left' ? 'lg:flex-row-reverse' : 'lg:flex-row'} items-center md:gap-12 gap-6`}>
 
@@ -165,11 +176,13 @@ const ElevatorSections = () => {
                 </div>
 
                 {/* CTA Button */}
-                <div className="pt-6">
-                  <button className="bg-[#376378] hover:bg-slate-800 text-white px-6 py-3 rounded-full flex items-center gap-2 transition-colors">
-                    View Works
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
+                <div className="pt-6 z-10">
+                  <Link href={`/projects?category=${section.projectCategory}#our-projects`}>
+                    <button className="bg-[#376378] hover:bg-slate-800 text-white px-6 py-3 cursor-pointer rounded-full flex items-center gap-2 transition-colors">
+                      View Works
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
                 </div>
               </motion.div>
 

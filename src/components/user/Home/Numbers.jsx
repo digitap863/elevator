@@ -79,9 +79,9 @@ export default function Numbers() {
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.8 }}
-            className="md:py-16 py-12 px-4 sm:px-6 lg:px-8 "
+            className="md:py-4 py-8 px-4 sm:px-6 lg:px-8 "
         >
-            <div className="max-w-7xl mx-auto">
+            <div className="max-w-4xl mx-auto">
                 {/* Header */}
                 {/* <motion.div
                     initial={{ opacity: 0, y: 30 }}
@@ -105,15 +105,15 @@ export default function Numbers() {
                             className="relative group"
                         >
                             {/* Card with gradient border effect */}
-                            <div className="relative bg-white/50 rounded-2xl md:p-8 p-6 shadow-sm hover:shadow-xl transition-all duration-500 border-2 border-transparent hover:border-[#376378]/20 overflow-hidden">
+                            <div className="relative ">
                                 {/* Gradient background on hover */}
-                                <div className="absolute inset-0 bg-gradient-to-br from-[#376378]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                {/* <div className="absolute inset-0 bg-gradient-to-br from-[#376378]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
 
                                 {/* Content */}
                                 <div className="relative z-10 text-center">
                                     {/* Number */}
                                     <div className="mb-3">
-                                        <span className="text-5xl md:text-6xl font-medium bg-gradient-to-r from-[#376378] to-[#1e3a5f] bg-clip-text text-transparent">
+                                        <span className="text-5xl md:text-5xl font-medium bg-gradient-to-r from-[#376378] to-[#1e3a5f] bg-clip-text text-transparent">
                                             <AnimatedCounter
                                                 target={stat.number}
                                                 suffix={stat.number.replace(/[0-9]/g, '')}
@@ -127,13 +127,13 @@ export default function Numbers() {
                                     </h3>
 
                                     {/* Description */}
-                                    <p className="text-sm text-gray-600">
+                                    {/* <p className="text-sm text-gray-600">
                                         {stat.description}
-                                    </p>
+                                    </p> */}
                                 </div>
 
                                 {/* Decorative corner accent */}
-                                <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#376378]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                                {/* <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-[#376378]/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div> */}
                             </div>
                         </motion.div>
                     ))}

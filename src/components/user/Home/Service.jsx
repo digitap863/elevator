@@ -6,6 +6,7 @@ import s4 from '@/assests/home/s4.svg';
 import { motion } from "framer-motion";
 import { ArrowRight, Check } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import { Autoplay } from 'swiper/modules';
@@ -174,10 +175,12 @@ export default function Service() {
                     </ul>
 
                     {/* Get Started Link */}
-                    <button className="inline-flex pl-20 items-center gap-2 text-red-600 hover:text-red-700 font-semibold text-sm group/btn transition-colors">
-                      Get Started
-                      <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-                    </button>
+                    <Link href="/reachout">
+                      <button className="inline-flex  pl-20 items-center gap-2 text-red-600 hover:text-red-700 font-semibold text-sm group/btn transition-colors">
+                        Get Started
+                        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                      </button>
+                    </Link>
 
                     {/* Decorative dots */}
                     <div className="mt-8 gap-1 md:flex hidden">

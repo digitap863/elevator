@@ -1,16 +1,15 @@
 "use client"
 import L1 from "@/assests/home/L1.png";
 import L2 from "@/assests/home/L2.png";
-import L3 from "@/assests/home/L6.png";
 import L4 from "@/assests/home/L4.png";
-import L5 from "@/assests/home/L5.png";
+import L3 from "@/assests/home/L6.png";
 import L7 from "@/assests/home/L7.png";
 
 import line from "@/assests/home/line.svg";
+import { motion, useInView } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import Link from "next/link";
 import { useRef } from "react";
 
 
@@ -94,15 +93,17 @@ function ProductCard({ product, index }) {
       </motion.p>
 
       {/* Read More Link */}
-      <motion.button
-        initial={{ opacity: 0, x: -10 }}
-        animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
-        transition={{ duration: 0.4, delay: index * 0.1 + 0.6 }}
-        className="inline-flex items-center gap-2 text-[#376378] hover:text-[#376390] font-medium text-sm group/btn"
-      >
-        read more
-        <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
-      </motion.button>
+      <Link href={`/products#${product.slug}`}>
+        <motion.button
+          initial={{ opacity: 0, x: -10 }}
+          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -10 }}
+          transition={{ duration: 0.4, delay: index * 0.1 + 0.6 }}
+          className="inline-flex items-center gap-2 text-[#376378] hover:text-[#376390] font-medium text-sm group/btn"
+        >
+          read more
+          <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+        </motion.button>
+      </Link>
     </motion.div>
   );
 }
@@ -117,6 +118,7 @@ export default function Products() {
       number: "01",
       title: "HOME ",
       subtitle: "ELEVATORS",
+      slug: "home-elevators",
       description:
         "Home Elevators offer convenient and comfortable vertical movement within residences, enhancing accessibility and lifestyle with compact design and smooth operation.",
       image: L2,
@@ -126,6 +128,7 @@ export default function Products() {
       number: "02",
       title: "COMMERCIAL ",
       subtitle: "ELEVATORS",
+      slug: "commercial-elevators",
       description:
         "Commercial Elevators are designed to meet the vertical mobility needs of business environments, offering smooth, safe, and efficient transportation for passengers across multi-floor commercial spaces",
       image: L1,
@@ -135,6 +138,7 @@ export default function Products() {
       number: "03",
       title: "HOSPITAL ",
       subtitle: "ELEVATORS",
+      slug: "hospital-elevators",
       description:
         "Hospital Elevators are specially engineered for medical environments, ensuring smooth, safe, and swift transportation of patients, stretchers, medical staff, and equipment between floors.",
       image: L3,
@@ -144,6 +148,7 @@ export default function Products() {
       number: "04",
       title: "HOSPITALITY ",
       subtitle: "ELEVATORS",
+      slug: "hospitality-elevators",
       description:
         "Escalators provide continuous, efficient movement of people in high-traffic spaces such as malls, metro stations, airports, and commercial buildings.",
       image: L4,
@@ -153,6 +158,7 @@ export default function Products() {
       number: "05",
       title: "STRUCTURAL ",
       subtitle: "ELEVATORS",
+      slug: "structural-elevators",
       description:
         "Escalators provide continuous, efficient movement of people in high-traffic spaces such as malls, metro stations, airports, and commercial buildings.",
       image: L7,
@@ -184,7 +190,7 @@ export default function Products() {
         >
           <motion.div
             initial={{ width: 0 }}
-            animate={ { width: 40 } }
+            animate={{ width: 40 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="md:w-14 w-10 h-0.5 bg-[#376378] mt-2"
           />

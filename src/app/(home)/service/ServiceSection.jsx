@@ -70,7 +70,7 @@ const ElevatorServices = () => {
   return (
     <div className="w-full md:py-20 py-10 px-6 font-sathoshi relative ">
 
-      <Image src={line} alt="line" className="absolute top-0 left-0 w-full h-full z-0 opacity-50" />
+      <Image src={line} alt="line" className="absolute top-0 left-0 w-full h-full z-0 opacity-50 pointer-events-none" />
 
       <div className="max-w-7xl mx-auto">
 

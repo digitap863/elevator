@@ -121,11 +121,12 @@ export default function TestimonialsCards() {
 
   return (
     <motion.div
+      id="testimonial-cards"
       ref={sectionRef}
       initial={{ opacity: 0, y: 60 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 60 }}
       transition={{ duration: 0.8, ease: "easeOut" }}
-      className="md:py-16 py-6 px-4 sm:px-6 lg:px-8"
+      className="md:py-16 py-6 px-4 sm:px-6 lg:px-8 scroll-mt-20"
     >
       <div className="max-w-7xl mx-auto">
         {/* Swiper Implementation */}

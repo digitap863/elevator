@@ -3,6 +3,7 @@ import rect from "@/assests/home/rect.svg";
 import { motion } from 'framer-motion';
 import { Play } from 'lucide-react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Testimonials() {
   return (
@@ -50,21 +51,23 @@ export default function Testimonials() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              "Lorem ipsum dolor sit amet, consectetur adipisicing elit. <span className="text-[#545454]">Donec at massa sit amet nisi blandit vehicula sed porttis elit.</span>"
+              "Our clients trust Reliant Elevators for reliable, safe, and premium vertical mobility solutions. <span className="text-[#545454]">From residential homes to commercial complexes, we deliver excellence in every installation, backed by exceptional after-sales support.</span>"
             </motion.p>
 
             {/* View More Button */}
-            <motion.button
-              className="md:px-8 px-6 md:py-3 py-2 md:text-base text-base border-2 border-[#376378] text-[#376378] font-semibold rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full hover:bg-[#376378] hover:text-white transition-all duration-300"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-            >
-              View More
-            </motion.button>
+            <Link href="#testimonial-cards">
+              <motion.button
+                className="md:px-8 px-6 md:py-3 py-2 md:text-base text-base border-2 border-[#376378] text-[#376378] font-semibold rounded-bl-full rounded-br-full rounded-tl-0 rounded-tr-full hover:bg-[#376378] hover:text-white transition-all duration-300"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: 0.3 }}
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                View More
+              </motion.button>
+            </Link>
           </motion.div>
 
           {/* Right Video Section */}
