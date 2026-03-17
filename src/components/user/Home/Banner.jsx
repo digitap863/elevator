@@ -37,8 +37,8 @@ const Banner = () => {
                             delay: 0.3
                         }}
                     >
-                        Kerala’s<span className="text-red-500"> Vertical</span><br />
-                        Mobility Experts
+                        Reliability<span className="text-red-500"> </span><br />
+                        <span className="text-red-600">Elegance</span>  & Quality
                     </motion.p>
                 </div>
             </div>
