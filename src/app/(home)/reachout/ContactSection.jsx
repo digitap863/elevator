@@ -61,6 +61,7 @@ export default function ContactSection() {
                                 <input
                                     type="text"
                                     id="name"
+                                    required
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
@@ -77,6 +78,7 @@ export default function ContactSection() {
                                     type="tel"
                                     id="contact"
                                     name="contact"
+                                    required
                                     value={formData.contact}
                                     onChange={handleChange}
                                     required
@@ -92,6 +94,7 @@ export default function ContactSection() {
                                     type="email"
                                     id="email"
                                     name="email"
+                                    required
                                     value={formData.email}
                                     onChange={handleChange}
                                     required
