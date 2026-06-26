@@ -65,7 +65,7 @@ export default function ContactSection() {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
-                                    required
+                                    
                                     className="w-full px-4 py-1.5 shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 />
                             </div>
@@ -81,7 +81,7 @@ export default function ContactSection() {
                                     required
                                     value={formData.contact}
                                     onChange={handleChange}
-                                    required
+                                    
                                     className="w-full px-4 py-1.5 shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 />
                             </div>
@@ -97,7 +97,7 @@ export default function ContactSection() {
                                     required
                                     value={formData.email}
                                     onChange={handleChange}
-                                    required
+                                    
                                     className="w-full px-4 py-1.5 shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 />
                             </div>
