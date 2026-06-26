@@ -25,6 +25,12 @@ export default function ContactSection() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        
+        // double check required fields are not empty or whitespace
+        if (!formData.name.trim() || !formData.contact.trim() || !formData.email.trim()) {
+            return;
+        }
+
         console.log('Form submitted:', formData);
         router.push('/thank-you');
     };
@@ -47,10 +53,10 @@ export default function ContactSection() {
                         viewport={{ once: true, amount: 0.2 }}
                         transition={{ duration: 0.7, ease: "easeOut" }}
                     >
-                        <div className="space-y-4">
+                        <form onSubmit={handleSubmit} className="space-y-4">
                             <div>
                                 <label htmlFor="name" className="block text-sm font-base tracking-wide text-black  mb-2">
-                                    Name
+                                    Name <span className="text-red-600 font-bold ml-0.5">*</span>
                                 </label>
                                 <input
                                     type="text"
@@ -58,13 +64,14 @@ export default function ContactSection() {
                                     name="name"
                                     value={formData.name}
                                     onChange={handleChange}
+                                    required
                                     className="w-full px-4 py-1.5 shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 />
                             </div>
 
                             <div>
                                 <label htmlFor="contact" className="block text-sm font-base tracking-wide text-black  mb-2">
-                                    Contact No
+                                    Contact No <span className="text-red-600 font-bold ml-0.5">*</span>
                                 </label>
                                 <input
                                     type="tel"
@@ -72,13 +79,14 @@ export default function ContactSection() {
                                     name="contact"
                                     value={formData.contact}
                                     onChange={handleChange}
+                                    required
                                     className="w-full px-4 py-1.5 shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 />
                             </div>
 
                             <div>
                                 <label htmlFor="email" className="block text-sm font-base tracking-wide text-black  mb-2">
-                                    Email
+                                    Email <span className="text-red-600 font-bold ml-0.5">*</span>
                                 </label>
                                 <input
                                     type="email"
@@ -86,6 +94,7 @@ export default function ContactSection() {
                                     name="email"
                                     value={formData.email}
                                     onChange={handleChange}
+                                    required
                                     className="w-full px-4 py-1.5 shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 />
                             </div>
@@ -140,12 +149,12 @@ export default function ContactSection() {
                             </div>
 
                             <button
-                                onClick={handleSubmit}
+                                type="submit"
                                 className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6  transition duration-200 shadow-md"
                             >
                                 Submit
                             </button>
-                        </div>
+                        </form>
                     </motion.div>
 
                     {/* Map Card */}
