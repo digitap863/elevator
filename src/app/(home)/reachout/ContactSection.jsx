@@ -3,8 +3,10 @@ import line from '@/assests/home/line.svg';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useRouter } from 'next/navigation';
 
 export default function ContactSection() {
+    const router = useRouter();
     const [formData, setFormData] = useState({
         name: '',
         contact: '',
@@ -24,7 +26,7 @@ export default function ContactSection() {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log('Form submitted:', formData);
-        alert('Form submitted successfully!');
+        router.push('/thank-you');
     };
 
     return (
@@ -99,11 +101,12 @@ export default function ContactSection() {
                                     onChange={handleChange}
                                     className="w-full px-4 py-1.5 shadow-sm bg-[#F7F7F7] text-sm focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
                                 >
-                                    <option value="">Select project type</option>
-                                    <option value="web">Web Development</option>
-                                    <option value="mobile">Mobile App</option>
-                                    <option value="design">Design Services</option>
-                                    <option value="consulting">Consulting</option>
+                                    <option value="">Select</option>
+                                    <option value="Installation">Installation</option>
+                                    <option value="Maintenance & Services">Maintenance & Services</option>
+                                    <option value="Modernization">Modernization</option>
+                                    <option value="Consulting">Consulting</option>
+                                    <option value="Other">Other</option>
                                 </select>
                             </div>
 
@@ -111,19 +114,15 @@ export default function ContactSection() {
                                 <label htmlFor="location" className="block text-sm font-base tracking-wide text-black  mb-2">
                                     Location
                                 </label>
-                                <select
+                                <input
+                                    type="text"
                                     id="location"
                                     name="location"
                                     value={formData.location}
                                     onChange={handleChange}
                                     className="w-full px-4 py-1.5 placeholder:text-gray-400 placeholder:text-sm text-sm shadow-sm bg-[#F7F7F7] focus:ring-1 focus:ring-red-500 focus:border-transparent outline-none transition"
-                                >
-                                    <option value="">Enter location</option>
-                                    <option value="new-york">New York</option>
-                                    <option value="los-angeles">Los Angeles</option>
-                                    <option value="chicago">Chicago</option>
-                                    <option value="houston">Houston</option>
-                                </select>
+                                />
+                                   
                             </div>
 
                             <div>
