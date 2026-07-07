@@ -7,6 +7,9 @@ import Script from 'next/script';
 export const metadata = {
   title: "Reliant Elevators",
   description: "Reliant Elevators Website",
+  verification: {
+    google: "Q8CCTaDbZIhUDFsk1jpxGgkhimb-C6sOAKn8KoR-CRs",
+  },
 };
 
 const roboto = Roboto({
@@ -69,10 +72,11 @@ const satoshi = localFont({
 
 
 
+
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
+      <body className={`${roboto.variable} ${lora.variable} ${worksans.variable} ${aquire.variable} ${satoshi.variable} ${dragon.variable} antialiased`} suppressHydrationWarning>
         <Script
           id="google-tag-manager"
           strategy="afterInteractive"
@@ -89,8 +93,6 @@ export default function RootLayout({ children }) {
             })(window,document,'script','dataLayer','GTM-5BFCXLJF');
           `}
         </Script>
-      </head>
-      <body className={`${roboto.variable} ${lora.variable} ${worksans.variable} ${aquire.variable} ${satoshi.variable} ${dragon.variable} antialiased`} suppressHydrationWarning>
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-5BFCXLJF"
