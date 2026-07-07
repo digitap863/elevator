@@ -74,6 +74,19 @@ export default function RootLayout({ children }) {
     <html lang="en" suppressHydrationWarning>
       <head>
         <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-KKW0G1DMSH"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-KKW0G1DMSH');
+          `}
+        </Script>
+        <Script
           id="google-tag-manager"
           strategy="afterInteractive"
         >
