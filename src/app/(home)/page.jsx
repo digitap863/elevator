@@ -10,6 +10,11 @@ import Specilization from "../../components/user/Home/Specilization.jsx"
 import Logos from '@/components/user/Home/Logos.jsx'
 import Numbers from '@/components/user/Home/Numbers.jsx'
 
+export const metadata = {
+  verification: {
+    google: "Q8CCTaDbZIhUDFsk1jpxGgkhimb-C6sOAKn8KoR-CRs",
+  },
+};
 
 export default function Home() {
   return (
