@@ -37,7 +37,7 @@ function Specilization() {
             description: 'Reliable emergency operation ensures smooth transportation even during power failure.'
         },
         {
-            title: 'Button-Operated Manual Rescue',
+            title: 'EBO Rescue Operation',
             description: 'Simple, user-friendly rescue mechanism for added peace of mind.'
         }
     ];
