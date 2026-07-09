@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Calendar, Clock, ArrowLeft, ArrowRight, MessageSquare } from 'lucide-react';
+import DOMPurify from 'isomorphic-dompurify';
 import connectDB from '@/lib/db';
 import Blog from '@/models/Blog';
 import bgabout from '@/assests/home/bgabout.svg';
@@ -59,6 +60,15 @@ export default async function BlogDetailPage({ params }) {
   if (!currentPost) {
     notFound();
   }
+
+  const sanitizedContent = DOMPurify.sanitize(currentPost.content || '', {
+    ALLOWED_TAGS: [
+      'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'div', 'strong', 'em', 'u',
+      'ul', 'ol', 'li', 'blockquote', 'a', 'img', 'table', 'thead', 'tbody', 'tr', 'th', 'td',
+      'pre', 'code', 'hr', 'br'
+    ],
+    ALLOWED_ATTR: ['href', 'src', 'alt', 'class', 'target', 'rel', 'style']
+  });
 
   // Get 3 related posts (excluding current post)
   const relatedPosts = await Blog.find({
@@ -126,7 +136,7 @@ export default async function BlogDetailPage({ params }) {
             {/* Article Content - Rendered safely as HTML (from Rich Text Editor) */}
             <div 
               className="prose prose-lg max-w-none font-satoshi text-gray-700 leading-relaxed font-light space-y-6 blog-content-body"
-              dangerouslySetInnerHTML={{ __html: currentPost.content }}
+              dangerouslySetInnerHTML={{ __html: sanitizedContent }}
             />
           </div>
 

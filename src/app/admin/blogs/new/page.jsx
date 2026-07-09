@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowLeft, Upload, Plus, X, Loader, HelpCircle, Eye, Edit } from 'lucide-react';
+import RichTextEditor from '@/components/admin/RichTextEditor';
 
 export default function NewBlog() {
   const router = useRouter();
@@ -88,26 +89,6 @@ export default function NewBlog() {
     }
   };
 
-  // Content formatting tools for Rich Text formatting inside textarea
-  const insertFormatting = (tagOpen, tagClose = '') => {
-    const textarea = document.getElementById('content-textarea');
-    if (!textarea) return;
-
-    const start = textarea.selectionStart;
-    const end = textarea.selectionEnd;
-    const text = textarea.value;
-    const selected = text.substring(start, end);
-    const replacement = tagOpen + selected + tagClose;
-
-    const newContent = text.substring(0, start) + replacement + text.substring(end);
-    setForm(prev => ({ ...prev, content: newContent }));
-
-    // Refocus and place cursor
-    setTimeout(() => {
-      textarea.focus();
-      textarea.setSelectionRange(start + tagOpen.length, start + tagOpen.length + selected.length);
-    }, 10);
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -227,29 +208,11 @@ export default function NewBlog() {
             </div>
 
             {activeTab === 'write' ? (
-              <div className="space-y-2 border border-gray-200 rounded-xl overflow-hidden">
-                {/* Editor Formatting toolbar */}
-                <div className="bg-gray-50 border-b border-gray-200 p-2 flex flex-wrap gap-1">
-                  <button type="button" onClick={() => insertFormatting('<h2>', '</h2>')} className="text-xs px-2.5 py-1 rounded bg-white hover:bg-gray-150 border border-gray-200 font-semibold cursor-pointer">H2</button>
-                  <button type="button" onClick={() => insertFormatting('<h3>', '</h3>')} className="text-xs px-2.5 py-1 rounded bg-white hover:bg-gray-150 border border-gray-200 font-semibold cursor-pointer">H3</button>
-                  <button type="button" onClick={() => insertFormatting('<strong>', '</strong>')} className="text-xs px-2.5 py-1 rounded bg-white hover:bg-gray-150 border border-gray-200 font-bold cursor-pointer">Bold</button>
-                  <button type="button" onClick={() => insertFormatting('<em>', '</em>')} className="text-xs px-2.5 py-1 rounded bg-white hover:bg-gray-150 border border-gray-200 italic cursor-pointer">Italic</button>
-                  <button type="button" onClick={() => insertFormatting('<blockquote>', '</blockquote>')} className="text-xs px-2.5 py-1 rounded bg-white hover:bg-gray-150 border border-gray-200 cursor-pointer">Quote</button>
-                  <button type="button" onClick={() => insertFormatting('<ul className="list-disc pl-6 space-y-2"> \n  <li>', '</li>\n</ul>')} className="text-xs px-2.5 py-1 rounded bg-white hover:bg-gray-150 border border-gray-200 cursor-pointer">List</button>
-                  <button type="button" onClick={() => insertFormatting('<p>', '</p>')} className="text-xs px-2.5 py-1 rounded bg-white hover:bg-gray-150 border border-gray-200 cursor-pointer">Paragraph</button>
-                </div>
-                {/* Textarea */}
-                <textarea
-                  id="content-textarea"
-                  name="content"
-                  required
-                  value={form.content}
-                  onChange={handleTextChange}
-                  rows="15"
-                  placeholder="Draft your full article layout. Use formatting tools above to structure headings, lists, quotes, and paragraphs..."
-                  className="w-full px-4 py-3 border-0 focus:outline-none focus:ring-0 text-sm font-mono leading-relaxed"
-                />
-              </div>
+              <RichTextEditor
+                value={form.content}
+                onChange={(value) => setForm(prev => ({ ...prev, content: value }))}
+                placeholder="Draft your full article layout. Use formatting tools above to structure headings, lists, quotes, tables, and paragraphs..."
+              />
             ) : (
               <div className="border border-gray-200 rounded-xl p-5 bg-[#fafafa] min-h-[300px] prose prose-sm max-w-none font-satoshi overflow-y-auto leading-relaxed">
                 {form.content ? (
