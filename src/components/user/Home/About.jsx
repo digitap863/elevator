@@ -16,7 +16,7 @@ export default function AboutSection() {
       </div>
       <Image
         src={line}
-        alt="Line"
+        alt=""
         className="absolute top-[17%] left-0 w-full opacity-50"
       />
 
@@ -204,7 +204,7 @@ export default function AboutSection() {
                 {/* Replace with your elevator image */}
                 <Image
                   src={lift1}
-                  alt="Modern Elevator"
+                  alt="Reliant Elevators - Modern Glass Home Elevator in Kerala"
                   className="w-auto md:h-[500px] h-[300px] object-contain"
                 />
               </div>

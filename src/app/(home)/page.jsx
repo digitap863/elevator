@@ -9,8 +9,53 @@ import Projects from '../../components/user/Home/Projects.jsx'
 import Specilization from "../../components/user/Home/Specilization.jsx"
 import Logos from '@/components/user/Home/Logos.jsx'
 import Numbers from '@/components/user/Home/Numbers.jsx'
+import FAQ from '@/components/user/Home/FAQ.jsx'
+import {
+  organizationSchema,
+  howToSchema,
+  aggregateRatingSchema,
+  webPageSchema,
+  breadcrumbSchema,
+  websiteSchema,
+  localBusinessSchema
+} from '@/data/HomeSchemas.js'
 
 export const metadata = {
+  title: "Top Lift, Elevator Company in Kochi,Calicut,Trivandrum",
+  description: "Reliant Elevators — Kerala's trusted lift & elevator company in Kochi, Calicut & Trivandrum.Residential, commercial & hospital elevators. Call us today!",
+  keywords: "Best Elevator company in kerala, elevator company in calicut, elavator company in Trivandrum, elevator installation services Kerala, AMC elevator services, escalator company Kerala, Lift Company in kerala, home lift cost Kerala",
+  alternates: {
+    canonical: "https://www.reliantelevators.com",
+    languages: {
+      "en": "https://www.reliantelevators.com",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  openGraph: {
+    type: "website",
+    url: "https://www.reliantelevators.com/",
+    siteName: "Reliant Elevators",
+    title: "Top Lift & Elevator Company in Kochi, Calicut, Trivandrum | Reliant Elevators",
+    description: "Reliant Elevators — Kerala's trusted lift & elevator company in Kochi, Calicut & Trivandrum. Residential, commercial & hospital elevators. Call us today.",
+    images: [
+      {
+        url: "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
+        width: 1080,
+        height: 1080,
+        alt: "Reliant Elevators - Lift & Elevator Company in Kerala",
+      },
+    ],
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Top Lift & Elevator Company in Kochi, Calicut, Trivandrum | Reliant Elevators",
+    description: "Reliant Elevators — Kerala's trusted lift & elevator company in Kochi, Calicut & Trivandrum. Residential, commercial & hospital elevators. Call us today.",
+    images: ["https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75"],
+  },
   verification: {
     google: "Q8CCTaDbZIhUDFsk1jpxGgkhimb-C6sOAKn8KoR-CRs",
   },
@@ -19,6 +64,34 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="overflow-hidden ">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aggregateRatingSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       <Banner />
       <div className='bg-container relative'>
         <About />
@@ -30,6 +103,7 @@ export default function Home() {
         <Testimonials />
         <TestimonialCards />
         <Logos />
+        <FAQ />
         <Contact
           label="Get Started"
           heading="Ready to Elevate?"

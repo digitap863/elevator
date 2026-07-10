@@ -5,8 +5,21 @@ import Banner from './Banner.jsx'
 import Projectsection from './Projectsection.jsx'
 
 export default function Projects() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.reliantelevators.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Projects", "item": "https://www.reliantelevators.com/projects" }
+    ]
+  };
+
   return (
     <main className="overflow-hidden ">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Banner />
       <div style={{ backgroundImage: `url(${bgabout.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <Suspense fallback={<div className="min-h-screen flex items-center justify-center">Loading projects...</div>}>

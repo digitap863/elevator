@@ -76,7 +76,7 @@ export default function Projects() {
       {/* Decorative line */}
       <Image
         src={line}
-        alt="Line"
+        alt=""
         className="absolute top-[15%] left-0 w-full opacity-70"
       />
 
@@ -150,7 +150,7 @@ export default function Projects() {
                     {/* Project Image */}
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`Reliant Elevators Project - ${project.title}`}
                       className="w-full h-full object-cover"
                     />
 

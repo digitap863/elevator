@@ -19,20 +19,20 @@ export default function Logos() {
     const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
     const logos = [
-        { id: 1, src: logo1, alt: "APSON" },
-        { id: 2, src: logo2, alt: "Partner 2" },
-        { id: 3, src: logo3, alt: "HEENA" },
-        { id: 4, src: logo4, alt: "Bharat Bijlee" },
-        { id: 5, src: logo5, alt: "Monarch" },
-        { id: 6, src: logo6, alt: "Mykola" },
-        { id: 7, src: logo7, alt: "SRIKEL" },
-        { id: 8, src: logo1, alt: "APSON" },
-        { id: 9, src: logo2, alt: "Partner 2" },
-        { id: 10, src: logo3, alt: "HEENA" },
-        { id: 11, src: logo4, alt: "Bharat Bijlee" },
-        { id: 12, src: logo5, alt: "Monarch" },
-        { id: 13, src: logo6, alt: "Mykola" },
-        { id: 14, src: logo7, alt: "SRIKEL" }
+        { id: 1, src: logo1, alt: "APSON Elevator Controller logo" },
+        { id: 2, src: logo2, alt: "Reliant Elevators Associate Partner logo" },
+        { id: 3, src: logo3, alt: "HEENA Elevator Motors logo" },
+        { id: 4, src: logo4, alt: "Bharat Bijlee Motors logo" },
+        { id: 5, src: logo5, alt: "Monarch Elevator Controls logo" },
+        { id: 6, src: logo6, alt: "Mykola Elevator Drive logo" },
+        { id: 7, src: logo7, alt: "SRIKEL Elevator Components logo" },
+        { id: 8, src: logo1, alt: "APSON Elevator Controller logo" },
+        { id: 9, src: logo2, alt: "Reliant Elevators Associate Partner logo" },
+        { id: 10, src: logo3, alt: "HEENA Elevator Motors logo" },
+        { id: 11, src: logo4, alt: "Bharat Bijlee Motors logo" },
+        { id: 12, src: logo5, alt: "Monarch Elevator Controls logo" },
+        { id: 13, src: logo6, alt: "Mykola Elevator Drive logo" },
+        { id: 14, src: logo7, alt: "SRIKEL Elevator Components logo" }
     ];
 
     return (

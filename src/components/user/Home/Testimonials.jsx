@@ -83,7 +83,7 @@ export default function Testimonials() {
               {/* Video Thumbnail */}
               <Image
                 src={rect}
-                alt="Modern Elevator"
+                alt="Reliant Elevators - Modern Home Lift Customer Testimonial Video"
                 className="w-full h-80 md:h-110 object-cover"
               />
 

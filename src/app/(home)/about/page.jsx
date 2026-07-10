@@ -7,8 +7,21 @@ import Milestones from './Milestones.jsx'
 import Project from './Project.jsx'
   
 export default function About() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.reliantelevators.com/" },
+      { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.reliantelevators.com/about" }
+    ]
+  };
+
   return (
     <main className="overflow-hidden "> 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Banner /> 
       <div  style={{ backgroundImage: `url(${bgabout.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <AboutSection />

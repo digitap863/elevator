@@ -5,8 +5,21 @@ import Contact from '@/components/user/Home/Contact.jsx'
 import Usp from './Usp.jsx'
 
 export default function About() {
+  const breadcrumbSchema = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.reliantelevators.com/" },
+      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.reliantelevators.com/products" }
+    ]
+  };
+
   return (
     <main className="overflow-hidden "> 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
       <Banner /> 
       <div  style={{ backgroundImage: `url(${probg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       <ProductSection />
