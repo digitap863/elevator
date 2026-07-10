@@ -76,7 +76,7 @@ export default function Projects() {
       {/* Decorative line */}
       <Image
         src={line}
-        alt=""
+        alt="line"
         className="absolute top-[15%] left-0 w-full opacity-70"
       />
 

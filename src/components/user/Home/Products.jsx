@@ -169,13 +169,13 @@ export default function Products() {
     <main className="min-h-screen font-satoshi relative">
       <Image
         src={line}
-        alt=""
+        alt="line"
         className="absolute top-[17%] left-0 w-full opacity-50"
       />
 
       <Image
         src={line}
-        alt=""
+        alt="line"
         className="absolute top-[67%] left-0 w-full opacity-70 scale-y-[-1]"
       />
 

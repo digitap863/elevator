@@ -68,7 +68,7 @@ function Specilization() {
             <div className="absolute inset-0 z-0">
                 <Image
                     src={specbg}
-                    alt=""
+                    alt="elevator company in calicut"
                     fill
                     className="object-cover opacity-100"
                     priority
@@ -135,7 +135,7 @@ function Specilization() {
                         <div className="relative rounded-lg overflow-hidden shadow-2xl">
                             <Image
                                 src={liff}
-                                alt="Reliant Elevators - Freedom R26 Smart Home Lift in India"
+                                alt="Freedom R26 Smart Home Lift in India"
                                 className="w-full h-auto object-cover"
                                 priority
                             />

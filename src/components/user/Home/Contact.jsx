@@ -23,12 +23,12 @@ export default function Contact({
           <div className="absolute inset-0">
             <img
               src={contac.src}
-              alt="Reliant Elevators - Premium Elevator Installation Services Kerala"
+              alt="Premium Elevator Installation Services Kerala"
               className="w-full h-full object-cover md:block hidden "
             />
             <img
               src={contamob.src}
-              alt="Reliant Elevators - Premium Home Lift Installation Kerala"
+              alt="Premium Home Lift Installation Kerala"
               className="w-full h-full object-cover md:hidden block "
             />
             {/* <div className="absolute inset-0 bg-black/70"></div> */}
