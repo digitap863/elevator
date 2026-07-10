@@ -21,7 +21,7 @@ import {
 } from '@/data/HomeSchemas.js'
 
 export const metadata = {
-  title: "Top Lift, Elevator Company in Kochi,Calicut,Trivandrum",
+  title: "Top Lift & Elevator Company in Kerala | Kochi,Calicut,Trivandrum",
   description: "Reliant Elevators — Kerala's trusted lift & elevator company in Kochi, Calicut & Trivandrum.Residential, commercial & hospital elevators. Call us today!",
   keywords: "Best Elevator company in kerala, elevator company in calicut, elavator company in Trivandrum, elevator installation services Kerala, AMC elevator services, escalator company Kerala, Lift Company in kerala, home lift cost Kerala",
   alternates: {

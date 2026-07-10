@@ -27,7 +27,7 @@ const Banner = () => {
             </video>
 
             <div className="relative max-w-7xl mx-auto h-[67vh] md:h-[105vh]">
-                <div className="relative z-10 flex flex-row items-center justify-start h-full  px-4 font-aquire md:text-6xl text-2xl ">
+                <div className="relative z-10 flex flex-col items-start justify-center h-full px-4 font-aquire md:text-6xl text-2xl">
                     <motion.p
                         initial={{ x: -100, opacity: 0 }}
                         animate={{ x: 0, opacity: 1 }}
@@ -40,7 +40,23 @@ const Banner = () => {
                         Reliability<span className="text-red-500"> </span><br />
                         <span className="text-red-600">Elegance</span>  & Quality
                     </motion.p>
+                    <motion.h1
+                        className="font-sathoshi md:text-xl text-sm font-md text-black  mt-4 max-w-md tracking-wider leading-relaxed normal-case"
+                        initial={{ x: -100, opacity: 0 }}
+                        animate={{ x: 0, opacity: 1 }}
+                        transition={{
+                            duration: 1,
+                            ease: "easeOut",
+                            delay: 0.5
+                        }}
+                    >
+                        Top Elevator Company in Kerala.<br />
+                        We are in Kochi, Calicut, and Trivandrum.
+                    </motion.h1>
                 </div>
+               
+                   
+               
             </div>
 
             <div className="absolute -bottom-12 left-0 w-full h-24 bg-[#EBEBEB] blur-lg"></div>
