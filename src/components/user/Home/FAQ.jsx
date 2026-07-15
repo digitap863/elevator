@@ -10,38 +10,63 @@ import Link from 'next/link';
 const faqs = [
   {
     category: 'general',
-    question: 'What are the space and structure requirements for installing a home elevator?',
-    answer: 'Our home elevators (like the Freedom R26) are highly space-efficient and designed to integrate seamlessly into Indian homes. They require minimal pit depth (often as little as 50mm to 100mm) and standard headroom. We can install them in existing stairwell gaps, external structures, or dedicated masonry shafts.'
-  },
-  {
-    category: 'safety',
-    question: 'How safe are home elevators during a power outage?',
-    answer: 'Reliant elevators are equipped with an Automatic Rescue Device (ARD) and an Emergency Battery Operator (EBO). In the event of a power failure, the lift automatically travels to the nearest floor and opens the doors, ensuring passenger safety and absolute peace of mind.'
-  },
-  {
-    category: 'safety',
-    question: 'What smart tech integrations are available in your premium elevators?',
-    answer: 'Our lifts feature state-of-the-art smart home integrations, including Alexa Voice Control for hands-free operation, IoT-enabled real-time monitoring and remote diagnostics, and biometrics like Face Recognition access via a dedicated mobile app.'
-  },
-  {
-    category: 'installation',
-    question: 'How often does a home elevator require maintenance?',
-    answer: 'To ensure peak performance and long-term safety, we recommend routine maintenance check-ups every 3 to 6 months. Our smart IoT systems continuously monitor diagnostic data, often allowing our service team to resolve issues preemptively.'
+    question: 'Which is the best elevator or lift company in Kerala?',
+    answer: 'Reliant Elevators is one of the most trusted lift and elevator companies in Kerala, with over 15 years of experience serving customers across Kochi, Calicut, and Trivandrum. We provide high-quality residential, commercial, and hospital elevator solutions with reliable installation and after-sales support.'
   },
   {
     category: 'general',
-    question: 'Can the elevator cabin design be customized to match my home interior?',
-    answer: 'Yes! We offer extensive personalization options. You can customize the cabin walls (panoramic glass or premium stainless steel), select ambient LED lighting configurations, choose designer cabin flooring (wood, marble, or tile), and select custom buttons.'
+    question: 'Which is the top home elevator company near me?',
+    answer: 'Reliant Elevators is one of the leading home elevator companies in Kerala, offering safe, space-saving, and fully customizable home lifts for villas, apartments, and multi-storey houses. We provide expert installation and dependable support across Kochi, Calicut, and Trivandrum.'
   },
   {
     category: 'general',
-    question: 'Do your elevators require a separate machine room?',
-    answer: 'No. We use Machine Room-Less (MRL) and advanced hydraulic or traction designs. The controller and drive machinery are located compactly inside the shaft or in a small wall-integrated cabinet, leaving your home clutter-free.'
+    question: 'Which company offers the latest technology elevators in Kochi, Kerala?',
+    answer: 'Reliant Elevators offers the advanced Freedom R26 elevator featuring Alexa voice control, IoT-based remote monitoring, and face recognition access control, making it one of the smartest elevator solutions available in Kochi.'
+  },
+  {
+    category: 'general',
+    question: 'Is Reliant Elevators ISO certified?',
+    answer: 'Yes. Reliant Elevators has been ISO 9001:2015 certified since 2018, demonstrating our commitment to delivering internationally recognized quality management standards.'
+  },
+  {
+    category: 'general',
+    question: 'How much does a home elevator cost in Kerala?',
+    answer: 'The cost of a home elevator depends on the lift model, number of floors, customization requirements, and site conditions. Reliant Elevators offers a free site inspection, consultation, and detailed quotation with transparent pricing.'
   },
   {
     category: 'installation',
-    question: 'How long does the installation of a home elevator take?',
-    answer: 'The physical installation of the elevator on-site typically takes between 7 to 14 working days once the shafts and electrical connections are ready. The overall manufacturing and delivery cycle takes around 4 to 6 weeks.'
+    question: 'Who provides affordable elevator installation in Kerala?',
+    answer: 'Reliant Elevators provides affordable Machine Room-Less (MRL) elevators with space-saving designs, professional installation, free consultation, and transparent quotations without hidden charges.'
+  },
+  {
+    category: 'general',
+    question: 'Which elevator company is best for residential and commercial buildings in Kerala?',
+    answer: 'Reliant Elevators designs and installs residential elevators, commercial elevators, hospital lifts, passenger lifts, and escalators that meet modern safety standards and are suitable for high-traffic, multi-storey buildings.'
+  },
+  {
+    category: 'general',
+    question: 'Does Reliant Elevators offer machine-room-less lifts?',
+    answer: 'Yes. Reliant Elevators specializes in Machine Room-Less (MRL) elevators that maximize usable space, reduce construction costs, and provide efficient, modern lift solutions.'
+  },
+  {
+    category: 'safety',
+    question: 'What happens if the elevator loses power — is it safe?',
+    answer: 'Yes. Reliant Elevators installs lifts equipped with an Automatic Rescue Device (ARD) and Emergency Battery Operation (EBO), allowing the elevator to safely move to the nearest floor and open the doors during a power failure.'
+  },
+  {
+    category: 'installation',
+    question: 'How long does home elevator installation take?',
+    answer: 'The on-site installation of a home elevator typically takes 7 to 14 working days, while the complete project, including manufacturing and delivery, usually takes 4 to 6 weeks.'
+  },
+  {
+    category: 'installation',
+    question: 'What warranty and after-sales support does Reliant Elevators provide?',
+    answer: 'Reliant Elevators offers comprehensive warranty coverage, Annual Maintenance Contract (AMC) plans, routine inspections, and IoT-based remote monitoring to ensure reliable long-term performance and prompt service support.'
+  },
+  {
+    category: 'general',
+    question: 'Which is the top home elevator company near me?',
+    answer: 'Reliant Elevators is a top-rated home elevator company with offices in Kochi, Calicut, and Trivandrum, providing expert consultation, installation, maintenance, and fast local support throughout Kerala.'
   }
 ];
 
@@ -57,30 +82,8 @@ export default function FAQ() {
     setExpandedIndex(expandedIndex === index ? null : index);
   };
 
-  // Structured Data (JSON-LD) for SEO
-  const jsonLdData = useMemo(() => {
-    return {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": faqs.map(faq => ({
-        "@type": "Question",
-        "name": faq.question,
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": faq.answer
-        }
-      }))
-    };
-  }, []);
-
   return (
     <section className="relative py-20 px-6 sm:px-8 bg-slate-50 overflow-hidden font-sathoshi">
-      {/* Dynamic SEO JSON-LD schema injection */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
-      />
-
       {/* Decorative patterns */}
       <div className="absolute top-10 right-10 w-64 h-64 bg-teal-200/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-10 w-96 h-96 bg-cyan-200/15 rounded-full blur-3xl pointer-events-none" />

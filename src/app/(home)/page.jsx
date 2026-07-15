@@ -17,7 +17,8 @@ import {
   webPageSchema,
   breadcrumbSchema,
   websiteSchema,
-  localBusinessSchema
+  localBusinessSchema,
+  faqSchema
 } from '@/data/HomeSchemas.js'
 
 export const metadata = {
@@ -91,6 +92,10 @@ export default function Home() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
       <Banner />
       <div className='bg-container relative'>

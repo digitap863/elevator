@@ -56,52 +56,78 @@ export const organizationSchema = {
 export const howToSchema = {
   "@context": "https://schema.org",
   "@type": "HowTo",
-  "name": "How to Choose the Right Elevator for Your Home",
-  "description": "A step-by-step guide by Reliant Elevators to help homeowners in Kerala select the right home elevator based on space, budget, and needs.",
-  "image": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
-  "totalTime": "P7D",
+  "@id": "https://www.reliantelevators.com/#howto-install-home-elevator",
+  "name": "How to Install a Home Elevator with Reliant Elevators",
+  "description": "A step-by-step guide to installing a home elevator in Kerala with Reliant Elevators, from free consultation to final safety testing.",
+  "image": {
+    "@type": "ImageObject",
+    "url": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75"
+  },
+  "totalTime": "P6W",
   "estimatedCost": {
     "@type": "MonetaryAmount",
     "currency": "INR",
-    "value": "500000"
+    "value": "Contact for quote"
   },
   "supply": [
-    { "@type": "HowToSupply", "name": "Available shaft or hoistway space" },
-    { "@type": "HowToSupply", "name": "Power supply access point" }
+    {
+      "@type": "HowToSupply",
+      "name": "Available shaft space, stairwell gap, or external structure"
+    },
+    {
+      "@type": "HowToSupply",
+      "name": "Electrical connection point near installation site"
+    }
   ],
   "tool": [
-    { "@type": "HowToTool", "name": "Site measurement by technician" }
+    {
+      "@type": "HowToTool",
+      "name": "Freedom R26 Smart Home Lift or applicable elevator model"
+    }
   ],
   "step": [
     {
       "@type": "HowToStep",
-      "name": "Assess your space",
-      "text": "Measure the available shaft or floor space to determine what elevator size and type will fit your home.",
-      "url": "https://www.reliantelevators.com/service#assess-space"
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Choose the elevator type",
-      "text": "Decide between hydraulic, traction, or pneumatic elevators based on building height, budget, and usage needs.",
-      "url": "https://www.reliantelevators.com/products#elevator-types"
-    },
-    {
-      "@type": "HowToStep",
-      "name": "Set your budget",
-      "text": "Get a consultation and quote from Reliant Elevators based on your chosen configuration and features.",
+      "position": 1,
+      "name": "Book a Free Consultation",
+      "text": "Contact Reliant Elevators' team in Kochi, Calicut, or Trivandrum for a free, no-obligation consultation to discuss your requirements and budget.",
       "url": "https://www.reliantelevators.com/reachout"
     },
     {
       "@type": "HowToStep",
-      "name": "Schedule installation",
-      "text": "Once finalized, our team handles structural work, installation, and safety certification.",
-      "url": "https://www.reliantelevators.com/service#installation"
+      "position": 2,
+      "name": "Site Evaluation and Planning",
+      "text": "Our technical team visits or reviews your property to assess pit depth, headroom, and shaft options — home elevators can fit into existing stairwell gaps, external structures, or dedicated masonry shafts with as little as 50mm to 100mm pit depth."
     },
     {
       "@type": "HowToStep",
-      "name": "Set up maintenance",
-      "text": "Enroll in an Annual Maintenance Contract (AMC) to keep your elevator safe and running smoothly.",
-      "url": "https://www.reliantelevators.com/service#maintenance"
+      "position": 3,
+      "name": "Get a Custom Design and Quote",
+      "text": "Choose your elevator type (home, commercial, or hospital), cabin finish (glass, stainless steel, wood, marble), and smart features. Receive a transparent, itemized quote with no hidden charges."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 4,
+      "name": "Manufacturing and Delivery",
+      "text": "Your elevator is manufactured to specification. The full manufacturing-to-delivery cycle typically takes 4 to 6 weeks."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 5,
+      "name": "On-Site Installation",
+      "text": "Once the shaft and electrical connections are ready, our certified technicians complete on-site installation, typically within 7 to 14 working days."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 6,
+      "name": "Safety Testing and Handover",
+      "text": "The elevator undergoes safety testing, including the Automatic Rescue Device (ARD) and Emergency Battery Operator (EBO), before final handover to ensure safe, reliable operation."
+    },
+    {
+      "@type": "HowToStep",
+      "position": 7,
+      "name": "Ongoing AMC and Support",
+      "text": "Enroll in an Annual Maintenance Contract (AMC) for routine inspection, lubrication, diagnostics, and IoT-based monitoring to keep your elevator running safely long-term."
     }
   ]
 };
@@ -388,3 +414,107 @@ export const localBusinessSchema = {
     }
   ]
 };
+
+export const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Which is the best elevator or lift company in Kerala?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reliant Elevators is one of the most trusted lift and elevator companies in Kerala, with over 15 years of experience serving customers across Kochi, Calicut, and Trivandrum. We provide high-quality residential, commercial, and hospital elevator solutions with reliable installation and after-sales support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is the top home elevator company near me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reliant Elevators is one of the leading home elevator companies in Kerala, offering safe, space-saving, and fully customizable home lifts for villas, apartments, and multi-storey houses. We provide expert installation and dependable support across Kochi, Calicut, and Trivandrum."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which company offers the latest technology elevators in Kochi, Kerala?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reliant Elevators offers the advanced Freedom R26 elevator featuring Alexa voice control, IoT-based remote monitoring, and face recognition access control, making it one of the smartest elevator solutions available in Kochi."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Reliant Elevators ISO certified?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Reliant Elevators has been ISO 9001:2015 certified since 2018, demonstrating our commitment to delivering internationally recognized quality management standards."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much does a home elevator cost in Kerala?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The cost of a home elevator depends on the lift model, number of floors, customization requirements, and site conditions. Reliant Elevators offers a free site inspection, consultation, and detailed quotation with transparent pricing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who provides affordable elevator installation in Kerala?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reliant Elevators provides affordable Machine Room-Less (MRL) elevators with space-saving designs, professional installation, free consultation, and transparent quotations without hidden charges."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which elevator company is best for residential and commercial buildings in Kerala?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reliant Elevators designs and installs residential elevators, commercial elevators, hospital lifts, passenger lifts, and escalators that meet modern safety standards and are suitable for high-traffic, multi-storey buildings."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Reliant Elevators offer machine-room-less lifts?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Reliant Elevators specializes in Machine Room-Less (MRL) elevators that maximize usable space, reduce construction costs, and provide efficient, modern lift solutions."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if the elevator loses power — is it safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Reliant Elevators installs lifts equipped with an Automatic Rescue Device (ARD) and Emergency Battery Operation (EBO), allowing the elevator to safely move to the nearest floor and open the doors during a power failure."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does home elevator installation take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The on-site installation of a home elevator typically takes 7 to 14 working days, while the complete project, including manufacturing and delivery, usually takes 4 to 6 weeks."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What warranty and after-sales support does Reliant Elevators provide?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reliant Elevators offers comprehensive warranty coverage, Annual Maintenance Contract (AMC) plans, routine inspections, and IoT-based remote monitoring to ensure reliable long-term performance and prompt service support."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which is the top home elevator company near me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Reliant Elevators is a top-rated home elevator company with offices in Kochi, Calicut, and Trivandrum, providing expert consultation, installation, maintenance, and fast local support throughout Kerala."
+      }
+    }
+  ]
+};
+
