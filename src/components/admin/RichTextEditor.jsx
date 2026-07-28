@@ -16,16 +16,49 @@ import {
   Bold, Italic, Underline as UnderlineIcon,
   List, ListOrdered, Quote, Link as LinkIcon, Image as ImageIcon,
   Table as TableIcon, Code, Minus, AlignLeft, AlignCenter, AlignRight, AlignJustify,
-  Undo2, Redo2, X, Check, Upload, Loader
+  Undo2, Redo2, X, Check, Upload, Loader, Globe, Link2, Trash2
 } from 'lucide-react';
+
+const SITE_PAGES = [
+  { label: 'Home Page', path: '/' },
+  { label: 'Blogs Overview', path: '/blog' },
+  { label: 'About Us', path: '/about' },
+  { label: 'Contact Us', path: '/contact' },
+  { label: 'Home Lifts Service', path: '/services/home-lifts' },
+  { label: 'Commercial Lifts Service', path: '/services/commercial-lifts' },
+  { label: 'Escalators Service', path: '/services/escalators' },
+];
 
 export default function RichTextEditor({ value, onChange, placeholder }) {
   const [activeModal, setActiveModal] = useState(null); // 'link' | 'image' | 'table' | null
 
   // Modal form states
-  const [linkForm, setLinkForm] = useState({ url: '', text: '' });
+  const [linkTab, setLinkTab] = useState('internal'); // 'internal' | 'external'
+  const [linkForm, setLinkForm] = useState({ url: '', openInNewTab: false });
+  const [availableBlogs, setAvailableBlogs] = useState([]);
+  const [loadingBlogs, setLoadingBlogs] = useState(false);
+
   const [imageForm, setImageForm] = useState({ url: '', alt: '', file: null, uploading: false });
   const [tableForm, setTableForm] = useState({ rows: 3, cols: 3 });
+
+  // Fetch internal published blogs for link suggestions
+  useEffect(() => {
+    async function fetchBlogs() {
+      setLoadingBlogs(true);
+      try {
+        const res = await fetch('/api/blogs');
+        const json = await res.json();
+        if (json.success && Array.isArray(json.data)) {
+          setAvailableBlogs(json.data);
+        }
+      } catch (err) {
+        console.error('Failed to load internal blogs for link picker:', err);
+      } finally {
+        setLoadingBlogs(false);
+      }
+    }
+    fetchBlogs();
+  }, []);
 
   const editor = useEditor({
     extensions: [
@@ -43,7 +76,7 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
       Link.configure({
         openOnClick: false,
         HTMLAttributes: {
-          class: 'text-[#C10510] hover:underline font-semibold',
+          class: 'text-[#C10510] hover:underline font-semibold cursor-pointer',
         },
       }),
       Image.configure({
@@ -96,33 +129,63 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
 
   // Link Handlers
   const handleOpenLinkModal = () => {
-    const { from, to } = editor.state.selection;
-    const selectedText = editor.state.doc.textBetween(from, to, ' ');
-    const previousUrl = editor.getAttributes('link').href || '';
-    setLinkForm({ url: previousUrl, text: selectedText });
+    const previousAttrs = editor.getAttributes('link');
+    const previousUrl = previousAttrs.href || '';
+    const previousTarget = previousAttrs.target || '';
+
+    const isInternal = !previousUrl || previousUrl.startsWith('/') || previousUrl.startsWith('#') || previousUrl.startsWith('mailto:') || previousUrl.startsWith('tel:');
+
+    setLinkTab(isInternal ? 'internal' : 'external');
+    setLinkForm({
+      url: previousUrl,
+      openInNewTab: previousTarget === '_blank'
+    });
     setActiveModal('link');
   };
 
   const handleInsertLink = (e) => {
     e.preventDefault();
-    if (!linkForm.url) {
+    if (!linkForm.url || !linkForm.url.trim()) {
       editor.chain().focus().extendMarkRange('link').unsetLink().run();
       setActiveModal(null);
       return;
     }
 
-    let url = linkForm.url;
-    if (!/^https?:\/\//i.test(url)) {
-      url = 'https://' + url;
+    let url = linkForm.url.trim();
+
+    if (linkTab === 'internal') {
+      if (!url.startsWith('/') && !url.startsWith('#') && !url.startsWith('mailto:') && !url.startsWith('tel:')) {
+        url = '/' + url;
+      }
+    } else {
+      if (!/^https?:\/\//i.test(url) && !url.startsWith('/') && !url.startsWith('#')) {
+        url = 'https://' + url;
+      }
+    }
+
+    const linkAttrs = {
+      href: url,
+      target: linkForm.openInNewTab ? '_blank' : '_self'
+    };
+
+    if (linkForm.openInNewTab) {
+      linkAttrs.rel = 'noopener noreferrer';
+    } else {
+      linkAttrs.rel = null;
     }
 
     editor
       .chain()
       .focus()
       .extendMarkRange('link')
-      .setLink({ href: url, target: '_blank', rel: 'noopener noreferrer' })
+      .setLink(linkAttrs)
       .run();
 
+    setActiveModal(null);
+  };
+
+  const handleRemoveLink = () => {
+    editor.chain().focus().extendMarkRange('link').unsetLink().run();
     setActiveModal(null);
   };
 
@@ -390,39 +453,181 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
         <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-xs flex items-center justify-center p-4 z-50 animate-fade-in">
           {/* Link Modal */}
           {activeModal === 'link' && (
-            <form onSubmit={handleInsertLink} className="bg-white rounded-2xl border border-gray-150 p-5 w-full max-w-sm shadow-xl space-y-4">
-              <div className="flex items-center justify-between">
-                <h4 className="font-bold text-gray-900 text-sm font-satoshi">Insert Link</h4>
-                <button type="button" onClick={() => setActiveModal(null)} className="text-gray-400 hover:text-gray-600"><X className="w-4 h-4" /></button>
+            <form onSubmit={handleInsertLink} className="bg-white rounded-2xl border border-gray-150 p-5 w-full max-w-md shadow-xl space-y-4 font-satoshi">
+              <div className="flex items-center justify-between border-b border-gray-100 pb-3">
+                <h4 className="font-bold text-gray-900 text-sm flex items-center gap-2">
+                  <LinkIcon className="w-4 h-4 text-[#C10510]" />
+                  <span>Insert / Edit Link</span>
+                </h4>
+                <button type="button" onClick={() => setActiveModal(null)} className="text-gray-400 hover:text-gray-600">
+                  <X className="w-4 h-4" />
+                </button>
               </div>
-              <div className="space-y-3">
-                <div className="space-y-1">
-                  <label className="text-xs font-semibold text-gray-500 block">Link URL</label>
-                  <input
-                    type="text"
-                    required
-                    value={linkForm.url}
-                    onChange={(e) => setLinkForm(prev => ({ ...prev, url: e.target.value }))}
-                    placeholder="e.g. google.com"
-                    className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi"
-                  />
-                </div>
-              </div>
-              <div className="flex items-center justify-end gap-2 pt-2">
+
+              {/* Link Type Tabs */}
+              <div className="flex bg-gray-100 p-1 rounded-xl gap-1 text-xs">
                 <button
                   type="button"
-                  onClick={() => setActiveModal(null)}
-                  className="px-3 py-1.5 text-xs font-semibold text-gray-500 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+                  onClick={() => {
+                    setLinkTab('internal');
+                    if (linkForm.url && /^https?:\/\//i.test(linkForm.url)) {
+                      setLinkForm(prev => ({ ...prev, url: '' }));
+                    }
+                  }}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+                    linkTab === 'internal'
+                      ? 'bg-white text-gray-900 shadow-xs'
+                      : 'text-gray-500 hover:text-gray-800'
+                  }`}
                 >
-                  Cancel
+                  <Link2 className="w-3.5 h-3.5" />
+                  <span>Internal Link</span>
                 </button>
                 <button
-                  type="submit"
-                  className="px-3 py-1.5 text-xs font-semibold bg-[#C10510] hover:bg-red-700 text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                  type="button"
+                  onClick={() => {
+                    setLinkTab('external');
+                    setLinkForm(prev => ({ ...prev, openInNewTab: true }));
+                  }}
+                  className={`flex-1 flex items-center justify-center gap-1.5 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+                    linkTab === 'external'
+                      ? 'bg-white text-gray-900 shadow-xs'
+                      : 'text-gray-500 hover:text-gray-800'
+                  }`}
                 >
-                  <Check className="w-3.5 h-3.5" />
-                  <span>{linkForm.url ? 'Update Link' : 'Add Link'}</span>
+                  <Globe className="w-3.5 h-3.5" />
+                  <span>External Link</span>
                 </button>
+              </div>
+
+              {/* Form Content Based on Tab */}
+              {linkTab === 'internal' ? (
+                <div className="space-y-3">
+                  {/* Select Main Page Dropdown */}
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-gray-600 block">Select Site Page</label>
+                    <select
+                      onChange={(e) => {
+                        if (e.target.value) {
+                          setLinkForm(prev => ({ ...prev, url: e.target.value }));
+                        }
+                      }}
+                      value={SITE_PAGES.some(p => p.path === linkForm.url) ? linkForm.url : ''}
+                      className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi cursor-pointer"
+                    >
+                      <option value="">-- Choose a standard page --</option>
+                      {SITE_PAGES.map(page => (
+                        <option key={page.path} value={page.path}>
+                          {page.label} ({page.path})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Select Existing Blog Dropdown */}
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-gray-600 block">Link to Existing Article</label>
+                    <select
+                      onChange={(e) => {
+                        if (e.target.value) {
+                          setLinkForm(prev => ({ ...prev, url: e.target.value }));
+                        }
+                      }}
+                      value={linkForm.url.startsWith('/blog/') && availableBlogs.some(b => `/blog/${b.slug}` === linkForm.url) ? linkForm.url : ''}
+                      className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi cursor-pointer"
+                      disabled={loadingBlogs}
+                    >
+                      <option value="">{loadingBlogs ? 'Loading articles...' : '-- Choose a published blog post --'}</option>
+                      {availableBlogs.map(blog => (
+                        <option key={blog._id || blog.slug} value={`/blog/${blog.slug}`}>
+                          {blog.title} (/blog/{blog.slug})
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  {/* Custom Internal URL */}
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-gray-600 block">Custom Path / Anchor</label>
+                    <div className="relative flex items-center">
+                      <span className="absolute left-3 text-xs text-gray-400 font-mono">/</span>
+                      <input
+                        type="text"
+                        value={linkForm.url.startsWith('/') ? linkForm.url.slice(1) : linkForm.url}
+                        onChange={(e) => {
+                          const val = e.target.value;
+                          setLinkForm(prev => ({
+                            ...prev,
+                            url: val.startsWith('#') || val.startsWith('mailto:') || val.startsWith('tel:') ? val : '/' + val.replace(/^\/+/, '')
+                          }));
+                        }}
+                        placeholder="blog/article-slug or #section"
+                        className="w-full pl-7 pr-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi"
+                      />
+                    </div>
+                    <span className="text-[10px] text-gray-400 block">Example: /blog/safety-tips, /about, or #contact</span>
+                  </div>
+                </div>
+              ) : (
+                <div className="space-y-3">
+                  <div className="space-y-1">
+                    <label className="text-xs font-semibold text-gray-600 block">External Web URL</label>
+                    <input
+                      type="text"
+                      required
+                      value={linkForm.url}
+                      onChange={(e) => setLinkForm(prev => ({ ...prev, url: e.target.value }))}
+                      placeholder="https://example.com"
+                      className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi"
+                    />
+                    <span className="text-[10px] text-gray-400 block">Full address (e.g. https://google.com)</span>
+                  </div>
+                </div>
+              )}
+
+              {/* Open in new tab checkbox */}
+              <div className="flex items-center gap-2 pt-1">
+                <input
+                  type="checkbox"
+                  id="openInNewTab"
+                  checked={linkForm.openInNewTab}
+                  onChange={(e) => setLinkForm(prev => ({ ...prev, openInNewTab: e.target.checked }))}
+                  className="rounded border-gray-300 text-[#C10510] focus:ring-[#C10510] h-4 w-4 cursor-pointer"
+                />
+                <label htmlFor="openInNewTab" className="text-xs text-gray-700 font-medium cursor-pointer select-none">
+                  Open link in a new tab
+                </label>
+              </div>
+
+              {/* Modal Actions */}
+              <div className="flex items-center justify-between pt-3 border-t border-gray-100">
+                {editor.isActive('link') ? (
+                  <button
+                    type="button"
+                    onClick={handleRemoveLink}
+                    className="px-3 py-1.5 text-xs font-semibold text-red-600 hover:bg-red-50 rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                  >
+                    <Trash2 className="w-3.5 h-3.5" />
+                    <span>Unlink</span>
+                  </button>
+                ) : <div />}
+
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => setActiveModal(null)}
+                    className="px-3 py-1.5 text-xs font-semibold text-gray-500 hover:bg-gray-100 rounded-lg transition-colors cursor-pointer"
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    type="submit"
+                    className="px-3 py-1.5 text-xs font-semibold bg-[#C10510] hover:bg-red-700 text-white rounded-lg transition-colors cursor-pointer flex items-center gap-1"
+                  >
+                    <Check className="w-3.5 h-3.5" />
+                    <span>{editor.isActive('link') ? 'Update Link' : 'Apply Link'}</span>
+                  </button>
+                </div>
               </div>
             </form>
           )}
