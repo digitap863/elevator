@@ -140,7 +140,15 @@ export default function EditBlog({ params }) {
 
     setSaving(true);
     try {
-      const payload = { ...form, tags };
+      let finalTags = [...tags];
+      if (tagInput.trim()) {
+        const cleaned = tagInput.trim().replace(/,$/, '');
+        if (cleaned && !finalTags.includes(cleaned)) {
+          finalTags.push(cleaned);
+        }
+      }
+
+      const payload = { ...form, tags: finalTags };
       const res = await fetch(`/api/admin/blogs/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
@@ -362,6 +370,7 @@ export default function EditBlog({ params }) {
                     fill
                     className="object-cover"
                     sizes="300px"
+                    unoptimized
                   />
                 </div>
                 <button

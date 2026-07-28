@@ -154,11 +154,12 @@ export default function ManageBlogs() {
                     <td className="py-4 px-6">
                       <div className="relative w-12 h-12 rounded-xl overflow-hidden bg-gray-100 border border-gray-100 flex-shrink-0">
                         <Image
-                          src={blog.featuredImage}
+                          src={blog.featuredImage || 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1000&auto=format&fit=crop'}
                           alt={blog.title}
                           fill
                           className="object-cover"
                           sizes="48px"
+                          unoptimized
                         />
                       </div>
                     </td>

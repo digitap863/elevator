@@ -92,11 +92,24 @@ export default async function BlogDetailPage({ params }) {
 
         {/* Article Header */}
         <div className="max-w-4xl mb-10">
-          {/* Tags */}
-          <div className="flex flex-wrap gap-2 mb-4">
-            <span className="bg-slate-100 text-slate-700 font-medium px-2.5 py-0.5 rounded-full text-xs border border-slate-200">
+          {/* Category & Tags */}
+          <div className="flex flex-wrap gap-2 mb-4 items-center">
+            <span className="bg-slate-800 text-white font-semibold px-3 py-1 rounded-full text-xs border border-slate-800 shadow-xs">
               {currentPost.category}
             </span>
+            {(Array.isArray(currentPost.tags) 
+              ? currentPost.tags 
+              : typeof currentPost.tags === 'string' && currentPost.tags.trim() 
+                ? currentPost.tags.split(',').map(t => t.trim()).filter(Boolean) 
+                : []
+            ).map((tag, idx) => (
+              <span
+                key={idx}
+                className="bg-amber-50 text-amber-800 font-medium px-2.5 py-0.5 rounded-full text-xs border border-amber-200"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
 
           {/* Title */}
@@ -124,12 +137,13 @@ export default async function BlogDetailPage({ params }) {
             {/* Large Featured Image */}
             <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-10 shadow-sm bg-gray-50">
               <Image
-                src={currentPost.featuredImage}
+                src={currentPost.featuredImage || 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1000&auto=format&fit=crop'}
                 alt={currentPost.title}
                 fill
                 priority
                 className="object-cover"
                 sizes="(max-w-1200px) 100vw, 800px"
+                unoptimized
               />
             </div>
 
@@ -156,11 +170,12 @@ export default async function BlogDetailPage({ params }) {
                       {/* Image Thumbnail */}
                       <div className="relative w-16 h-16 rounded-xl overflow-hidden flex-shrink-0 bg-gray-100 border border-gray-100">
                         <Image
-                          src={post.featuredImage}
+                          src={post.featuredImage || 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1000&auto=format&fit=crop'}
                           alt={post.title}
                           fill
                           className="object-cover transition-transform duration-500 group-hover:scale-105"
                           sizes="64px"
+                          unoptimized
                         />
                       </div>
                       {/* Text Info */}

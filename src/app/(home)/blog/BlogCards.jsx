@@ -8,6 +8,36 @@ import { Calendar, Clock, ArrowRight, Loader, AlertCircle } from 'lucide-react';
 
 const categories = ['All', 'Home Lifts', 'Commercial Lifts', 'Escalators', 'Technology', 'Safety', 'Sustainability', 'Business'];
 
+const DEFAULT_IMAGE = 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1000&auto=format&fit=crop';
+
+const SafeImage = ({ src, alt, className, sizes }) => {
+    const [imgSrc, setImgSrc] = useState(src || DEFAULT_IMAGE);
+
+    useEffect(() => {
+        setImgSrc(src || DEFAULT_IMAGE);
+    }, [src]);
+
+    return (
+        <Image
+            src={imgSrc || DEFAULT_IMAGE}
+            alt={alt || 'Blog Image'}
+            fill
+            className={className}
+            sizes={sizes}
+            onError={() => setImgSrc(DEFAULT_IMAGE)}
+            unoptimized
+        />
+    );
+};
+
+const parseTags = (tags) => {
+    if (Array.isArray(tags)) return tags.filter(Boolean);
+    if (typeof tags === 'string' && tags.trim()) {
+        return tags.split(',').map((t) => t.trim()).filter(Boolean);
+    }
+    return [];
+};
+
 const getCategoryColor = (category) => {
     switch (category) {
         case 'Technology': return 'bg-blue-50 text-blue-700 border-blue-200';
@@ -143,78 +173,67 @@ const BlogCards = () => {
                     >
                         {blogs.map((post) => (
                             <motion.article
-                                key={post._id}
-                                variants={cardVariants}
-                                className="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden"
-                            >
-                                {/* Image Wrapper */}
-                                <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
-                                    <Image
-                                        src={post.featuredImage}
-                                        alt={post.title}
-                                        fill
-                                        className="object-cover transition-transform duration-700 group-hover:scale-105"
-                                        sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
-                                    />
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                                </div>
-
-                                {/* Card Details */}
-                                <div className="flex-1 flex flex-col p-6 md:p-7">
-                                    {/* Metadata */}
-                                    <div className="flex items-center space-x-4 mb-4 text-xs text-gray-400 font-satoshi font-light">
-                                        <div className="flex items-center space-x-1.5">
-                                            <Calendar className="w-3.5 h-3.5 text-gray-400" />
-                                            <span>{new Date(post.publishDate).toLocaleDateString()}</span>
-                                        </div>
-                                        <div className="flex items-center space-x-1.5">
-                                            <span className="font-semibold text-gray-300">By</span>
-                                            <span>{post.author}</span>
-                                        </div>
+                                    key={post._id}
+                                    variants={cardVariants}
+                                    className="group flex flex-col bg-white rounded-2xl border border-gray-100 shadow-xs hover:shadow-xl transition-all duration-300 overflow-hidden"
+                                >
+                                    {/* Image Wrapper */}
+                                    <div className="relative aspect-video w-full overflow-hidden bg-gray-100">
+                                        <SafeImage
+                                            src={post.featuredImage}
+                                            alt={post.title}
+                                            className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                            sizes="(max-w-768px) 100vw, (max-w-1200px) 50vw, 33vw"
+                                        />
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/25 to-transparent pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                                     </div>
 
-                                    {/* Title */}
-                                    <h3 className="text-xl font-bold text-gray-900 font-satoshi line-clamp-2 leading-snug mb-3 group-hover:text-[#C10510] transition-colors duration-200">
-                                        <Link href={`/blog/${post.slug}`}>
-                                            {post.title}
-                                        </Link>
-                                    </h3>
-
-                                    {/* Excerpt */}
-                                    <p className="text-sm text-gray-500 font-satoshi line-clamp-3 leading-relaxed mb-6 font-light">
-                                        {post.shortDescription}
-                                    </p>
-
-                                    {/* Footer Elements */}
-                                    <div className="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between">
-                                        {/* Tag Chips */}
-                                        <div className="flex flex-wrap gap-1.5 max-w-[70%]">
-                                            {post.tags.slice(0, 2).map((tag) => (
-                                                <span
-                                                    key={tag}
-                                                    className={`text-[10px] font-bold font-satoshi px-2 py-0.5 rounded-full border ${getCategoryColor(post.category)}`}
-                                                >
-                                                  {tag}
-                                                </span>
-                                            ))}
-                                            {post.tags.length > 2 && (
-                                                <span className="text-[9px] text-gray-400 font-medium self-center">
-                                                    +{post.tags.length - 2} more
-                                                </span>
-                                            )}
+                                    {/* Card Details */}
+                                    <div className="flex-1 flex flex-col p-6 md:p-7">
+                                        {/* Metadata */}
+                                        <div className="flex items-center space-x-4 mb-4 text-xs text-gray-400 font-satoshi font-light">
+                                            <div className="flex items-center space-x-1.5">
+                                                <Calendar className="w-3.5 h-3.5 text-gray-400" />
+                                                <span>{new Date(post.publishDate).toLocaleDateString()}</span>
+                                            </div>
+                                            <div className="flex items-center space-x-1.5">
+                                                <span className="font-semibold text-gray-300">By</span>
+                                                <span>{post.author}</span>
+                                            </div>
                                         </div>
 
-                                        {/* Action link */}
-                                        <Link
-                                            href={`/blog/${post.slug}`}
-                                            className="inline-flex items-center text-xs font-semibold text-[#376378] hover:text-[#C10510] font-satoshi tracking-wider uppercase transition-colors duration-200"
-                                        >
-                                            Read
-                                            <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform duration-200 group-hover:translate-x-1" />
-                                        </Link>
+                                        {/* Title */}
+                                        <h3 className="text-xl font-bold text-gray-900 font-satoshi line-clamp-2 leading-snug mb-3 group-hover:text-[#C10510] transition-colors duration-200">
+                                            <Link href={`/blog/${post.slug}`}>
+                                                {post.title}
+                                            </Link>
+                                        </h3>
+
+                                        {/* Excerpt */}
+                                        <p className="text-sm text-gray-500 font-satoshi line-clamp-3 leading-relaxed mb-6 font-light">
+                                            {post.shortDescription}
+                                        </p>
+
+                                        {/* Footer Elements */}
+                                        <div className="mt-auto pt-5 border-t border-gray-100 flex items-center justify-between gap-2">
+                                            {/* Category Badge */}
+                                            <span
+                                                className={`text-[10px] font-bold font-satoshi px-2.5 py-0.5 rounded-full border ${getCategoryColor(post.category)}`}
+                                            >
+                                                {post.category}
+                                            </span>
+
+                                            {/* Action link */}
+                                            <Link
+                                                href={`/blog/${post.slug}`}
+                                                className="inline-flex items-center text-xs font-semibold text-[#376378] hover:text-[#C10510] font-satoshi tracking-wider uppercase transition-colors duration-200 flex-shrink-0"
+                                            >
+                                                Read
+                                                <ArrowRight className="w-3.5 h-3.5 ml-1 transition-transform duration-200 group-hover:translate-x-1" />
+                                            </Link>
+                                        </div>
                                     </div>
-                                </div>
-                            </motion.article>
+                                 </motion.article>
                         ))}
                     </motion.div>
                 )}
@@ -224,3 +243,4 @@ const BlogCards = () => {
 };
 
 export default BlogCards;
+

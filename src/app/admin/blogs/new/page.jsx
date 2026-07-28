@@ -99,7 +99,15 @@ export default function NewBlog() {
 
     setLoading(true);
     try {
-      const payload = { ...form, tags };
+      let finalTags = [...tags];
+      if (tagInput.trim()) {
+        const cleaned = tagInput.trim().replace(/,$/, '');
+        if (cleaned && !finalTags.includes(cleaned)) {
+          finalTags.push(cleaned);
+        }
+      }
+
+      const payload = { ...form, tags: finalTags };
       const res = await fetch('/api/admin/blogs', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -313,6 +321,7 @@ export default function NewBlog() {
                     fill
                     className="object-cover"
                     sizes="300px"
+                    unoptimized
                   />
                 </div>
                 <button
