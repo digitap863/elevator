@@ -29,7 +29,10 @@ export default function NewBlog() {
     author: 'Reliant Team',
     publishDate: new Date().toISOString().split('T')[0],
     status: 'Draft',
-    featuredImage: ''
+    featuredImage: '',
+    featuredImageAlt: '',
+    canonicalUrl: '',
+    schemaMarkup: ''
   });
 
   const handleTextChange = (e) => {
@@ -317,7 +320,7 @@ export default function NewBlog() {
                 <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100 border border-gray-100 shadow-inner">
                   <Image
                     src={form.featuredImage}
-                    alt="Featured Image Preview"
+                    alt={form.featuredImageAlt || "Featured Image Preview"}
                     fill
                     className="object-cover"
                     sizes="300px"
@@ -354,6 +357,19 @@ export default function NewBlog() {
                 )}
               </div>
             )}
+
+            {/* Image Alt Text */}
+            <div className="space-y-1.5 pt-1">
+              <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">Image Alt Text (SEO)</label>
+              <input
+                type="text"
+                name="featuredImageAlt"
+                value={form.featuredImageAlt}
+                onChange={handleTextChange}
+                placeholder="Descriptive alt text for image SEO..."
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi"
+              />
+            </div>
           </div>
 
           {/* Tags Chips Block */}
@@ -423,6 +439,61 @@ export default function NewBlog() {
                 placeholder="Override search snippet description"
                 className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-sm font-satoshi"
               />
+            </div>
+
+            {/* Canonical URL */}
+            <div className="space-y-1.5">
+              <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">Canonical URL</label>
+              <input
+                type="text"
+                name="canonicalUrl"
+                value={form.canonicalUrl}
+                onChange={handleTextChange}
+                placeholder="https://reliantelevators.com/blog/your-slug"
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-sm font-satoshi"
+              />
+              <span className="text-[10px] text-gray-400 block">Leave empty for auto default article URL</span>
+            </div>
+
+            {/* Schema Markup (JSON-LD) */}
+            <div className="space-y-1.5">
+              <div className="flex items-center justify-between">
+                <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider block">Schema Markup (JSON-LD)</label>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const defaultSchema = {
+                      "@context": "https://schema.org",
+                      "@type": "BlogPosting",
+                      "headline": form.title || "Blog Post Title",
+                      "description": form.shortDescription || form.metaDescription || "",
+                      "image": form.featuredImage ? [form.featuredImage] : [],
+                      "author": {
+                        "@type": "Person",
+                        "name": form.author || "Reliant Team"
+                      },
+                      "publisher": {
+                        "@type": "Organization",
+                        "name": "Reliant Elevators"
+                      },
+                      "datePublished": form.publishDate || new Date().toISOString().split('T')[0]
+                    };
+                    setForm(prev => ({ ...prev, schemaMarkup: JSON.stringify(defaultSchema, null, 2) }));
+                  }}
+                  className="text-[11px] text-[#C10510] hover:underline font-semibold cursor-pointer"
+                >
+                  + Generate Schema
+                </button>
+              </div>
+              <textarea
+                name="schemaMarkup"
+                value={form.schemaMarkup}
+                onChange={handleTextChange}
+                rows="4"
+                placeholder='{"@context": "https://schema.org", "@type": "BlogPosting", ...}'
+                className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-mono"
+              />
+              <span className="text-[10px] text-gray-400 block">Custom JSON-LD schema. Leave empty for standard auto-generated schema.</span>
             </div>
           </div>
         </div>

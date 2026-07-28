@@ -75,8 +75,10 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
       Underline,
       Link.configure({
         openOnClick: false,
+        autolink: false,
+        validate: (href) => true, // Crucial: Allows relative internal links (/blog/slug, /about, #section)
         HTMLAttributes: {
-          class: 'text-[#C10510] hover:underline font-semibold cursor-pointer',
+          class: 'text-blue-600 hover:text-blue-800 underline font-semibold cursor-pointer',
         },
       }),
       Image.configure({
@@ -129,6 +131,8 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
 
   // Link Handlers
   const handleOpenLinkModal = () => {
+    const { from, to } = editor.state.selection;
+    const selectedText = editor.state.doc.textBetween(from, to, ' ');
     const previousAttrs = editor.getAttributes('link');
     const previousUrl = previousAttrs.href || '';
     const previousTarget = previousAttrs.target || '';
@@ -138,6 +142,7 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
     setLinkTab(isInternal ? 'internal' : 'external');
     setLinkForm({
       url: previousUrl,
+      text: selectedText,
       openInNewTab: previousTarget === '_blank'
     });
     setActiveModal('link');
@@ -145,13 +150,14 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
 
   const handleInsertLink = (e) => {
     e.preventDefault();
-    if (!linkForm.url || !linkForm.url.trim()) {
+
+    let url = linkForm.url ? linkForm.url.trim() : '';
+
+    if (!url) {
       editor.chain().focus().extendMarkRange('link').unsetLink().run();
       setActiveModal(null);
       return;
     }
-
-    let url = linkForm.url.trim();
 
     if (linkTab === 'internal') {
       if (!url.startsWith('/') && !url.startsWith('#') && !url.startsWith('mailto:') && !url.startsWith('tel:')) {
@@ -174,12 +180,52 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
       linkAttrs.rel = null;
     }
 
-    editor
-      .chain()
-      .focus()
-      .extendMarkRange('link')
-      .setLink(linkAttrs)
-      .run();
+    const textToDisplay = linkForm.text?.trim() || url;
+    const { from, to } = editor.state.selection;
+    const isTextSelected = from !== to;
+
+    if (isTextSelected) {
+      const currentSelectedText = editor.state.doc.textBetween(from, to, ' ');
+      if (linkForm.text && linkForm.text.trim() !== currentSelectedText) {
+        editor
+          .chain()
+          .focus()
+          .insertContent({
+            type: 'text',
+            text: linkForm.text.trim(),
+            marks: [
+              {
+                type: 'link',
+                attrs: linkAttrs
+              }
+            ]
+          })
+          .run();
+      } else {
+        editor
+          .chain()
+          .focus()
+          .extendMarkRange('link')
+          .setLink(linkAttrs)
+          .run();
+      }
+    } else {
+      // Insert new linked text at cursor if no text was highlighted
+      editor
+        .chain()
+        .focus()
+        .insertContent({
+          type: 'text',
+          text: textToDisplay,
+          marks: [
+            {
+              type: 'link',
+              attrs: linkAttrs
+            }
+          ]
+        })
+        .run();
+    }
 
     setActiveModal(null);
   };
@@ -500,6 +546,18 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
                 </button>
               </div>
 
+              {/* Link Text / Label */}
+              <div className="space-y-1">
+                <label className="text-xs font-semibold text-gray-600 block">Link Text (Display Text)</label>
+                <input
+                  type="text"
+                  value={linkForm.text || ''}
+                  onChange={(e) => setLinkForm(prev => ({ ...prev, text: e.target.value }))}
+                  placeholder="e.g. Learn more about Home Lifts"
+                  className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi"
+                />
+              </div>
+
               {/* Form Content Based on Tab */}
               {linkTab === 'internal' ? (
                 <div className="space-y-3">
@@ -508,8 +566,14 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
                     <label className="text-xs font-semibold text-gray-600 block">Select Site Page</label>
                     <select
                       onChange={(e) => {
-                        if (e.target.value) {
-                          setLinkForm(prev => ({ ...prev, url: e.target.value }));
+                        const path = e.target.value;
+                        if (path) {
+                          const matchedPage = SITE_PAGES.find(p => p.path === path);
+                          setLinkForm(prev => ({
+                            ...prev,
+                            url: path,
+                            text: prev.text ? prev.text : (matchedPage ? matchedPage.label : prev.text)
+                          }));
                         }
                       }}
                       value={SITE_PAGES.some(p => p.path === linkForm.url) ? linkForm.url : ''}
@@ -529,8 +593,14 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
                     <label className="text-xs font-semibold text-gray-600 block">Link to Existing Article</label>
                     <select
                       onChange={(e) => {
-                        if (e.target.value) {
-                          setLinkForm(prev => ({ ...prev, url: e.target.value }));
+                        const fullPath = e.target.value;
+                        if (fullPath) {
+                          const matchedBlog = availableBlogs.find(b => `/blog/${b.slug}` === fullPath);
+                          setLinkForm(prev => ({
+                            ...prev,
+                            url: fullPath,
+                            text: prev.text ? prev.text : (matchedBlog ? matchedBlog.title : prev.text)
+                          }));
                         }
                       }}
                       value={linkForm.url.startsWith('/blog/') && availableBlogs.some(b => `/blog/${b.slug}` === linkForm.url) ? linkForm.url : ''}
@@ -548,24 +618,21 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
 
                   {/* Custom Internal URL */}
                   <div className="space-y-1">
-                    <label className="text-xs font-semibold text-gray-600 block">Custom Path / Anchor</label>
-                    <div className="relative flex items-center">
-                      <span className="absolute left-3 text-xs text-gray-400 font-mono">/</span>
-                      <input
-                        type="text"
-                        value={linkForm.url.startsWith('/') ? linkForm.url.slice(1) : linkForm.url}
-                        onChange={(e) => {
-                          const val = e.target.value;
-                          setLinkForm(prev => ({
-                            ...prev,
-                            url: val.startsWith('#') || val.startsWith('mailto:') || val.startsWith('tel:') ? val : '/' + val.replace(/^\/+/, '')
-                          }));
-                        }}
-                        placeholder="blog/article-slug or #section"
-                        className="w-full pl-7 pr-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi"
-                      />
-                    </div>
-                    <span className="text-[10px] text-gray-400 block">Example: /blog/safety-tips, /about, or #contact</span>
+                    <label className="text-xs font-semibold text-gray-600 block">Custom Internal Path / Anchor</label>
+                    <input
+                      type="text"
+                      value={linkForm.url}
+                      onChange={(e) => {
+                        const val = e.target.value;
+                        setLinkForm(prev => ({
+                          ...prev,
+                          url: val
+                        }));
+                      }}
+                      placeholder="e.g. /blog/safety-tips, /about, or #contact"
+                      className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi font-mono"
+                    />
+                    <span className="text-[10px] text-gray-400 block">Relative URL starting with / or anchor #</span>
                   </div>
                 </div>
               ) : (
@@ -580,7 +647,7 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
                       placeholder="https://example.com"
                       className="w-full px-3 py-2 rounded-xl bg-gray-50 border border-gray-200 focus:outline-none focus:border-slate-800 text-xs font-satoshi"
                     />
-                    <span className="text-[10px] text-gray-400 block">Full address (e.g. https://google.com)</span>
+                    <span className="text-[10px] text-gray-400 block">Full web address (e.g. https://google.com)</span>
                   </div>
                 </div>
               )}

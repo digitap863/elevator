@@ -253,3 +253,18 @@
   margin: 0 !important;
   display: inline;
 }
+
+/* Blog Content Links Styling (Client Side & Admin Editor) */
+.blog-content-body a,
+[contenteditable] a {
+  color: #2563eb !important; /* Vibrant blue */
+  text-decoration: underline !important;
+  font-weight: 600 !important;
+  transition: color 0.2s ease !important;
+}
+
+.blog-content-body a:hover,
+[contenteditable] a:hover {
+  color: #1d4ed8 !important; /* Darker blue on hover */
+  text-decoration: underline !important;
+}

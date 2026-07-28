@@ -58,6 +58,21 @@ const BlogSchema = new mongoose.Schema(
       type: String,
       required: [true, 'Please provide a featured image URL.'],
     },
+    featuredImageAlt: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    canonicalUrl: {
+      type: String,
+      trim: true,
+      default: '',
+    },
+    schemaMarkup: {
+      type: String,
+      trim: true,
+      default: '',
+    },
   },
   {
     timestamps: true,

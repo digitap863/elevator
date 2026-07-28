@@ -45,9 +45,28 @@ export async function generateMetadata({ params }) {
     };
   }
 
+  const defaultCanonical = `https://reliantelevators.com/blog/${post.slug}`;
+  const canonical = post.canonicalUrl && post.canonicalUrl.trim() ? post.canonicalUrl.trim() : defaultCanonical;
+
   return {
     title: `${post.metaTitle || post.title} | Reliant Elevators`,
     description: post.metaDescription || post.shortDescription,
+    alternates: {
+      canonical: canonical,
+    },
+    openGraph: {
+      title: post.metaTitle || post.title,
+      description: post.metaDescription || post.shortDescription,
+      url: canonical,
+      siteName: 'Reliant Elevators',
+      images: [
+        {
+          url: post.featuredImage,
+          alt: post.featuredImageAlt || post.title,
+        },
+      ],
+      type: 'article',
+    },
   };
 }
 
@@ -76,8 +95,56 @@ export default async function BlogDetailPage({ params }) {
     slug: { $ne: slug }
   }).limit(3);
 
+  // Prepare JSON-LD Schema Markup
+  let jsonLdSchema = null;
+  if (currentPost.schemaMarkup && currentPost.schemaMarkup.trim()) {
+    try {
+      jsonLdSchema = JSON.parse(currentPost.schemaMarkup);
+    } catch (e) {
+      console.error('Invalid custom schema markup in blog post:', currentPost.slug, e);
+    }
+  }
+
+  if (!jsonLdSchema) {
+    const articleUrl = currentPost.canonicalUrl && currentPost.canonicalUrl.trim()
+      ? currentPost.canonicalUrl.trim()
+      : `https://reliantelevators.com/blog/${currentPost.slug}`;
+
+    jsonLdSchema = {
+      '@context': 'https://schema.org',
+      '@type': 'BlogPosting',
+      headline: currentPost.title,
+      description: currentPost.shortDescription || currentPost.metaDescription,
+      image: currentPost.featuredImage ? [currentPost.featuredImage] : [],
+      datePublished: currentPost.publishDate,
+      dateModified: currentPost.updatedAt || currentPost.publishDate,
+      author: {
+        '@type': 'Person',
+        name: currentPost.author || 'Reliant Team',
+      },
+      publisher: {
+        '@type': 'Organization',
+        name: 'Reliant Elevators',
+        logo: {
+          '@type': 'ImageObject',
+          url: 'https://reliantelevators.com/logo.png',
+        },
+      },
+      mainEntityOfPage: {
+        '@type': 'WebPage',
+        '@id': articleUrl,
+      },
+    };
+  }
+
   return (
     <main className="min-h-screen bg-transparent pt-28 pb-20 font-satoshi" style={{ backgroundImage: `url(${bgabout.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+      {/* Structured Data JSON-LD Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdSchema) }}
+      />
+
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         {/* Back Button */}
         <div className="mb-8">
@@ -138,7 +205,7 @@ export default async function BlogDetailPage({ params }) {
             <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-10 shadow-sm bg-gray-50">
               <Image
                 src={currentPost.featuredImage || 'https://images.unsplash.com/photo-1541888946425-d0fbb186a5b7?q=80&w=1000&auto=format&fit=crop'}
-                alt={currentPost.title}
+                alt={currentPost.featuredImageAlt || currentPost.title}
                 fill
                 priority
                 className="object-cover"
