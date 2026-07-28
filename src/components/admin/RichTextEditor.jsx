@@ -21,12 +21,12 @@ import {
 
 const SITE_PAGES = [
   { label: 'Home Page', path: '/' },
+  { label: 'Services Page', path: '/service' },
+  { label: 'Products Page', path: '/products' },
+  { label: 'Projects Page', path: '/projects' },
   { label: 'Blogs Overview', path: '/blog' },
   { label: 'About Us', path: '/about' },
-  { label: 'Contact Us', path: '/contact' },
-  { label: 'Home Lifts Service', path: '/services/home-lifts' },
-  { label: 'Commercial Lifts Service', path: '/services/commercial-lifts' },
-  { label: 'Escalators Service', path: '/services/escalators' },
+  { label: 'Contact / Reachout', path: '/reachout' },
 ];
 
 export default function RichTextEditor({ value, onChange, placeholder }) {
@@ -34,7 +34,8 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
 
   // Modal form states
   const [linkTab, setLinkTab] = useState('internal'); // 'internal' | 'external'
-  const [linkForm, setLinkForm] = useState({ url: '', openInNewTab: false });
+  const [linkForm, setLinkForm] = useState({ url: '', text: '', openInNewTab: false });
+  const [linkError, setLinkError] = useState('');
   const [availableBlogs, setAvailableBlogs] = useState([]);
   const [loadingBlogs, setLoadingBlogs] = useState(false);
 
@@ -131,6 +132,7 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
 
   // Link Handlers
   const handleOpenLinkModal = () => {
+    setLinkError('');
     const { from, to } = editor.state.selection;
     const selectedText = editor.state.doc.textBetween(from, to, ' ');
     const previousAttrs = editor.getAttributes('link');
@@ -150,12 +152,12 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
 
   const handleInsertLink = (e) => {
     e.preventDefault();
+    setLinkError('');
 
     let url = linkForm.url ? linkForm.url.trim() : '';
 
     if (!url) {
-      editor.chain().focus().extendMarkRange('link').unsetLink().run();
-      setActiveModal(null);
+      setLinkError('Please select a site page, an article, or enter a custom URL path below.');
       return;
     }
 
@@ -202,12 +204,20 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
           })
           .run();
       } else {
-        editor
-          .chain()
-          .focus()
-          .extendMarkRange('link')
-          .setLink(linkAttrs)
-          .run();
+        if (editor.isActive('link')) {
+          editor
+            .chain()
+            .focus()
+            .extendMarkRange('link')
+            .setLink(linkAttrs)
+            .run();
+        } else {
+          editor
+            .chain()
+            .focus()
+            .setLink(linkAttrs)
+            .run();
+        }
       }
     } else {
       // Insert new linked text at cursor if no text was highlighted
@@ -665,6 +675,13 @@ export default function RichTextEditor({ value, onChange, placeholder }) {
                   Open link in a new tab
                 </label>
               </div>
+
+              {/* Link Error Alert */}
+              {linkError && (
+                <div className="p-2.5 bg-red-50 text-red-700 border border-red-200 rounded-xl text-xs font-semibold animate-fade-in">
+                  {linkError}
+                </div>
+              )}
 
               {/* Modal Actions */}
               <div className="flex items-center justify-between pt-3 border-t border-gray-100">
