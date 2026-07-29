@@ -80,6 +80,20 @@ export default async function BlogDetailPage({ params }) {
     notFound();
   }
 
+  DOMPurify.addHook('afterSanitizeAttributes', function (node) {
+    if (node.tagName === 'A') {
+      const href = node.getAttribute('href') || '';
+      const isInternal = !href || href.startsWith('/') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.includes('reliantelevators.com') || href.includes('localhost');
+      if (isInternal) {
+        node.setAttribute('target', '_self');
+        node.removeAttribute('rel');
+      } else {
+        node.setAttribute('target', '_blank');
+        node.setAttribute('rel', 'noopener noreferrer');
+      }
+    }
+  });
+
   const sanitizedContent = DOMPurify.sanitize(currentPost.content || '', {
     ALLOWED_TAGS: [
       'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'div', 'strong', 'em', 'u',
