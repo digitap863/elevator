@@ -65,6 +65,13 @@ export const metadata = {
 export default function Home() {
   return (
     <main className="overflow-hidden ">
+      {/* Visually hidden SEO content */}
+      <h1 className="sr-only">
+        Trusted Elevator Company in Kochi,Kerala
+      </h1>
+      <p className="sr-only">
+        Trusted Elevator Company and lift manufacturers in Kochi . Builds safe, durable elevators for homes, hospitals &amp; commercial spaces.
+      </p>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}

@@ -5,22 +5,68 @@ import Mission from './Mission.jsx'
 import Values from './Values.jsx'
 import Milestones from './Milestones.jsx'
 import Project from './Project.jsx'
-  
-export default function About() {
-  const breadcrumbSchema = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.reliantelevators.com/" },
-      { "@type": "ListItem", "position": 2, "name": "About Us", "item": "https://www.reliantelevators.com/about" }
-    ]
-  };
+import {
+  aboutOrganizationSchema,
+  aboutPageSchema,
+  aboutFaqSchema,
+  aboutBreadcrumbSchema,
+  aboutWebPageSchema,
+  aboutLocalBusinessSchema
+} from '@/data/AboutSchemas.js'
 
+export const metadata = {
+  title: "Trusted Elevator Company in Kochi,Kerala | Lift Manufacturers",
+  description: "Trusted Elevator Company and lift manufacturers in Kochi. Builds safe, durable elevators for homes, hospitals & commercial spaces.",
+  keywords: "Lift Manufacturers in calicut , Lift Manufacturers in Trivandrum, Lift Manufacturers in Kochi, best Elevator  company near me , budget friendly escalator service near me",
+  openGraph: {
+    type: "website",
+    siteName: "Reliant Elevators",
+    title: "Trusted Elevator Company in Kochi, Kerala | Lift Manufacturers",
+    description: "Trusted Elevator Company and lift manufacturers in Kochi. Builds safe, durable elevators for homes, hospitals & commercial spaces.",
+    url: "https://www.reliantelevators.com/about",
+    images: [
+      {
+        url: "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
+        alt: "Reliant Elevators - Trusted Elevator Company in Kochi",
+      },
+    ],
+    locale: "en_IN",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Trusted Elevator Company in Kochi, Kerala | Lift Manufacturers",
+    description: "Trusted Elevator Company and lift manufacturers in Kochi. Builds safe, durable elevators for homes, hospitals & commercial spaces.",
+    images: ["https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75"],
+    site: "@reliantelevators",
+  },
+};
+
+export default function About() {
   return (
     <main className="overflow-hidden "> 
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutOrganizationSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutFaqSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutBreadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutWebPageSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutLocalBusinessSchema) }}
       />
       <Banner /> 
       <div  style={{ backgroundImage: `url(${bgabout.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -33,5 +79,6 @@ export default function About() {
     </main>
   )
 }
+
 
 
