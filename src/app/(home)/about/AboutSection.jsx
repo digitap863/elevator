@@ -3,6 +3,7 @@ import lift1 from "@/assests/home/liift1.png";
 import line from "@/assests/home/line.svg";
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function AboutSection() {
   return (
@@ -79,13 +80,13 @@ export default function AboutSection() {
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              Founded in 2015, Reliant Elevators began with a simple mission: to provide Kerala with world-class elevator solutions that prioritize safety, reliability, and innovation.
+              Founded in 2015, <Link href="/" className="text-[#376378] hover:text-teal-800 font-medium">Reliant Elevators</Link> began with a simple mission: to provide Kerala with world-class <Link href="/products" className="text-[#376378] hover:text-teal-800 font-medium">elevator solutions</Link> that prioritize safety, reliability, and innovation.
               <br />
               <br/>
-              What started as a small team of passionate engineers has grown into the region's most trusted elevator company, serving residential, commercial, healthcare, and hospitality sectors.
+              What started as a small team of passionate engineers has grown into the region's most trusted elevator company, offering <Link href="/service" className="text-[#376378] hover:text-teal-800 font-medium">expert installation and AMC services</Link> across residential, commercial, healthcare, and hospitality sectors.
               <br />
               <br/>
-              Today, with over 500 successful installations and a team of 50+ experts, we continue to set new standards in the industry while maintaining our commitment to personalized service.
+              Today, with over 500 successful <Link href="/projects" className="text-[#376378] hover:text-teal-800 font-medium">installations and projects</Link> and a team of 50+ experts, we continue to set new standards in the industry while maintaining our commitment to personalized service. <Link href="/reachout" className="text-[#376378] hover:text-teal-800 font-medium">Contact our team today</Link> for a free consultation.
             </motion.p>
 
             {/* Learn More button */}

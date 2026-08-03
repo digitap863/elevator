@@ -1,6 +1,7 @@
 'use client';
 import { motion, useInView } from 'framer-motion';
 import Image from 'next/image';
+import Link from 'next/link';
 import { useRef } from 'react';
 import line from '../../../assests/home/line.svg';
 import projbg from '../../../assests/home/projbg.png';
@@ -78,7 +79,7 @@ function Project() {
                     </motion.h1>
 
                     <p className="mt-4 text-gray-600 max-w-4xl mx-auto md:text-xl text-lg">
-                        A glimpse into our ongoing elevator and escalator installations across residential, commercial, hospital, and hospitality projects.
+                        A glimpse into our ongoing <Link href="/products" className="text-[#376378] font-medium hover:text-teal-800">elevator and escalator</Link> installations across residential, commercial, hospital, and hospitality <Link href="/projects" className="text-[#376378] font-medium hover:text-teal-800">projects</Link>.
                     </p>
 
 
