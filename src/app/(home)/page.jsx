@@ -3,6 +3,7 @@ import TestimonialCards from '@/components/user/Home/TestimonialCards.jsx'
 import Testimonials from '@/components/user/Home/Testimonials.jsx'
 import About from '../../components/user/Home/About.jsx'
 import Banner from '../../components/user/Home/Banner.jsx'
+import KochiElevatorSection from '@/components/user/Home/KochiElevatorSection.jsx'
 import Contact from '../../components/user/Home/Contact.jsx'
 import Products from '../../components/user/Home/Products.jsx'
 import Projects from '../../components/user/Home/Projects.jsx'
@@ -20,6 +21,7 @@ import {
   localBusinessSchema,
   faqSchema
 } from '@/data/HomeSchemas.js'
+import ContactSection from './reachout/ContactSection.jsx'
 
 export const metadata = {
   title: "Top Lift & Elevator Company in Kerala | Kochi,Calicut,Trivandrum",
@@ -107,6 +109,7 @@ export default function Home() {
       <Banner />
       <div className='bg-container relative'>
         <About />
+        <KochiElevatorSection />
         <Numbers />
         <Products />
         <Service />
@@ -116,6 +119,8 @@ export default function Home() {
         <TestimonialCards />
         <Logos />
         <FAQ />
+              <ContactSection />
+        
         <Contact
           label="Get Started"
           heading="Ready to Elevate?"
