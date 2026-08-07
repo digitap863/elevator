@@ -26,7 +26,7 @@ import {
   Code
 } from 'lucide-react';
 
-export default function RichTextEditor({ value = '', onChange, placeholder, disabled = false }) {
+export default function RichTextEditor({ value = '', onChange, placeholder, disabled = false, stickyTop = '130px' }) {
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -157,7 +157,10 @@ export default function RichTextEditor({ value = '', onChange, placeholder, disa
       `}</style>
       
       {/* Sticky Toolbar */}
-      <div className="sticky top-0 z-10 flex flex-wrap gap-1 p-2 border-b bg-gray-50 shadow-xs">
+      <div 
+        className="sticky z-20 flex flex-wrap gap-1 p-2 border-b border-gray-200 bg-gray-50/98 backdrop-blur-md rounded-t-md shadow-xs transition-all"
+        style={{ top: typeof stickyTop === 'number' ? `${stickyTop}px` : stickyTop }}
+      >
         <div className="flex items-center gap-1 border-r border-gray-200 pr-2">
           <button
             type="button"

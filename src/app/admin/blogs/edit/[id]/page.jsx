@@ -183,19 +183,51 @@ export default function EditBlog({ params }) {
   }
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto animate-fade-in pb-16">
-      {/* Back Link Header */}
-      <div className="flex items-center justify-between">
-        <Link
-          href="/admin/blogs"
-          className="inline-flex items-center gap-1.5 text-sm font-semibold text-gray-500 hover:text-[#C10510] transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          <span>Back to Manage Blogs</span>
-        </Link>
+    <form onSubmit={handleSubmit} className="space-y-6 max-w-5xl mx-auto animate-fade-in pb-16">
+      {/* Fixed Sticky Header Bar */}
+      <div className="sticky top-16 z-30 bg-white/95 backdrop-blur-md border border-gray-200/80 p-3.5 md:p-4 rounded-2xl shadow-xs flex flex-wrap items-center justify-between gap-4 transition-all">
+        <div className="flex items-center gap-3 min-w-0">
+          <Link
+            href="/admin/blogs"
+            className="inline-flex items-center gap-1.5 text-xs md:text-sm font-semibold text-gray-600 hover:text-[#C10510] transition-colors bg-gray-100 hover:bg-red-50 px-3 py-1.5 rounded-xl border border-gray-200"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            <span>Back</span>
+          </Link>
+          <div className="h-4 w-px bg-gray-200 hidden sm:block" />
+          <div className="hidden sm:flex items-center gap-2 min-w-0">
+            <span className="text-xs font-semibold text-gray-400 uppercase tracking-wider">Editing:</span>
+            <h2 className="text-sm font-bold text-gray-900 truncate max-w-xs md:max-w-md font-satoshi">
+              {form.title || 'Untitled Post'}
+            </h2>
+          </div>
+        </div>
+
+        <div className="flex items-center gap-3 ml-auto sm:ml-0">
+          <div className="flex items-center gap-2">
+            <select
+              name="status"
+              value={form.status}
+              onChange={handleTextChange}
+              className="px-3 py-1.5 rounded-xl bg-gray-50 border border-gray-200 text-xs font-semibold text-gray-700 focus:outline-none focus:border-slate-800"
+            >
+              <option value="Draft">Draft</option>
+              <option value="Published">Published</option>
+            </select>
+          </div>
+
+          <button
+            type="submit"
+            disabled={saving}
+            className="flex items-center gap-2 bg-[#C10510] hover:bg-red-700 text-white font-semibold py-1.5 px-4 rounded-xl transition-all duration-300 text-xs md:text-sm shadow-md hover:shadow-lg disabled:opacity-50 cursor-pointer"
+          >
+            {saving && <Loader className="w-3.5 h-3.5 animate-spin" />}
+            <span>Update Article</span>
+          </button>
+        </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Form Fields (8 Columns) */}
         <div className="lg:col-span-8 bg-white border border-gray-155 rounded-3xl p-6 md:p-8 shadow-xs space-y-6">
           <h3 className="text-lg font-bold text-gray-900 font-satoshi pb-3 border-b border-gray-100">
@@ -549,7 +581,7 @@ export default function EditBlog({ params }) {
             </div>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+    </form>
   );
 }

@@ -40,7 +40,7 @@ export default function AdminLayout({ children }) {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50 flex font-satoshi text-gray-800">
+    <div className="h-screen bg-gray-50 flex font-satoshi text-gray-800 overflow-hidden">
       {/* Sidebar - Desktop */}
       <aside className="hidden md:flex flex-col w-64 bg-slate-900 text-white shadow-xl flex-shrink-0">
         <div className="h-16 flex items-center px-6 border-b border-slate-800 gap-3">
@@ -128,8 +128,8 @@ export default function AdminLayout({ children }) {
       )}
 
       {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-y-auto">
-        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 md:px-8 flex-shrink-0">
+      <div className="flex-1 flex flex-col min-w-0 h-full overflow-y-auto">
+        <header className="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-6 md:px-8 flex-shrink-0 sticky top-0 z-40">
           <div className="flex items-center">
             <button
               onClick={() => setSidebarOpen(true)}
