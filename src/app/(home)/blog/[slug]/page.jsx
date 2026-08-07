@@ -70,6 +70,46 @@ export async function generateMetadata({ params }) {
   };
 }
 
+// Configure DOMPurify hook for internal vs external link targets once
+DOMPurify.removeAllHooks();
+DOMPurify.addHook('afterSanitizeAttributes', function (node) {
+  if (node.tagName === 'A') {
+    let href = node.getAttribute('href') || '';
+
+    // Auto-fix corrupted URLs starting with /https:// or /http:/
+    if (/^\/https?:\/+/i.test(href)) {
+      href = href.replace(/^\/(https?:\/+)/i, 'https://');
+      if (href.startsWith('https:/') && !href.startsWith('https://')) {
+        href = href.replace('https:/', 'https://');
+      }
+      if (href.startsWith('http:/') && !href.startsWith('http://')) {
+        href = href.replace('http:/', 'http://');
+      }
+    }
+
+    // Convert internal full domain URLs to clean relative paths (e.g. /about)
+    if (href.includes('reliantelevators.com')) {
+      try {
+        const parsed = new URL(href);
+        href = parsed.pathname + parsed.search + parsed.hash || '/';
+      } catch (e) {
+        href = href.replace(/^https?:\/\/(www\.)?reliantelevators\.com/i, '') || '/';
+      }
+    }
+
+    node.setAttribute('href', href);
+
+    const isInternal = !href || href.startsWith('/') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.includes('localhost');
+    if (isInternal) {
+      node.setAttribute('target', '_self');
+      node.removeAttribute('rel');
+    } else {
+      node.setAttribute('target', '_blank');
+      node.setAttribute('rel', 'noopener noreferrer');
+    }
+  }
+});
+
 export default async function BlogDetailPage({ params }) {
   const { slug } = await params;
   await connectDB();
@@ -79,20 +119,6 @@ export default async function BlogDetailPage({ params }) {
   if (!currentPost) {
     notFound();
   }
-
-  DOMPurify.addHook('afterSanitizeAttributes', function (node) {
-    if (node.tagName === 'A') {
-      const href = node.getAttribute('href') || '';
-      const isInternal = !href || href.startsWith('/') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.includes('reliantelevators.com') || href.includes('localhost');
-      if (isInternal) {
-        node.setAttribute('target', '_self');
-        node.removeAttribute('rel');
-      } else {
-        node.setAttribute('target', '_blank');
-        node.setAttribute('rel', 'noopener noreferrer');
-      }
-    }
-  });
 
   const sanitizedContent = DOMPurify.sanitize(currentPost.content || '', {
     ALLOWED_TAGS: [

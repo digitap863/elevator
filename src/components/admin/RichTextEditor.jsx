@@ -18,6 +18,7 @@ import {
   Heading3,
   Image as ImageIcon,
   Link as LinkIcon,
+  Unlink,
   AlignLeft,
   AlignCenter,
   AlignRight,
@@ -80,8 +81,8 @@ export default function RichTextEditor({ value = '', onChange, placeholder, disa
   });
 
   useEffect(() => {
-    if (editor && value !== undefined && editor.getHTML() !== value) {
-      editor.commands.setContent(value || '');
+    if (editor && value !== undefined && !editor.isFocused && editor.getHTML() !== value) {
+      editor.commands.setContent(value || '', false);
     }
   }, [value, editor]);
 
@@ -96,21 +97,83 @@ export default function RichTextEditor({ value = '', onChange, placeholder, disa
     }
   };
 
+  const removeLink = () => {
+    editor.chain().focus().extendMarkRange('link').unsetLink().run();
+  };
+
   const addLink = () => {
-    const url = window.prompt('Enter the URL (e.g. /about, /blog/safety-tips, or https://...):');
-    if (url) {
-      let trimmed = url.trim();
-      const isInternal = !trimmed || trimmed.startsWith('/') || trimmed.startsWith('#') || trimmed.startsWith('mailto:') || trimmed.startsWith('tel:') || trimmed.includes('reliantelevators.com') || !/^https?:\/\//i.test(trimmed);
+    const previousUrl = editor.getAttributes('link').href || '';
+    const url = window.prompt(
+      'Enter URL (e.g. /about, /blog/safety-tips, or https://...):\nLeave empty to remove link.',
+      previousUrl
+    );
 
-      if (isInternal && !trimmed.startsWith('/') && !trimmed.startsWith('#') && !trimmed.startsWith('mailto:') && !trimmed.startsWith('tel:')) {
-        trimmed = '/' + trimmed;
+    if (url === null) {
+      return; // User cancelled prompt
+    }
+
+    if (url.trim() === '') {
+      removeLink();
+      return;
+    }
+
+    let trimmed = url.trim();
+    let isInternal = false;
+
+    if (trimmed.startsWith('/') || trimmed.startsWith('#') || trimmed.startsWith('mailto:') || trimmed.startsWith('tel:')) {
+      isInternal = true;
+    } else if (/^https?:\/\//i.test(trimmed)) {
+      try {
+        const parsed = new URL(trimmed);
+        const currentHost = typeof window !== 'undefined' ? window.location.hostname : '';
+        if (parsed.hostname.includes('reliantelevators.com') || (currentHost && parsed.hostname === currentHost)) {
+          isInternal = true;
+          // Convert absolute URL of same site to relative path
+          trimmed = parsed.pathname + parsed.search + parsed.hash;
+        } else {
+          isInternal = false;
+        }
+      } catch (e) {
+        isInternal = false;
       }
+    } else if (/^([a-zA-Z0-9-]+\.)+[a-zA-Z]{2,}(\/.*)?$/.test(trimmed)) {
+      // Domain string without protocol e.g. "reliantelevators.com/blog/..." or "google.com"
+      const currentHost = typeof window !== 'undefined' ? window.location.hostname : '';
+      if (trimmed.includes('reliantelevators.com') || (currentHost && trimmed.startsWith(currentHost))) {
+        isInternal = true;
+        const slashIndex = trimmed.indexOf('/');
+        trimmed = slashIndex !== -1 ? trimmed.slice(slashIndex) : '/';
+      } else {
+        isInternal = false;
+        trimmed = 'https://' + trimmed;
+      }
+    } else {
+      // Relative path without leading slash e.g. "blog/safety-tips" or "about"
+      isInternal = true;
+      trimmed = '/' + trimmed;
+    }
 
+    const { selection } = editor.state;
+    const isLinkActive = editor.isActive('link');
+
+    if (isLinkActive) {
       if (isInternal) {
         editor.chain().focus().extendMarkRange('link').setLink({ href: trimmed, target: '_self' }).run();
       } else {
         editor.chain().focus().extendMarkRange('link').setLink({ href: trimmed, target: '_blank', rel: 'noopener noreferrer' }).run();
       }
+    } else if (!selection.empty) {
+      if (isInternal) {
+        editor.chain().focus().setLink({ href: trimmed, target: '_self' }).run();
+      } else {
+        editor.chain().focus().setLink({ href: trimmed, target: '_blank', rel: 'noopener noreferrer' }).run();
+      }
+    } else {
+      const linkText = window.prompt('Enter display text for this link:', trimmed) || trimmed;
+      const linkHtml = isInternal
+        ? `<a href="${trimmed}" target="_self">${linkText}</a>`
+        : `<a href="${trimmed}" target="_blank" rel="noopener noreferrer">${linkText}</a>`;
+      editor.chain().focus().insertContent(linkHtml).run();
     }
   };
 
@@ -299,10 +362,21 @@ export default function RichTextEditor({ value = '', onChange, placeholder, disa
             onClick={addLink}
             className={`p-2 rounded hover:bg-gray-200 transition-colors ${editor.isActive('link') ? 'bg-gray-200 text-gray-900' : 'text-gray-600'}`}
             disabled={disabled}
-            title="Link"
+            title={editor.isActive('link') ? "Edit Link" : "Add Link"}
           >
             <LinkIcon className="h-4 w-4" />
           </button>
+          {editor.isActive('link') && (
+            <button
+              type="button"
+              onClick={removeLink}
+              className="p-2 rounded hover:bg-red-100 text-red-600 transition-colors"
+              disabled={disabled}
+              title="Remove Link"
+            >
+              <Unlink className="h-4 w-4" />
+            </button>
+          )}
           <button
             type="button"
             onClick={addImage}
