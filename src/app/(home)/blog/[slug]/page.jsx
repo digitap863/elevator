@@ -2,10 +2,12 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Calendar, Clock, ArrowLeft, ArrowRight, MessageSquare } from 'lucide-react';
-import DOMPurify from 'isomorphic-dompurify';
 import connectDB from '@/lib/db';
 import Blog from '@/models/Blog';
 import bgabout from '@/assests/home/bgabout.svg';
+
+// Force dynamic rendering to handle newly added blogs smoothly without SSR caching issues
+export const dynamic = 'force-dynamic';
 
 // Custom category tag styling
 const getCategoryColor = (category) => {
@@ -70,45 +72,49 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// Configure DOMPurify hook for internal vs external link targets once
-DOMPurify.removeAllHooks();
-DOMPurify.addHook('afterSanitizeAttributes', function (node) {
-  if (node.tagName === 'A') {
-    let href = node.getAttribute('href') || '';
+// Helper function to process blog HTML content safely on the server
+function processBlogContent(content) {
+  if (!content) return '';
 
-    // Auto-fix corrupted URLs starting with /https:// or /http:/
-    if (/^\/https?:\/+/i.test(href)) {
-      href = href.replace(/^\/(https?:\/+)/i, 'https://');
-      if (href.startsWith('https:/') && !href.startsWith('https://')) {
-        href = href.replace('https:/', 'https://');
-      }
-      if (href.startsWith('http:/') && !href.startsWith('http://')) {
-        href = href.replace('http:/', 'http://');
-      }
+  let html = content;
+
+  // Auto-fix corrupted URLs starting with /https:// or /http:/
+  html = html.replace(/href=["']\/(https?:\/+[^\s"']+)["']/gi, (match, url) => {
+    let cleanUrl = url.replace(/^(https?:\/+)/i, 'https://');
+    if (cleanUrl.startsWith('https:/') && !cleanUrl.startsWith('https://')) {
+      cleanUrl = cleanUrl.replace('https:/', 'https://');
     }
-
-    // Convert internal full domain URLs to clean relative paths (e.g. /about)
-    if (href.includes('reliantelevators.com')) {
-      try {
-        const parsed = new URL(href);
-        href = parsed.pathname + parsed.search + parsed.hash || '/';
-      } catch (e) {
-        href = href.replace(/^https?:\/\/(www\.)?reliantelevators\.com/i, '') || '/';
-      }
+    if (cleanUrl.startsWith('http:/') && !cleanUrl.startsWith('http://')) {
+      cleanUrl = cleanUrl.replace('http:/', 'http://');
     }
+    return `href="${cleanUrl}"`;
+  });
 
-    node.setAttribute('href', href);
+  // Convert internal full domain URLs (reliantelevators.com) to clean relative paths
+  html = html.replace(/href=["']https?:\/\/(www\.)?reliantelevators\.com(\/[^"']*)?["']/gi, (match, www, path) => {
+    return `href="${path || '/'}"`;
+  });
+
+  // Set target and rel attributes on <a> tags
+  html = html.replace(/<a\b([^>]*)>/gi, (match, attrs) => {
+    const hrefMatch = attrs.match(/href=["']([^"']*)["']/i);
+    const href = hrefMatch ? hrefMatch[1] : '';
 
     const isInternal = !href || href.startsWith('/') || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.includes('localhost');
+
+    let cleanAttrs = attrs
+      .replace(/\s*target=["']([^"']*)["']/gi, '')
+      .replace(/\s*rel=["']([^"']*)["']/gi, '');
+
     if (isInternal) {
-      node.setAttribute('target', '_self');
-      node.removeAttribute('rel');
+      return `<a ${cleanAttrs} target="_self">`;
     } else {
-      node.setAttribute('target', '_blank');
-      node.setAttribute('rel', 'noopener noreferrer');
+      return `<a ${cleanAttrs} target="_blank" rel="noopener noreferrer">`;
     }
-  }
-});
+  });
+
+  return html;
+}
 
 export default async function BlogDetailPage({ params }) {
   const { slug } = await params;
@@ -120,14 +126,7 @@ export default async function BlogDetailPage({ params }) {
     notFound();
   }
 
-  const sanitizedContent = DOMPurify.sanitize(currentPost.content || '', {
-    ALLOWED_TAGS: [
-      'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'p', 'span', 'div', 'strong', 'em', 'u',
-      'ul', 'ol', 'li', 'blockquote', 'a', 'img', 'table', 'thead', 'tbody', 'tr', 'th', 'td',
-      'pre', 'code', 'hr', 'br'
-    ],
-    ALLOWED_ATTR: ['href', 'src', 'alt', 'class', 'target', 'rel', 'style']
-  });
+  const sanitizedContent = processBlogContent(currentPost.content || '');
 
   // Get 3 related posts (excluding current post)
   const relatedPosts = await Blog.find({
