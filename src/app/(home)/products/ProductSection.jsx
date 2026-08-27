@@ -142,7 +142,7 @@ const ElevatorSections = () => {
                       WebkitTextFillColor: 'transparent',
                       color: 'transparent'
                     }}>{section.number}</h3>
-                    <h2 className="text-base font-medium pl-1  text-[#C10510] tracking-widest relative md:bottom-8">{section.tag}</h2>
+                    <h2 className="text-base font-medium pl-1  text-[#C10510] tracking-widest relative md:bottom-4">{section.tag}</h2>
                   </div>
                   <h2 className={`text-4xl lg:text-5xl font-base text-gray-900  relative md:bottom-3 ${section.imagePosition === 'left' ? 'pl-30' : ''}`}>
                     {section.title}

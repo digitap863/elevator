@@ -53,15 +53,28 @@ export const aboutOrganizationSchema = {
   ]
 };
 
-export const aboutPageSchema = {
+export const aboutWebPageSchema = {
   "@context": "https://schema.org",
-  "@type": "AboutPage",
-  "name": "About Reliant Elevators",
+  "@type": "WebPage",
+  "@id": "https://www.reliantelevators.com/about#webpage",
   "url": "https://www.reliantelevators.com/about",
-  "description": "Learn about Reliant Elevators, a trusted elevator company and lift manufacturer in Kochi, Kerala.",
+  "name": "Trusted Elevator Company in Kochi, Kerala | Lift Manufacturers",
+  "description": "Trusted Elevator Company and lift manufacturers in Kochi. Builds safe, durable elevators for homes, hospitals & commercial spaces.",
+  "inLanguage": "en-IN",
   "isPartOf": {
     "@type": "WebSite",
-    "url": "https://www.reliantelevators.com/"
+    "@id": "https://www.reliantelevators.com/#website"
+  },
+  "breadcrumb": {
+    "@id": "https://www.reliantelevators.com/about#breadcrumb"
+  },
+  "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "@id": "https://www.reliantelevators.com/#organization"
   }
 };
 
@@ -145,31 +158,6 @@ export const aboutBreadcrumbSchema = {
       "item": "https://www.reliantelevators.com/about"
     }
   ]
-};
-
-export const aboutWebPageSchema = {
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://www.reliantelevators.com/about#webpage",
-  "url": "https://www.reliantelevators.com/about",
-  "name": "Trusted Elevator Company in Kochi, Kerala | Lift Manufacturers",
-  "description": "Trusted Elevator Company and lift manufacturers in Kochi. Builds safe, durable elevators for homes, hospitals & commercial spaces.",
-  "inLanguage": "en-IN",
-  "isPartOf": {
-    "@type": "WebSite",
-    "@id": "https://www.reliantelevators.com/#website"
-  },
-  "breadcrumb": {
-    "@id": "https://www.reliantelevators.com/about#breadcrumb"
-  },
-  "primaryImageOfPage": {
-    "@type": "ImageObject",
-    "url": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "@id": "https://www.reliantelevators.com/#organization"
-  }
 };
 
 export const aboutLocalBusinessSchema = {

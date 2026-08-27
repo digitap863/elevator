@@ -7,7 +7,6 @@ import Milestones from './Milestones.jsx'
 import Project from './Project.jsx'
 import {
   aboutOrganizationSchema,
-  aboutPageSchema,
   aboutFaqSchema,
   aboutBreadcrumbSchema,
   aboutWebPageSchema,
@@ -60,10 +59,6 @@ export default function About() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutOrganizationSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutPageSchema) }}
       />
       <script
         type="application/ld+json"
