@@ -18,6 +18,19 @@ export const metadata = {
   title: "Trusted Elevator Company in Kochi,Kerala | Lift Manufacturers",
   description: "Trusted Elevator Company and lift manufacturers in Kochi. Builds safe, durable elevators for homes, hospitals & commercial spaces.",
   keywords: "Lift Manufacturers in calicut , Lift Manufacturers in Trivandrum, Lift Manufacturers in Kochi, best Elevator  company near me , budget friendly escalator service near me",
+  alternates: {
+    canonical: "https://www.reliantelevators.com/about",
+    languages: {
+      "en": "https://www.reliantelevators.com/about",
+    },
+    media: {
+      "only screen and (max-width: 640px)": "https://www.reliantelevators.com/about",
+    },
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
     type: "website",
     siteName: "Reliant Elevators",
