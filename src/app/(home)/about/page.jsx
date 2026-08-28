@@ -9,8 +9,7 @@ import {
   aboutOrganizationSchema,
   aboutFaqSchema,
   aboutBreadcrumbSchema,
-  aboutWebPageSchema,
-  aboutLocalBusinessSchema
+  aboutWebPageSchema
 } from '@/data/AboutSchemas.js'
 
 export const metadata = {
@@ -71,10 +70,6 @@ export default function About() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutWebPageSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(aboutLocalBusinessSchema) }}
       />
       <Banner /> 
       <div  style={{ backgroundImage: `url(${bgabout.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
