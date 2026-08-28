@@ -1,7 +1,7 @@
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  "@id": "https://www.reliantelevators.com/#organization",
+  "@id": "https://www.reliantelevators.com/#business",
   "name": "Reliant Elevators",
   "alternateName": "Reliant Elevators & Escalators",
   "legalName": "Reliant Elevators",
@@ -135,7 +135,7 @@ export const howToSchema = {
 export const aggregateRatingSchema = {
   "@context": "https://schema.org",
   "@type": "HomeAndConstructionBusiness",
-  "@id": "https://www.reliantelevators.com/#organization",
+  "@id": "https://www.reliantelevators.com/#business",
   "name": "Reliant Elevators",
   "image": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
   "url": "https://www.reliantelevators.com/",
@@ -168,7 +168,7 @@ export const webPageSchema = {
     "@id": "https://www.reliantelevators.com/#website"
   },
   "about": {
-    "@id": "https://www.reliantelevators.com/#organization"
+    "@id": "https://www.reliantelevators.com/#business"
   },
   "primaryImageOfPage": {
     "@type": "ImageObject",
@@ -187,7 +187,7 @@ export const webPageSchema = {
     "@id": "https://www.reliantelevators.com/#breadcrumb"
   },
   "publisher": {
-    "@id": "https://www.reliantelevators.com/#organization"
+    "@id": "https://www.reliantelevators.com/#business"
   },
   "potentialAction": [
     {
@@ -221,7 +221,7 @@ export const websiteSchema = {
   "description": "Reliant Elevators — Kerala's trusted lift & elevator company in Kochi, Calicut & Trivandrum. Residential, commercial & hospital elevators.",
   "inLanguage": "en-IN",
   "publisher": {
-    "@id": "https://www.reliantelevators.com/#organization"
+    "@id": "https://www.reliantelevators.com/#business"
   },
   "potentialAction": {
     "@type": "SearchAction",
@@ -238,183 +238,147 @@ export const localBusinessSchema = {
   "@graph": [
     {
       "@type": "LocalBusiness",
-      "@id": "https://www.reliantelevators.com/#organization",
-      "name": "Reliant Elevators",
-      "alternateName": "Reliant Elevators & Escalators",
+      "@id": "https://www.reliantelevators.com/#business",
+      "name": "Reliant Elevators & Escalators",
       "url": "https://www.reliantelevators.com/",
       "logo": "https://www.reliantelevators.com/_next/static/media/logo.fe6ad45a.svg",
-      "image": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
-      "description": "Reliant Elevators is Kerala's trusted lift & elevator company serving Kochi, Calicut and Trivandrum, offering residential, commercial, hospital and hospitality elevators, escalators, installation, maintenance, modernization and consultation services.",
-      "telephone": "+91-9496003052",
-      "email": "needhelp@Organia.com",
-      "foundingDate": "2011",
-      "slogan": "Reliability, Elegance & Quality",
+      "image": "https://www.reliantelevators.com/_next/static/media/logo.fe6ad45a.svg",
+      "telephone": "+91 94960-03052",
+      "description": "Reliant Elevators & Escalators provides elevator and lift solutions for residential, commercial, hospital and other building requirements across Kerala.",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "MPV 319,320, Martinpuram, Maradu PO",
         "addressLocality": "Cochin",
-        "postalCode": "682304",
         "addressRegion": "Kerala",
+        "postalCode": "682304",
         "addressCountry": "IN"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 9.948647,
+        "longitude": 76.3212817
       },
       "openingHoursSpecification": [
         {
           "@type": "OpeningHoursSpecification",
           "dayOfWeek": [
-            "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
           ],
           "opens": "09:00",
-          "closes": "18:00"
+          "closes": "17:00"
         }
       ],
       "areaServed": [
-        { "@type": "City", "name": "Kochi" },
-        { "@type": "City", "name": "Calicut" },
-        { "@type": "City", "name": "Thiruvananthapuram" }
-      ],
-      "sameAs": [
-        "https://www.facebook.com/share/1EEAGHMwrF/",
-        "https://www.instagram.com/reliant.elevator?igsi=OHZ6NWJvcTluaW5k",
-        "https://youtube.com/@reliantelevatorsandescalators?si=5DMZD9S69RvuOKFr"
-      ],
-      "department": [
         {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "Reliant Elevators - Admin Office, Maradu",
-          "image": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
-          "telephone": "+91-9496003052",
+          "@type": "City",
+          "name": "Kochi"
+        },
+        {
+          "@type": "City",
+          "name": "Calicut"
+        },
+        {
+          "@type": "City",
+          "name": "Trivandrum"
+        },
+        {
+          "@type": "State",
+          "name": "Kerala"
+        }
+      ],
+      "location": [
+        {
+          "@type": "Place",
+          "name": "Reliant Elevators & Escalators - Kochi Admin Office",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "MPV 319,320, Martinpuram, Maradu PO",
             "addressLocality": "Cochin",
-            "postalCode": "682304",
             "addressRegion": "Kerala",
+            "postalCode": "682304",
             "addressCountry": "IN"
           },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-              ],
-              "opens": "09:00",
-              "closes": "18:00"
-            }
-          ]
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 9.948647,
+            "longitude": 76.3212817
+          }
         },
         {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "Reliant Elevators - Branch Office, Calicut",
-          "image": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
-          "telephone": "+91-9496003052",
+          "@type": "Place",
+          "name": "Reliant Elevators & Escalators - Kochi Showroom",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "50-1617/A, Near Gandhi Square, Mini Bypass Jn, Maradu, Poonithura",
+            "addressLocality": "Kochi",
+            "addressRegion": "Kerala",
+            "postalCode": "682038",
+            "addressCountry": "IN"
+          }
+        },
+        {
+          "@type": "Place",
+          "name": "Reliant Elevators & Escalators - Calicut Branch",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "2nd Floor, Court View Arcade, Court Road",
             "addressLocality": "Calicut",
+            "addressRegion": "Kerala",
             "postalCode": "673001",
-            "addressRegion": "Kerala",
             "addressCountry": "IN"
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-              ],
-              "opens": "09:00",
-              "closes": "18:00"
-            }
-          ]
+          }
         },
         {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "Reliant Elevators - Showroom, Poonithura",
-          "image": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
-          "telephone": "+91-9496003052",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "50-1617/A, Near Gandhi Square, Mini Bypass Jn, Maradu, Poonithura",
-            "addressLocality": "Cochin",
-            "postalCode": "682038",
-            "addressRegion": "Kerala",
-            "addressCountry": "IN"
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-              ],
-              "opens": "09:00",
-              "closes": "18:00"
-            }
-          ]
-        },
-        {
-          "@type": "HomeAndConstructionBusiness",
-          "name": "Reliant Elevators - Trivandrum",
-          "image": "https://www.reliantelevators.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fliift1.03ef861a.png&w=1080&q=75",
-          "telephone": "+91-9496003052",
+          "@type": "Place",
+          "name": "Reliant Elevators & Escalators - Trivandrum",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Shine Tower, Near GG Hospital, Marappalam",
             "addressLocality": "Trivandrum",
             "addressRegion": "Kerala",
             "addressCountry": "IN"
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": [
-                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-              ],
-              "opens": "09:00",
-              "closes": "18:00"
-            }
-          ]
+          }
         }
       ],
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Elevator & Escalator Services",
-        "itemListElement": [
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Home Elevator Installation" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Commercial Elevator Installation" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hospital Elevator Installation" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Hospitality Elevators & Escalators" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Structural Elevators" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elevator Maintenance (AMC)" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elevator Modernization" } },
-          { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Elevator Consultation" } }
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+91 94960-03052",
+        "contactType": "customer service",
+        "areaServed": "IN",
+        "availableLanguage": [
+          "English",
+          "Malayalam"
         ]
-      },
-      "review": [
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "Padmasree CK Menon" },
-          "reviewBody": "Reliant Elevator's team is knowledgeable and focused on safety and quality, handling everything smoothly from consultation to maintenance.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "K P Aliyar" },
-          "reviewBody": "Reliant Elevator's modernization service significantly improved the efficiency and safety of the client's lift system, handled with precision and professionalism.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-        },
-        {
-          "@type": "Review",
-          "author": { "@type": "Person", "name": "P M Abdul Aazeez" },
-          "reviewBody": "Excellent service and technical expertise, guiding the client from initial consultation through installation with complete transparency.",
-          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" }
-        }
-      ]
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://www.reliantelevators.com/#website",
       "url": "https://www.reliantelevators.com/",
-      "name": "Reliant Elevators",
-      "publisher": { "@id": "https://www.reliantelevators.com/#organization" }
+      "name": "Reliant Elevators & Escalators",
+      "publisher": {
+        "@id": "https://www.reliantelevators.com/#business"
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://www.reliantelevators.com/#webpage",
+      "url": "https://www.reliantelevators.com/",
+      "name": "Reliant Elevators & Escalators",
+      "isPartOf": {
+        "@id": "https://www.reliantelevators.com/#website"
+      },
+      "about": {
+        "@id": "https://www.reliantelevators.com/#business"
+      },
+      "mainEntity": {
+        "@id": "https://www.reliantelevators.com/#business"
+      }
     }
   ]
 };
