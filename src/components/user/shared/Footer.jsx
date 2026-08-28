@@ -28,13 +28,31 @@ export default function Footer() {
               />
             </div>
             <div className="flex flex-row  space-x-4 ">
-              <a href="#" className="bg-white text-teal-900 p-2 rounded-full hover:bg-gray-100 transition">
+              <a 
+                href="https://www.facebook.com/share/1EEAGHMwrF/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Facebook"
+                className="bg-white text-teal-900 p-2 rounded-full hover:bg-gray-100 transition"
+              >
                 <Facebook size={20} />
               </a>
-              <a href="#" className="bg-white text-teal-900 p-2 rounded-full hover:bg-gray-100 transition">
+              <a 
+                href="https://youtube.com/@reliantelevatorsandescalators?si=5DMZD9S69RvuOKFr" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="YouTube"
+                className="bg-white text-teal-900 p-2 rounded-full hover:bg-gray-100 transition"
+              >
                 <Youtube size={20} />
               </a>
-              <a href="#" className="bg-white text-teal-900 p-2 rounded-full hover:bg-gray-100 transition">
+              <a 
+                href="https://www.instagram.com/reliant.elevator?igsi=OHZ6NWJvcTluaW5k" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Instagram"
+                className="bg-white text-teal-900 p-2 rounded-full hover:bg-gray-100 transition"
+              >
                 <Instagram size={20} />
               </a>
             </div>

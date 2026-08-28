@@ -47,9 +47,9 @@ export const organizationSchema = {
     { "@type": "City", "name": "Thiruvananthapuram" }
   ],
   "sameAs": [
-    "https://www.facebook.com/reliantelevators",
-    "https://www.instagram.com/reliantelevators",
-    "https://www.linkedin.com/company/reliantelevators"
+    "https://www.facebook.com/share/1EEAGHMwrF/",
+    "https://www.instagram.com/reliant.elevator?igsi=OHZ6NWJvcTluaW5k",
+    "https://youtube.com/@reliantelevatorsandescalators?si=5DMZD9S69RvuOKFr"
   ]
 };
 
@@ -272,7 +272,11 @@ export const localBusinessSchema = {
         { "@type": "City", "name": "Calicut" },
         { "@type": "City", "name": "Thiruvananthapuram" }
       ],
-      "sameAs": [],
+      "sameAs": [
+        "https://www.facebook.com/share/1EEAGHMwrF/",
+        "https://www.instagram.com/reliant.elevator?igsi=OHZ6NWJvcTluaW5k",
+        "https://youtube.com/@reliantelevatorsandescalators?si=5DMZD9S69RvuOKFr"
+      ],
       "department": [
         {
           "@type": "HomeAndConstructionBusiness",
