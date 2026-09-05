@@ -47,10 +47,44 @@ export default function Products() {
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
+    "@id": "https://www.reliantelevators.com/products#breadcrumb",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.reliantelevators.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Products", "item": "https://www.reliantelevators.com/products" }
+      {
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://www.reliantelevators.com/"
+      },
+      {
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Products",
+        "item": "https://www.reliantelevators.com/products"
+      }
     ]
+  };
+
+  const webPageSchema = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://www.reliantelevators.com/products#webpage",
+    "url": "https://www.reliantelevators.com/products",
+    "name": "Elevator Manufacturers in Kerala | Reliant Elevators",
+    "headline": "Elevator Manufacturers in Kerala | Reliant Elevators",
+    "description": "Explore reliable elevator solutions from leading elevator manufacturers in Kerala, including home, commercial, hospital and hospitality elevators by Reliant.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "@id": "https://www.reliantelevators.com/#website",
+      "url": "https://www.reliantelevators.com/",
+      "name": "Reliant Elevators"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "@id": "https://www.reliantelevators.com/#organization",
+      "name": "Reliant Elevators",
+      "url": "https://www.reliantelevators.com/"
+    },
+    "inLanguage": "en-IN"
   };
 
   return (
@@ -58,6 +92,10 @@ export default function Products() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
       <Banner />
       <div style={{ backgroundImage: `url(${probg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
