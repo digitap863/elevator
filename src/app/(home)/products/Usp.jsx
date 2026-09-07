@@ -65,11 +65,11 @@ export default function Usp() {
                             transition={{ duration: 0.6, delay: 0.1 }}
                             className="mb-6"
                         >
-                            <h1 className="text-4xl md:text-5xl lg:text-6xl font-aquire text-[#1a3a4a]  tracking-wide">
+                            <h3 className="text-4xl md:text-5xl lg:text-6xl font-aquire text-[#1a3a4a]  tracking-wide">
                                 <span className="block">ELEVATE</span>
                                 <span className="block">EVERYDAY</span>
                                 <span className="block">LIVING</span>
-                            </h1>
+                            </h3>
                         </motion.div>
 
                         {/* Subtext */}

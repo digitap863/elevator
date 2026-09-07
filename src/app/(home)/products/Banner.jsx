@@ -44,6 +44,7 @@ const Banner = () => {
                             <h2 className="text-[#376378] font-medium md:text-2xl text-xl tracking-wide uppercase">
                                 OUR PRODUCTS
                             </h2>
+                            
                         </div>
                         <p className="font-aquire md:text-6xl text-3xl">
                             ELEVATORS FOR<br /> <span className="text-red-500"> EVERY </span>

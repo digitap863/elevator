@@ -167,6 +167,7 @@ const ElevatorSections = () => {
               >
                 <div>
                   <div className={`flex flex-col items-left gap-0  relative ${section.imagePosition === 'left' ? 'pl-30' : ''}`}>
+                   <h1 className='hidden'>Elevator Manufacturers in Kerala</h1>
                     <h3 className="text-8xl font-bold text-[#376378] font-dragon" style={{
                       WebkitTextStroke: '2px #6B8FA3',
                       WebkitTextFillColor: 'transparent',
