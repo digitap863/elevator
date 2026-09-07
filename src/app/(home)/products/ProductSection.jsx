@@ -23,8 +23,14 @@ const ElevatorSections = () => {
       tag: "LUXURY WITHIN REACH",
       title: "HOME ELEVATORS",
       projectCategory: "Home",
-      description:
-        " Reliant Elevators offers premium Home Elevators in Kerala, designed to provide smooth, quiet, and comfortable vertical mobility within modern residences. With compact designs that fit seamlessly into villas and independent homes, our home elevators enhance accessibility, safety, and everyday convenience. Engineered for energy efficiency and compliant with Indian safety standards, Reliant Home Elevators add lasting value, elegance, and comfort to homes across Kerala and South India.",
+      link: "/products#home-elevators",
+      serviceLink: "/service",
+      contactLink: "/reachout",
+      description: (
+        <>
+          <Link href="/about" className="text-[#376378] font-semibold hover:underline">Reliant Elevators</Link> offers premium <Link href="/" className="text-[#376378] font-semibold hover:underline">Home Elevators in Kerala</Link>, designed to provide smooth, quiet, and comfortable vertical mobility within modern residences. With compact designs that fit seamlessly into villas and independent homes, our home elevators enhance accessibility, safety, and everyday convenience. Engineered for energy efficiency and compliant with <Link href="/service" className="text-[#376378] font-semibold hover:underline">Indian safety standards</Link>, Reliant Home Elevators add lasting value, elegance, and comfort to homes across Kerala and South India. For queries, <Link href="/reachout" className="text-[#376378] font-semibold hover:underline">get in touch with our team</Link>.
+        </>
+      ),
       image: pr1,
       features: [
         "Compact cabin designs",
@@ -43,8 +49,14 @@ const ElevatorSections = () => {
       tag: "FOR BUSINESS",
       title: "COMMERCIAL ELEVATORS",
       projectCategory: "Commercial",
-      description:
-        "Reliant Elevators provides reliable Commercial Elevators in Kerala, engineered to support the demanding vertical mobility needs of offices, malls, hotels, hospitals, and commercial complexes. Designed for smooth, safe, and energy-efficient operation, our commercial elevators ensure seamless movement across multi-floor buildings. Built to Indian safety standards and optimized for high-traffic use, Reliant Commercial Elevators deliver long-lasting performance and dependable mobility solutions for businesses across Kerala and South India.",
+      link: "/products#commercial-elevators",
+      serviceLink: "/service",
+      contactLink: "/reachout",
+      description: (
+        <>
+          <Link href="/about" className="text-[#376378] font-semibold hover:underline">Reliant Elevators</Link> provides reliable <Link href="/" className="text-[#376378] font-semibold hover:underline">Commercial Elevators in Kerala</Link>, engineered to support the demanding vertical mobility needs of offices, malls, hotels, hospitals, and commercial complexes. Designed for smooth, safe, and energy-efficient operation, our commercial elevators ensure seamless movement across multi-floor buildings. Built to <Link href="/service" className="text-[#376378] font-semibold hover:underline">Indian safety standards</Link> and optimized for high-traffic use, Reliant Commercial Elevators deliver long-lasting performance for businesses. Learn more about our <Link href="/service" className="text-[#376378] font-semibold hover:underline">installation services</Link> or <Link href="/reachout" className="text-[#376378] font-semibold hover:underline">request a quote</Link>.
+        </>
+      ),
       image: pr2,
       features: [
         "High-speed operation",
@@ -63,8 +75,14 @@ const ElevatorSections = () => {
       tag: "ENGINEERED FOR CARE",
       title: "HOSPITAL ELEVATORS",
       projectCategory: "Hospital",
-      description:
-        "Reliant Elevators designs and installs high-performance Hospital Elevators in Kerala, purpose-built for medical environments where safety, hygiene, and reliability are critical. Engineered for smooth, quiet, and swift operation, our hospital elevators efficiently transport patients, stretchers, medical staff, and equipment across multiple floors. Compliant with Indian healthcare and safety standards, Reliant Hospital Elevators ensure uninterrupted vertical mobility for hospitals, clinics, and healthcare facilities across Kerala and South India.",
+      link: "/products#hospital-elevators",
+      serviceLink: "/service",
+      contactLink: "/reachout",
+      description: (
+        <>
+          <Link href="/about" className="text-[#376378] font-semibold hover:underline">Reliant Elevators</Link> designs and installs high-performance <Link href="/" className="text-[#376378] font-semibold hover:underline">Hospital Elevators in Kerala</Link>, purpose-built for medical environments where safety, hygiene, and reliability are critical. Engineered for smooth, quiet, and swift operation, our hospital elevators efficiently transport patients, stretchers, medical staff, and equipment. Compliant with <Link href="/service" className="text-[#376378] font-semibold hover:underline">healthcare safety standards</Link>, Reliant Hospital Elevators ensure uninterrupted vertical mobility. View our <Link href="/projects?category=Hospital#our-projects" className="text-[#376378] font-semibold hover:underline">hospital projects</Link> or <Link href="/reachout" className="text-[#376378] font-semibold hover:underline">contact our experts</Link>.
+        </>
+      ),
       image: L6,
       features: [
         "Stretcher-compatible size",
@@ -83,8 +101,14 @@ const ElevatorSections = () => {
       tag: "ELEGANCE IN MOTION",
       title: "HOSPITALITY ELEVATORS",
       projectCategory: "Hospitality",
-      description:
-        "Reliant Elevators provides reliable Commercial Elevators in Kerala, engineered to support the demanding vertical mobility needs of offices, malls, hotels, hospitals, and commercial complexes. Designed for smooth, safe, and energy-efficient operation, our commercial elevators ensure seamless movement across multi-floor buildings. Built to Indian safety standards and optimized for high-traffic use, Reliant Commercial Elevators deliver long-lasting performance and dependable mobility solutions for businesses across Kerala and South India.",
+      link: "/products#hospitality-elevators",
+      serviceLink: "/service",
+      contactLink: "/reachout",
+      description: (
+        <>
+          <Link href="/about" className="text-[#376378] font-semibold hover:underline">Reliant Elevators</Link> delivers sophisticated <Link href="/" className="text-[#376378] font-semibold hover:underline">Hospitality Elevators in Kerala</Link>, customized for luxury hotels, resorts, and premium venues. Designed to complement high-end architectural aesthetics, our elevators feature panoramic glass options, customized lighting, and whisper-quiet vertical motion. Explore our <Link href="/projects?category=Hospitality#our-projects" className="text-[#376378] font-semibold hover:underline">hospitality projects</Link> or <Link href="/reachout" className="text-[#376378] font-semibold hover:underline">contact us for custom designs</Link>.
+        </>
+      ),
       image: pr4,
       features: [
         "Premium interior finishes",
@@ -103,16 +127,22 @@ const ElevatorSections = () => {
       tag: "ENGINEERED FOR COMMERCIAL",
       title: "STRUCTURAL ELEVATORS",
       projectCategory: "Structural",
-      description:
-        " Reliant Elevators offers premium Home Elevators in Kerala, designed to provide smooth, quiet, and comfortable vertical mobility within modern residences. With compact designs that fit seamlessly into villas and independent homes, our home elevators enhance accessibility, safety, and everyday convenience. Engineered for energy efficiency and compliant with Indian safety standards, Reliant Home Elevators add lasting value, elegance, and comfort to homes across Kerala and South India.",
+      link: "/products#structural-elevators",
+      serviceLink: "/service",
+      contactLink: "/reachout",
+      description: (
+        <>
+          <Link href="/about" className="text-[#376378] font-semibold hover:underline">Reliant Elevators</Link> provides robust <Link href="/" className="text-[#376378] font-semibold hover:underline">Structural Elevators in Kerala</Link>, specifically engineered for heavy-duty industrial, infrastructure, and custom steel shaft structures. Designed to perform under rigorous conditions with maximum load efficiency and strict adherence to <Link href="/service" className="text-[#376378] font-semibold hover:underline">Indian safety standards</Link>. Check our <Link href="/projects?category=Structural#our-projects" className="text-[#376378] font-semibold hover:underline">structural installations</Link> or <Link href="/reachout" className="text-[#376378] font-semibold hover:underline">reach out to our engineering team</Link>.
+        </>
+      ),
       image: L7,
       features: [
-        "Stretcher-compatible size",
-        "Smooth ride technology",
-        "Antibacterial surfaces",
-        "Priority call systems",
-        "Emergency power backup",
-        "Wide door openings"
+        "Heavy load support",
+        "Custom steel shaft framing",
+        "High-durability components",
+        "Weatherproof engineering",
+        "Emergency backup systems",
+        "Precision alignment technology"
       ],
       bgColor: "bg-gray-100",
       imagePosition: "right"
@@ -158,7 +188,7 @@ const ElevatorSections = () => {
                     </div>
                   </div>
 
-                  <p className="text-gray-800 leading- text-lg tracking-tight">
+                  <p className="text-gray-800 leading-relaxed text-lg tracking-tight">
                     {section.description}
                   </p>
                 </div>
@@ -176,10 +206,16 @@ const ElevatorSections = () => {
                 </div>
 
                 {/* CTA Button */}
-                <div className="pt-6 z-10">
+                <div className="pt-6 z-10 flex flex-wrap gap-4">
                   <Link href={`/projects?category=${section.projectCategory}#our-projects`}>
                     <button className="bg-[#376378] hover:bg-slate-800 text-white px-6 py-3 cursor-pointer rounded-full flex items-center gap-2 transition-colors">
                       View Works
+                      <ArrowRight className="w-4 h-4" />
+                    </button>
+                  </Link>
+                  <Link href={section.contactLink}>
+                    <button className="border border-[#376378] text-[#376378] hover:bg-[#376378] hover:text-white px-6 py-3 cursor-pointer rounded-full flex items-center gap-2 transition-colors font-medium">
+                      Get Quote
                       <ArrowRight className="w-4 h-4" />
                     </button>
                   </Link>
