@@ -3,6 +3,8 @@ import Banner from './Banner.jsx'
 import ProductSection from './ProductSection.jsx'
 import Contact from '@/components/user/Home/Contact.jsx'
 import Usp from './Usp.jsx'
+import ProductFaq from './ProductFaq.jsx'
+import { productFaqs } from './productFaqData.js'
 
 export const metadata = {
   title: "Elevator Manufacturers in Kerala | Reliant Elevators",
@@ -87,6 +89,19 @@ export default function Products() {
     "inLanguage": "en-IN"
   };
 
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": productFaqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.rawAnswer
+      }
+    }))
+  };
+
   return (
     <main className="overflow-hidden ">
       <script
@@ -97,10 +112,15 @@ export default function Products() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(webPageSchema) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
       <Banner />
       <div style={{ backgroundImage: `url(${probg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
         <ProductSection />
         <Usp />
+        <ProductFaq />
         <Contact
           label="Get Started"
           heading="Can't Find What You Need?"
@@ -116,6 +136,7 @@ export default function Products() {
     </main>
   )
 }
+
 
 
 
