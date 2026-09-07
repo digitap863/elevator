@@ -89,7 +89,7 @@ export default function Products() {
     "inLanguage": "en-IN"
   };
 
-  const faqSchema = {
+  const aeogeofaqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": productFaqs.map((faq) => ({
@@ -114,7 +114,7 @@ export default function Products() {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(aeogeofaqSchema) }}
       />
       <Banner />
       <div style={{ backgroundImage: `url(${probg.src})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
