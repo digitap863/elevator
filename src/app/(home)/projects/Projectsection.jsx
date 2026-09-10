@@ -227,7 +227,7 @@ export default function Projectsection() {
       {/* Minimal Premium Project Detail Modal with Swiper Gallery */}
       <AnimatePresence>
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-8">
+          <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 md:p-6">
             {/* Backdrop with Blur */}
             <motion.div
               className="fixed inset-0 bg-slate-950/60 backdrop-blur-md"
@@ -240,7 +240,7 @@ export default function Projectsection() {
 
             {/* Modal Card Box */}
             <motion.div
-              className="relative w-full max-w-4xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col md:flex-row max-h-[90vh] md:max-h-[85vh] z-10"
+              className="relative w-full max-w-6xl bg-white rounded-3xl shadow-2xl overflow-hidden border border-gray-100 flex flex-col md:flex-row max-h-[92vh] md:max-h-[90vh] z-10"
               initial={{ opacity: 0, scale: 0.95, y: 15 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 15 }}
@@ -256,7 +256,7 @@ export default function Projectsection() {
               </button>
 
               {/* Left Column: Swiper Gallery Image Display */}
-              <div className="relative w-full md:w-1/2 min-h-[300px] sm:min-h-[380px] md:min-h-full bg-slate-950 flex items-center justify-center shrink-0 overflow-hidden">
+              <div className="relative w-full md:w-7/12 min-h-[350px] sm:min-h-[420px] md:min-h-full bg-slate-950 flex items-center justify-center shrink-0 overflow-hidden">
                 <div className="absolute top-4 left-4 z-20">
                   <span className="bg-white/95 text-gray-900 backdrop-blur-md text-xs uppercase tracking-wider font-bold px-3.5 py-1.5 rounded-full shadow-lg">
                     {selectedProject.category}
@@ -270,7 +270,7 @@ export default function Projectsection() {
                   pagination={getProjectImages(selectedProject).length > 1 ? { clickable: true } : false}
                   autoplay={getProjectImages(selectedProject).length > 1 ? { delay: 4000, disableOnInteraction: false } : false}
                   loop={getProjectImages(selectedProject).length > 1}
-                  className="w-full h-full min-h-[300px] sm:min-h-[380px] md:min-h-[460px] project-modal-swiper"
+                  className="w-full h-full min-h-[350px] sm:min-h-[420px] md:min-h-[550px] project-modal-swiper"
                 >
                   {getProjectImages(selectedProject).map((img, i) => (
                     <SwiperSlide key={i} className="relative w-full h-full flex items-center justify-center bg-slate-950 p-2">
@@ -287,7 +287,7 @@ export default function Projectsection() {
               </div>
 
               {/* Right Column: Structured Information */}
-              <div className="w-full md:w-1/2 p-6 sm:p-8 md:p-10 flex flex-col justify-between overflow-y-auto bg-white">
+              <div className="w-full md:w-5/12 p-6 sm:p-8 md:p-10 flex flex-col justify-between overflow-y-auto bg-white">
                 <div className="space-y-6">
                   {/* Top Meta */}
                   <div className="space-y-2">
