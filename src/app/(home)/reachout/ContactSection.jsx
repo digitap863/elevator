@@ -16,6 +16,9 @@ export default function ContactSection() {
         message: ''
     });
 
+    const [loading, setLoading] = useState(false);
+    const [status, setStatus] = useState({ type: '', message: '' });
+
     const handleChange = (e) => {
         setFormData({
             ...formData,
@@ -23,16 +26,51 @@ export default function ContactSection() {
         });
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         
         // double check required fields are not empty or whitespace
         if (!formData.name.trim() || !formData.contact.trim() || !formData.email.trim()) {
+            setStatus({ type: 'error', message: 'Please fill in all required fields.' });
             return;
         }
 
-        console.log('Form submitted:', formData);
-        router.push('/thank-you');
+        setLoading(true);
+        setStatus({ type: '', message: '' });
+
+        try {
+            const res = await fetch('/api/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            const data = await res.json();
+
+            if (data.success) {
+                setStatus({ type: 'success', message: 'Message sent successfully! Redirecting...' });
+                setFormData({
+                    name: '',
+                    contact: '',
+                    email: '',
+                    service: '',
+                    location: '',
+                    message: ''
+                });
+                setTimeout(() => {
+                    router.push('/thank-you');
+                }, 1200);
+            } else {
+                setStatus({ type: 'error', message: data.error || 'Failed to submit form. Please try again.' });
+            }
+        } catch (err) {
+            console.error('Contact submission error:', err);
+            setStatus({ type: 'error', message: 'Network error. Please try again later.' });
+        } finally {
+            setLoading(false);
+        }
     };
 
     return (
@@ -151,11 +189,31 @@ export default function ContactSection() {
                                 ></textarea>
                             </div>
 
+                            {status.message && (
+                                <div
+                                    className={`p-3 text-sm rounded ${
+                                        status.type === 'error'
+                                            ? 'bg-red-50 text-red-700 border border-red-200'
+                                            : 'bg-green-50 text-green-700 border border-green-200'
+                                    }`}
+                                >
+                                    {status.message}
+                                </div>
+                            )}
+
                             <button
                                 type="submit"
-                                className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-2 px-6  transition duration-200 shadow-md"
+                                disabled={loading}
+                                className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-semibold py-2 px-6 transition duration-200 shadow-md flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed"
                             >
-                                Submit
+                                {loading ? (
+                                    <>
+                                        <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin" />
+                                        <span>Submitting...</span>
+                                    </>
+                                ) : (
+                                    'Submit'
+                                )}
                             </button>
                         </form>
                     </motion.div>

@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { LayoutDashboard, FileText, PlusCircle, ArrowLeft, Menu, X, Shield, LogOut, Building, Plus } from 'lucide-react';
+import { LayoutDashboard, FileText, PlusCircle, ArrowLeft, Menu, X, Shield, LogOut, Building, Plus, Inbox } from 'lucide-react';
 
 export default function AdminLayout({ children }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -35,6 +35,7 @@ export default function AdminLayout({ children }) {
 
   const menuItems = [
     { name: 'Dashboard', href: '/admin', icon: LayoutDashboard },
+    { name: 'Contact Submissions', href: '/admin/contacts', icon: Inbox },
     { name: 'Manage Projects', href: '/admin/projects', icon: Building },
     { name: 'New Project', href: '/admin/projects/new', icon: Plus },
     { name: 'Manage Blogs', href: '/admin/blogs', icon: FileText },
@@ -141,6 +142,7 @@ export default function AdminLayout({ children }) {
             </button>
             <h1 className="text-xl font-bold text-gray-900 hidden md:block">
               {pathname === '/admin' && 'Dashboard Overview'}
+              {pathname === '/admin/contacts' && 'Contact Submissions'}
               {pathname === '/admin/projects' && 'Manage Projects'}
               {pathname === '/admin/projects/new' && 'Add New Project'}
               {pathname.startsWith('/admin/projects/edit') && 'Edit Project'}

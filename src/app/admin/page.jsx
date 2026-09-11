@@ -2,29 +2,42 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FileText, CheckCircle, Edit3, Plus, ArrowRight, BookOpen } from 'lucide-react';
+import { FileText, CheckCircle, Edit3, Plus, ArrowRight, BookOpen, Inbox, AlertCircle } from 'lucide-react';
 
 export default function AdminDashboard() {
   const [stats, setStats] = useState({ total: 0, published: 0, drafts: 0 });
+  const [contactStats, setContactStats] = useState({ total: 0, new: 0 });
   const [latestBlogs, setLatestBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchDashboardData() {
       try {
-        const res = await fetch('/api/admin/blogs?limit=100');
-        const json = await res.json();
+        const [blogRes, contactRes] = await Promise.all([
+          fetch('/api/admin/blogs?limit=100'),
+          fetch('/api/admin/contacts?limit=1'),
+        ]);
+
+        const json = await blogRes.json();
         if (json.success) {
           const allBlogs = json.data;
           const published = allBlogs.filter((b) => b.status === 'Published').length;
           const drafts = allBlogs.filter((b) => b.status === 'Draft').length;
           
           setStats({
-            total: json.pagination.total,
+            total: json.pagination?.total || 0,
             published,
             drafts,
           });
           setLatestBlogs(allBlogs.slice(0, 3));
+        }
+
+        const contactJson = await contactRes.json();
+        if (contactJson.success && contactJson.stats) {
+          setContactStats({
+            total: contactJson.stats.total || 0,
+            new: contactJson.stats.new || 0,
+          });
         }
       } catch (err) {
         console.error('Error fetching dashboard stats:', err);
@@ -63,7 +76,23 @@ export default function AdminDashboard() {
       </div>
 
       {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Stat 0: Contact Submissions */}
+        <Link href="/admin/contacts" className="bg-white rounded-3xl p-6 border border-gray-100 shadow-xs flex items-center justify-between hover:border-slate-300 transition group">
+          <div>
+            <span className="text-gray-400 text-xs font-semibold uppercase tracking-wider">Contact Inquiries</span>
+            <h3 className="text-3xl font-extrabold text-slate-900 mt-2 font-satoshi">{contactStats.total}</h3>
+            {contactStats.new > 0 && (
+              <span className="text-xs text-amber-600 font-semibold mt-1 block">
+                {contactStats.new} new pending
+              </span>
+            )}
+          </div>
+          <div className="w-12 h-12 rounded-2xl bg-slate-900 text-white flex items-center justify-center group-hover:bg-[#C10510] transition-colors">
+            <Inbox className="w-6 h-6" />
+          </div>
+        </Link>
+
         {/* Stat 1 */}
         <div className="bg-white rounded-3xl p-6 border border-gray-100 shadow-xs flex items-center justify-between">
           <div>
